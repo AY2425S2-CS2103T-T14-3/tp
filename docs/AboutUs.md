@@ -50,12 +50,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Tasmia Haque
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tasmiah0508.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/tasmiah0508.png)]
+[[portfolio](team/tasmiah0508.md)]
 
 * Role: Developer
 * Responsibilities: UI
+// what should portfolio, role and responsibilities be?
