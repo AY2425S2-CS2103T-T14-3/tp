@@ -11,15 +11,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Lin Xinyi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xinnnyeee.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/xinnnyeee)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Project Member
+* Responsibility: Deliverables and Deadlines
 
 ### Jane Doe
 
