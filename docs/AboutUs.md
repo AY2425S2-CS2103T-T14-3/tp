@@ -41,15 +41,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Joshua Lai
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/laishuya.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/laishuya)]
+[[portfolio](https://www.linkedin.com/in/joshua-lai-401b65278)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Documentation
+* Responsibilities: Quality of project documents
 
 ### James Doe
 
