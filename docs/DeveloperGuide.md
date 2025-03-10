@@ -288,14 +288,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a/an …​ | I want to …​                                       | So that I can…​                                |
+|----------|------------|----------------------------------------------------|------------------------------------------------|
+| `* * *`  | SoC TA     | add a student's contact                            | store their contact details                    |
+| `* * *`  | SoC TA     | delete a student's contact                         | remove outdated or incorrect contacts          |
+| `* * *`  | SoC TA     | list all student contacts                          | view all my current students                   |
+| `* * *`  | SoC TA     | save my student contacts locally                   | I will not lose my data when I close the app   |
+| `* * *`  | SoC TA     | load my student contact details from a save file   | I can access my saved data when I open the app |
+| `* * *`  | SoC TA     | clear my list of student contacts                  | I can create a new list for the next semester  |
+| `* *`    | SoC TA     | edit my students' contact details                  | update their information if there are changes  |
+| `* *`    | SoC TA     | filter my student contacts by tutorial group       | quickly find students from any tutorial group  |
+| `* *`    | SoC TA     | filter my student contacts by consultation status  | quickly find students who need a consultation  |
+| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student    |
+| `* *`    | SoC TA     | search for a student by name                       | quickly locate specific student contacts       |
+| `* *`    | SoC TA     | search for a student by NUS ID                     | quickly locate specific student contacts       |
+| `*`      | SoC TA     | archive old student contacts                       | contact ex-students from previous semesters    |
 
 *{More to be added}*
 
