@@ -360,16 +360,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1.  **Platform Independent**: Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2.  **Scalability**: Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3.  **Typing Efficiency**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  **Portability**: The application should not **require an installer** and should be downloaded as a single JAR file.
+5.  **Data storage**: Data should be stored in a **text file** rather than a Database Management System.
+6.  **Data reliability**: After reopening the application, the loaded data should be **identical** to the previously saved data.
+7.  **Stability**: The application should be able to **recover from errors gracefully** without crashing or losing data.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **CLI**: A Command Line Interface which allows users to interact with the system via text
+* **SoC TA**: A teaching assistant employed by the NUS School of Computing
+* **Student**: A student who is taught by the SoC TA
 
 --------------------------------------------------------------------------------------------------------------------
 
