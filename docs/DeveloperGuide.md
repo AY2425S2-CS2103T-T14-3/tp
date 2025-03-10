@@ -274,13 +274,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* is a teaching assistant from NUS Computing
+* has a need to manage a significant number of student contacts
+* prefers desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: WhoDat is a free desktop application that helps NUS teaching assistants manage student contacts faster than a typical mouse driven app.
 
 
 ### User stories
