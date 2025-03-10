@@ -274,42 +274,73 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* is a teaching assistant from NUS Computing
+* has a need to manage a significant number of student contacts
+* prefers desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: WhoDat is a free desktop application that helps NUS teaching assistants manage student contacts faster than a typical mouse driven app.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                |
+|----------|------------|-----------------------------------------------------|------------------------------------------------|
+| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                    |
+| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts          |
+| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                   |
+| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app   |
+| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app |
+| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester  |
+| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes  |
+| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group  |
+| `* *`    | SoC TA     | filter my student contacts by consultation status   | quickly find students who need a consultation  |
+| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student    |
+| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts       |
+| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts       |
+| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters    |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `WhoDat` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case UC01: Add a new student contact**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add student contact
+2.  System adds the contact to the list
+3.  System shows that user has been added
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student already exists in the list.
+
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. The user's input has missing or invalid fields.
+
+    * 2b1. System shows an error message.
+
+      Use case ends.
+
+**Use case UC02: Delete a student contact**
+
+**MSS**
+
+1.  User requests to delete student contact
+2.  System deletes the contact from the list
+3.  System shows the contact has been deleted
 
     Use case ends.
 
@@ -319,26 +350,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 2b. The student does not exist in the list.
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 2.
+      Use case ends.
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1.  **Platform Independent**: Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2.  **Scalability**: Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3.  **Typing Efficiency**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  **Portability**: The application should not **require an installer** and should be downloaded as a single JAR file.
+5.  **Data storage**: Data should be stored in a **text file** rather than a Database Management System.
+6.  **Data reliability**: After reopening the application, the loaded data should be **identical** to the previously saved data.
+7.  **Stability**: The application should be able to **recover from errors gracefully** without crashing or losing data.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **CLI**: A Command Line Interface which allows users to interact with the system via text
+* **SoC TA**: A teaching assistant employed by the NUS School of Computing
+* **Student**: A student who is taught by the SoC TA
 
 --------------------------------------------------------------------------------------------------------------------
 
