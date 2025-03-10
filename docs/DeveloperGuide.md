@@ -288,36 +288,59 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a/an …​ | I want to …​                                       | So that I can…​                                |
-|----------|------------|----------------------------------------------------|------------------------------------------------|
-| `* * *`  | SoC TA     | add a student's contact                            | store their contact details                    |
-| `* * *`  | SoC TA     | delete a student's contact                         | remove outdated or incorrect contacts          |
-| `* * *`  | SoC TA     | list all student contacts                          | view all my current students                   |
-| `* * *`  | SoC TA     | save my student contacts locally                   | I will not lose my data when I close the app   |
-| `* * *`  | SoC TA     | load my student contact details from a save file   | I can access my saved data when I open the app |
-| `* * *`  | SoC TA     | clear my list of student contacts                  | I can create a new list for the next semester  |
-| `* *`    | SoC TA     | edit my students' contact details                  | update their information if there are changes  |
-| `* *`    | SoC TA     | filter my student contacts by tutorial group       | quickly find students from any tutorial group  |
-| `* *`    | SoC TA     | filter my student contacts by consultation status  | quickly find students who need a consultation  |
+| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                |
+|----------|------------|-----------------------------------------------------|------------------------------------------------|
+| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                    |
+| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts          |
+| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                   |
+| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app   |
+| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app |
+| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester  |
+| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes  |
+| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group  |
+| `* *`    | SoC TA     | filter my student contacts by consultation status   | quickly find students who need a consultation  |
 | `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student    |
-| `* *`    | SoC TA     | search for a student by name                       | quickly locate specific student contacts       |
-| `* *`    | SoC TA     | search for a student by NUS ID                     | quickly locate specific student contacts       |
-| `*`      | SoC TA     | archive old student contacts                       | contact ex-students from previous semesters    |
+| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts       |
+| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts       |
+| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters    |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `WhoDat` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case UC01: Add a new student contact**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add student contact
+2.  System adds the contact to the list
+3.  System shows that user has been added
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student already exists in the list.
+
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. The user's input has missing or invalid fields.
+
+    * 2b1. System shows an error message.
+
+      Use case ends.
+
+**Use case UC02: Delete a student contact**
+
+**MSS**
+
+1.  User requests to delete student contact
+2.  System deletes the contact from the list
+3.  System shows the contact has been deleted
 
     Use case ends.
 
@@ -327,11 +350,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 2b. The student does not exist in the list.
 
     * 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 2.
+      Use case ends.
 
 *{More to be added}*
 
