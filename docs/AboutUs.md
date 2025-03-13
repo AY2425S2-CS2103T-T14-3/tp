@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/tasmiah0508.png" width="200px">
 
-[[github](http://github.com/tasmiah0508)] 
+[[github](http://github.com/tasmiah0508)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
@@ -59,5 +59,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Developer
+* Role: Developer 
 * Responsibilities: UI
