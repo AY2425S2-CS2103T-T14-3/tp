@@ -41,6 +41,9 @@ public class Person {
     }
 
 
+    /**
+     * Every field must be present and not null.
+     */
     public Person(Name name, StudentID id, EmailID emailId, ClassID classId) {
         requireAllNonNull(name, id, emailId, classId);
         this.name = name;

@@ -125,6 +125,10 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses {@code String studentID} into a {@code StudentID}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
     public static StudentID parseStudentID(String studentID) {
         // todo: implement error catching
         requireNonNull(studentID);
@@ -132,6 +136,10 @@ public class ParserUtil {
         return new StudentID(trimmedStudentID);
     }
 
+    /**
+     * Parses {@code String emailID} into a {@code EmailID}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
     public static EmailID parseEmailID(String emailID) {
         // todo: implement error catching
         requireNonNull(emailID);
@@ -139,6 +147,10 @@ public class ParserUtil {
         return new EmailID(trimmedEmailID);
     }
 
+    /**
+     * Parses {@code String classID} into a {@code ClassID}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
     public static ClassID parseClassID(String classID) {
         // todo: implement error catching
         requireNonNull(classID);

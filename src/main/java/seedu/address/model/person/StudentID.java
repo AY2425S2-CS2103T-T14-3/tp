@@ -8,8 +8,13 @@ import static java.util.Objects.requireNonNull;
  */
 public class StudentID {
 
-    String id;
+    private String id;
 
+    /**
+     * Constructs a {@code StudentID}.
+     *
+     * @param id A valid student ID.
+     */
     public StudentID(String id) {
         requireNonNull(id);
         this.id = id;

@@ -7,8 +7,13 @@ import static java.util.Objects.requireNonNull;
  * E.g. 'E1234567' is a possible email id.
  */
 public class EmailID {
-    String emailID;
+    private String emailID;
 
+    /**
+     * Constructs an {@code EmailID}.
+     *
+     * @param emailID A valid email id string.
+     */
     public EmailID(String emailID) {
         requireNonNull(emailID);
         this.emailID = emailID;
