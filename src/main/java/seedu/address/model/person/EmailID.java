@@ -18,4 +18,5 @@ public class EmailID {
     public String toString() {
         return emailID;
     }
+
 }
