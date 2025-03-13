@@ -17,13 +17,16 @@ import seedu.address.model.tag.Tag;
 public class Person {
 
     // Identity fields
-    private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private Name name;
+    private StudentID id = new StudentID("0");
+    private EmailID emailId = new EmailID("0");
+    private ClassID classId = new ClassID("0");
+    private Set<Tag> tags = new HashSet<>();
+    private Phone phone = new Phone("000");
+    private Email email = new Email("hello@edu.com.sg");
 
     // Data fields
-    private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
+    private Address address = new Address("0000");
 
     /**
      * Every field must be present and not null.
@@ -37,8 +40,29 @@ public class Person {
         this.tags.addAll(tags);
     }
 
+
+    public Person(Name name, StudentID id, EmailID emailId, ClassID classId) {
+        requireAllNonNull(name, id, emailId, classId);
+        this.name = name;
+        this.id = id;
+        this.emailId = emailId;
+        this.classId = classId;
+    }
+
     public Name getName() {
         return name;
+    }
+
+    public StudentID getId() {
+        return id;
+    }
+
+    public EmailID getEmailId() {
+        return emailId;
+    }
+
+    public ClassID getClassId() {
+        return classId;
     }
 
     public Phone getPhone() {
@@ -53,10 +77,6 @@ public class Person {
         return address;
     }
 
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
     }
@@ -90,27 +110,22 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-        return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags);
+        return name.equals(otherPerson.name);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, id, emailId, classId);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
-                .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
+                .add("id", id)
+                .add("emailId", emailId)
+                .add("classId", classId)
                 .toString();
     }
 

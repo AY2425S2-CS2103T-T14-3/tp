@@ -10,9 +10,12 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.ClassID;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.EmailID;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.StudentID;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -121,4 +124,26 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    public static StudentID parseStudentID(String studentID) {
+        // todo: implement error catching
+        requireNonNull(studentID);
+        String trimmedStudentID = studentID.trim();
+        return new StudentID(trimmedStudentID);
+    }
+
+    public static EmailID parseEmailID(String emailID) {
+        // todo: implement error catching
+        requireNonNull(emailID);
+        String trimmedEmailID = emailID.trim();
+        return new EmailID(trimmedEmailID);
+    }
+
+    public static ClassID parseClassID(String classID) {
+        // todo: implement error catching
+        requireNonNull(classID);
+        String trimmedClassID = classID.trim(); // removes excess spacing
+        return new ClassID(trimmedClassID);
+    }
+
 }
