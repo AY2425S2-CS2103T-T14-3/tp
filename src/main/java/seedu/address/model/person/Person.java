@@ -19,7 +19,7 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final StudentId studentId;
     private final Email email;
     private final ID id;
 
@@ -30,10 +30,10 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, ID id, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, StudentId studentId, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, studentId, email, address, tags);
         this.name = name;
-        this.phone = phone;
+        this.studentId = studentId;
         this.email = email;
         this.id = id;
         this.address = address;
@@ -44,8 +44,8 @@ public class Person {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public StudentId getPhone() {
+        return studentId;
     }
 
     public Email getEmail() {
@@ -98,7 +98,7 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
+                && studentId.equals(otherPerson.studentId)
                 && email.equals(otherPerson.email)
                 && id.equals(otherPerson.id)
                 && address.equals(otherPerson.address)
@@ -108,14 +108,15 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, id, address, tags);
+        return Objects.hash(name, studentId, email, address, tags);
+
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
+                .add("studentId", studentId)
                 .add("email", email)
                 .add("id", id)
                 .add("address", address)
