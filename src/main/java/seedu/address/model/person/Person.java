@@ -20,7 +20,7 @@ public class Person {
     // Identity fields
     private final Name name;
     private final StudentId studentId;
-    private final Email email;
+    private final EmailId emailId;
     private final ID id;
 
     // Data fields
@@ -30,11 +30,11 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, StudentId studentId, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, studentId, email, address, tags);
+    public Person(Name name, StudentId studentId, EmailId emailId, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, studentId, emailId, address, tags);
         this.name = name;
         this.studentId = studentId;
-        this.email = email;
+        this.emailId = emailId;
         this.address = address;
         this.tags.addAll(tags);
         this.id = null; // this is a placeholder value until we decide what to do with ID/StudentID
@@ -48,8 +48,8 @@ public class Person {
         return studentId;
     }
 
-    public Email getEmail() {
-        return email;
+    public EmailId getEmailId() {
+        return emailId;
     }
 
     public ID getId() {
@@ -99,7 +99,7 @@ public class Person {
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
                 && studentId.equals(otherPerson.studentId)
-                && email.equals(otherPerson.email)
+                && emailId.equals(otherPerson.emailId)
                 && id.equals(otherPerson.id)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags);
@@ -108,7 +108,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, studentId, email, address, tags);
+        return Objects.hash(name, studentId, emailId, address, tags);
 
     }
 
@@ -117,7 +117,7 @@ public class Person {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("studentId", studentId)
-                .add("email", email)
+                .add("email", emailId)
                 .add("id", id)
                 .add("address", address)
                 .add("tags", tags)

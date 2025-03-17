@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.ID;
+import seedu.address.model.person.EmailId;
+//import seedu.address.model.person.ID;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.StudentId;
@@ -27,8 +27,8 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String phone;
-    private final String email;
-    private final String id;
+    private final String emailId;
+    // private final String id; Commenting this field out until we figure out which student id class to use
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -37,12 +37,13 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("id") String id, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("emailId") String emailId, /*@JsonProperty("id") String id,*/
+                             @JsonProperty("address") String address,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
-        this.email = email;
-        this.id = id;
+        this.emailId = emailId;
+        // this.id = id;
         this.address = address;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -55,8 +56,8 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
-        id = source.getId().id;
+        emailId = source.getEmailId().value;
+        // id = source.getId().id;
         address = source.getAddress().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -91,21 +92,21 @@ class JsonAdaptedPerson {
         }
         final StudentId modelStudentId = new StudentId(phone);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (emailId == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, EmailId.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!EmailId.isValidEmailId(emailId)) {
+            throw new IllegalValueException(EmailId.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final EmailId modelEmail = new EmailId(emailId);
 
-        if (id == null) {
+        /*if (id == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ID.class.getSimpleName()));
         }
         if (!ID.isValidId(id)) {
             throw new IllegalValueException(ID.MESSAGE_CONSTRAINTS);
         }
-        final ID modelId = new ID(id);
+        final ID modelId = new ID(id);*/
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));

@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class ID {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "ID should be in the format of AxxxxxxxX, where x is a number and X is a capital letter, and it should not be blank";
+            "ID should be in the format of AxxxxxxxX, where x is a number and X is a capital letter,"
+                    + "and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -18,7 +19,6 @@ public class ID {
      */
 
     public static final String VALIDATION_REGEX = "A\\d{7}[A-Z]";
-
 
     public final String id;
 
