@@ -35,9 +35,9 @@ public class Person {
         this.name = name;
         this.studentId = studentId;
         this.email = email;
-        this.id = id;
         this.address = address;
         this.tags.addAll(tags);
+        this.id = null; // this is a placeholder value until we decide what to do with ID/StudentID
     }
 
     public Name getName() {
