@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
@@ -21,7 +20,6 @@ public class Person {
     private final Name name;
     private final StudentId studentId;
     private final Email email;
-    private final ID id;
 
     // Data fields
     private final Address address;
@@ -35,7 +33,6 @@ public class Person {
         this.name = name;
         this.studentId = studentId;
         this.email = email;
-        this.id = id;
         this.address = address;
         this.tags.addAll(tags);
     }
@@ -50,10 +47,6 @@ public class Person {
 
     public Email getEmail() {
         return email;
-    }
-
-    public ID getId() {
-        return id;
     }
 
     public Address getAddress() {
@@ -100,7 +93,6 @@ public class Person {
         return name.equals(otherPerson.name)
                 && studentId.equals(otherPerson.studentId)
                 && email.equals(otherPerson.email)
-                && id.equals(otherPerson.id)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags);
     }
@@ -109,7 +101,6 @@ public class Person {
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(name, studentId, email, address, tags);
-
     }
 
     @Override
@@ -118,7 +109,6 @@ public class Person {
                 .add("name", name)
                 .add("studentId", studentId)
                 .add("email", email)
-                .add("id", id)
                 .add("address", address)
                 .add("tags", tags)
                 .toString();
