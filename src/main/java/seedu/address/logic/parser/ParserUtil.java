@@ -95,6 +95,23 @@ public class ParserUtil {
         return new EmailId(trimmedEmail);
     }
 
+
+    /**
+     * Parses a {@code String id} into an {@code ID}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code ID} is invalid.
+     */
+    public static ID parseId(String id) throws ParseException {
+        requireNonNull(id);
+        String trimmedId = id.trim();
+        if (!ID.isValidId(trimmedId)) {
+            throw new ParseException(ID.MESSAGE_CONSTRAINTS);
+        }
+        return new ID(trimmedId);
+    }
+
+
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
