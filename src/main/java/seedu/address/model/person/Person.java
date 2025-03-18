@@ -19,21 +19,21 @@ public class Person {
     // Identity fields
     private final Name name;
     private final StudentId studentId;
-    private final Email email;
+    private final EmailId emailId;
 
     // Data fields
-    private final Address address;
+    private final ClassId classId;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, StudentId studentId, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, studentId, email, address, tags);
+    public Person(Name name, StudentId studentId, EmailId emailId, ClassId classId, Set<Tag> tags) {
+        requireAllNonNull(name, studentId, emailId, classId, tags);
         this.name = name;
         this.studentId = studentId;
-        this.email = email;
-        this.address = address;
+        this.emailId = emailId;
+        this.classId = classId;
         this.tags.addAll(tags);
     }
 
@@ -45,12 +45,12 @@ public class Person {
         return studentId;
     }
 
-    public Email getEmail() {
-        return email;
+    public EmailId getEmail() {
+        return emailId;
     }
 
-    public Address getAddress() {
-        return address;
+    public ClassId getAddress() {
+        return classId;
     }
 
     /**
@@ -92,15 +92,15 @@ public class Person {
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
                 && studentId.equals(otherPerson.studentId)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && emailId.equals(otherPerson.emailId)
+                && classId.equals(otherPerson.classId)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, studentId, email, address, tags);
+        return Objects.hash(name, studentId, emailId, classId, tags);
     }
 
     @Override
@@ -108,8 +108,8 @@ public class Person {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("studentId", studentId)
-                .add("email", email)
-                .add("address", address)
+                .add("email", emailId)
+                .add("address", classId)
                 .add("tags", tags)
                 .toString();
     }
