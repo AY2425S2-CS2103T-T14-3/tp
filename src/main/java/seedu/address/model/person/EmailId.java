@@ -4,10 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's email in the address book.
+ * Represents a student's email id in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
-public class Email {
+public class EmailId {
 
     private static final String SPECIAL_CHARACTERS = "+_.-";
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
@@ -34,14 +34,14 @@ public class Email {
     public final String value;
 
     /**
-     * Constructs an {@code Email}.
+     * Constructs an {@code EmailId}.
      *
-     * @param email A valid email address.
+     * @param emailId A valid email id.
      */
-    public Email(String email) {
-        requireNonNull(email);
-        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
-        value = email;
+    public EmailId(String emailId) {
+        requireNonNull(emailId);
+        checkArgument(isValidEmail(emailId), MESSAGE_CONSTRAINTS);
+        value = emailId;
     }
 
     /**
@@ -63,12 +63,12 @@ public class Email {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Email)) {
+        if (!(other instanceof EmailId)) {
             return false;
         }
 
-        Email otherEmail = (Email) other;
-        return value.equals(otherEmail.value);
+        EmailId otherEmailId = (EmailId) other;
+        return value.equals(otherEmailId.value);
     }
 
     @Override

@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
+import seedu.address.model.person.ClassId;
+import seedu.address.model.person.EmailId;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.StudentId;
@@ -88,23 +88,23 @@ class JsonAdaptedPerson {
         final StudentId modelStudentId = new StudentId(phone);
 
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, EmailId.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!EmailId.isValidEmail(email)) {
+            throw new IllegalValueException(EmailId.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final EmailId modelEmailId = new EmailId(email);
 
         if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ClassId.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!ClassId.isValidAddress(address)) {
+            throw new IllegalValueException(ClassId.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final ClassId modelClassId = new ClassId(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelStudentId, modelEmail, modelAddress, modelTags);
+        return new Person(modelName, modelStudentId, modelEmailId, modelClassId, modelTags);
     }
 
 }
