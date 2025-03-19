@@ -41,7 +41,7 @@ public class Person {
         return name;
     }
 
-    public StudentId getPhone() {
+    public StudentId getStudentId() {
         return studentId;
     }
 

@@ -38,7 +38,7 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
                 .append("; StudentId: ")
-                .append(person.getPhone())
+                .append(person.getStudentId())
                 .append("; Email: ")
                 .append(person.getEmail())
                 .append("; Address: ")

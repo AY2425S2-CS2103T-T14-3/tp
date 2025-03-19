@@ -17,7 +17,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PHONE = "85355255";
+    public static final String DEFAULT_STUDENT_ID = "A2222222K";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
@@ -32,7 +32,7 @@ public class PersonBuilder {
      */
     public PersonBuilder() {
         name = new Name(DEFAULT_NAME);
-        studentId = new StudentId(DEFAULT_PHONE);
+        studentId = new StudentId(DEFAULT_STUDENT_ID);
         emailId = new EmailId(DEFAULT_EMAIL);
         classId = new ClassId(DEFAULT_ADDRESS);
         tags = new HashSet<>();
@@ -43,7 +43,7 @@ public class PersonBuilder {
      */
     public PersonBuilder(Person personToCopy) {
         name = personToCopy.getName();
-        studentId = personToCopy.getPhone();
+        studentId = personToCopy.getStudentId();
         emailId = personToCopy.getEmail();
         classId = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
@@ -76,8 +76,8 @@ public class PersonBuilder {
     /**
      * Sets the {@code StudentId} of the {@code Person} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
-        this.studentId = new StudentId(phone);
+    public PersonBuilder withStudentId(String studentId) {
+        this.studentId = new StudentId(studentId);
         return this;
     }
 
