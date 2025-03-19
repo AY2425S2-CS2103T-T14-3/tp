@@ -10,13 +10,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Names should only contain English alphabets and spaces, and it should not be blank";
 
     /*
      * Check that the name should only contain English alphabets
      * No number or special character is allowed
      */
-    public static final String VALIDATION_REGEX = "^[a-zA-Z]+$";
+    public static final String VALIDATION_REGEX = "^(?=.*[a-zA-Z])[a-zA-Z ]+$";
 
     public final String fullName;
 
@@ -38,14 +38,24 @@ public class Name {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Change a string to title case
+     */
     public static String toTitleCase(String name) {
-        String[] words = name.split("\\s+");
-        StringBuilder sb = new StringBuilder();
-        for (String word : words) {
-            sb.append(word.substring(0, 1).toUpperCase());
-            sb.append(word.substring(1).toLowerCase());
+        if (name == null || name.trim().isEmpty()) {
+            return "";
         }
-        return sb.toString();
+
+        String[] words = name.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+
+        for (String word : words) {
+            sb.append(Character.toUpperCase(word.charAt(0)))
+                    .append(word.substring(1).toLowerCase())
+                    .append(" ");
+        }
+
+        return sb.toString().trim();
     }
 
     @Override
