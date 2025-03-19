@@ -4,10 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's address in the address book.
+ * Represents a student's class id in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
  */
-public class Address {
+public class ClassId {
 
     public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
 
@@ -20,14 +20,14 @@ public class Address {
     public final String value;
 
     /**
-     * Constructs an {@code Address}.
+     * Constructs a {@code ClassId}.
      *
-     * @param address A valid address.
+     * @param classId A valid class id.
      */
-    public Address(String address) {
-        requireNonNull(address);
-        checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
-        value = address;
+    public ClassId(String classId) {
+        requireNonNull(classId);
+        checkArgument(isValidAddress(classId), MESSAGE_CONSTRAINTS);
+        value = classId;
     }
 
     /**
@@ -49,12 +49,12 @@ public class Address {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Address)) {
+        if (!(other instanceof ClassId)) {
             return false;
         }
 
-        Address otherAddress = (Address) other;
-        return value.equals(otherAddress.value);
+        ClassId otherClassId = (ClassId) other;
+        return value.equals(otherClassId.value);
     }
 
     @Override
