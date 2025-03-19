@@ -9,8 +9,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class StudentId {
 
-    // todo: deal with test cases
-
     public static final String MESSAGE_CONSTRAINTS =
             "StudentId should follow the format: AxxxxxxxX, where x is a number and X is a capital letter.";
     public static final String VALIDATION_REGEX = "A\\d{7}[A-Z]";
