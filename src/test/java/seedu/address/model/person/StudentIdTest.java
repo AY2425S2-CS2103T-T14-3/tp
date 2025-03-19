@@ -21,29 +21,33 @@ public class StudentIdTest {
 
     @Test
     public void isValidStudentId() {
-        // null phone number
+        // null student id
         assertThrows(NullPointerException.class, () -> StudentId.isValidStudentId(null));
 
-        // invalid phone numbers
-        assertFalse(StudentId.isValidStudentId("")); // empty string
-        assertFalse(StudentId.isValidStudentId(" ")); // spaces only
-        assertFalse(StudentId.isValidStudentId("91")); // less than 3 numbers
-        assertFalse(StudentId.isValidStudentId("phone")); // non-numeric
-        assertFalse(StudentId.isValidStudentId("9011p041")); // alphabets within digits
-        assertFalse(StudentId.isValidStudentId("9312 1534")); // spaces within digits
+        // invalid student id
+        assertFalse(StudentId.isValidStudentId(""));
+        assertFalse(StudentId.isValidStudentId(" "));
+        assertFalse(StudentId.isValidStudentId("12345678"));
+        assertFalse(StudentId.isValidStudentId("+12345678H"));
+        assertFalse(StudentId.isValidStudentId("A12345678H")); // excess numbers
+        assertFalse(StudentId.isValidStudentId("phone123s"));
+        assertFalse(StudentId.isValidStudentId("a1234567B")); // starts with small letter a
+        assertFalse(StudentId.isValidStudentId("A1234567b")); // ends with small letter
+        assertFalse(StudentId.isValidStudentId("a1234567b")); // starts and ends with small letter
+        assertFalse(StudentId.isValidStudentId("b1234567b")); // starts with wrong letter
+        assertFalse(StudentId.isValidStudentId("A123 456H")); // spaces within digits
 
-        // valid phone numbers
-        assertTrue(StudentId.isValidStudentId("911")); // exactly 3 numbers
-        assertTrue(StudentId.isValidStudentId("93121534"));
-        assertTrue(StudentId.isValidStudentId("124293842033123")); // long phone numbers
+        // valid student id
+        assertTrue(StudentId.isValidStudentId("A1234567B"));
+        assertTrue(StudentId.isValidStudentId("A7654321F"));
     }
 
     @Test
     public void equals() {
-        StudentId studentId = new StudentId("999");
+        StudentId studentId = new StudentId("A1234567B");
 
         // same values -> returns true
-        assertTrue(studentId.equals(new StudentId("999")));
+        assertTrue(studentId.equals(new StudentId("A1234567B")));
 
         // same object -> returns true
         assertTrue(studentId.equals(studentId));
@@ -55,6 +59,6 @@ public class StudentIdTest {
         assertFalse(studentId.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(studentId.equals(new StudentId("995")));
+        assertFalse(studentId.equals(new StudentId("A1234567C")));
     }
 }
