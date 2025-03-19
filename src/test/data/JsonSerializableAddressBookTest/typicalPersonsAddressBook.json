@@ -3,43 +3,43 @@
   "persons" : [ {
     "name" : "Alice Pauline",
     "studentId": "A1234567H",
-    "email" : "alice@example.com",
+    "emailId" : "E0123456",
     "address" : "123, Jurong West Ave 6, #08-111",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "studentId": "A1234567G",
-    "email" : "johnd@example.com",
+    "emailId" : "E1234567",
     "address" : "311, Clementi Ave 2, #02-25",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "studentId": "A1234567F",
-    "email" : "heinz@example.com",
+    "emailId" : "E2234567",
     "address" : "wall street",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "studentId": "A1234567D",
-    "email" : "cornelia@example.com",
+    "emailId" : "E3456789",
     "address" : "10th street",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "studentId": "A1234567V",
-    "email" : "werner@example.com",
+    "emailId" : "E1111111",
     "address" : "michegan ave",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "studentId": "A1234567R",
-    "email" : "lydia@example.com",
+    "emailId" : "E9248571",
     "address" : "little tokyo",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "studentId": "A1234567S",
-    "email" : "anna@example.com",
+    "emailId" : "E2845729",
     "address" : "4th street",
     "tags" : [ ]
   } ]

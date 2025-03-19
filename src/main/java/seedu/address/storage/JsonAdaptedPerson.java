@@ -26,7 +26,7 @@ class JsonAdaptedPerson {
 
     private final String name;
     private final String studentId;
-    private final String email;
+    private final String emailId;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -35,11 +35,11 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("studentId") String studentId,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("email") String emailId, @JsonProperty("address") String address,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.studentId = studentId;
-        this.email = email;
+        this.emailId = emailId;
         this.address = address;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -52,7 +52,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(Person source) {
         name = source.getName().fullName;
         studentId = source.getStudentId().value;
-        email = source.getEmail().value;
+        emailId = source.getEmail().value;
         address = source.getAddress().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -87,13 +87,13 @@ class JsonAdaptedPerson {
         }
         final StudentId modelStudentId = new StudentId(studentId);
 
-        if (email == null) {
+        if (emailId == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, EmailId.class.getSimpleName()));
         }
-        if (!EmailId.isValidEmail(email)) {
+        if (!EmailId.isValidEmailId(emailId)) {
             throw new IllegalValueException(EmailId.MESSAGE_CONSTRAINTS);
         }
-        final EmailId modelEmailId = new EmailId(email);
+        final EmailId modelEmailId = new EmailId(emailId);
 
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ClassId.class.getSimpleName()));

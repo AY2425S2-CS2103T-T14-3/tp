@@ -2,8 +2,8 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ID_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_AMY;
@@ -24,35 +24,36 @@ import seedu.address.model.person.Person;
 public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
-            .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
+            .withAddress("123, Jurong West Ave 6, #08-111").withEmailId("E0123456")
             .withStudentId("A1234567H")
             .withTags("friends").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
-            .withEmail("johnd@example.com").withStudentId("A1234567G")
+            .withEmailId("E1234567").withStudentId("A1234567G")
             .withTags("owesMoney", "friends").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withStudentId("A1234567F")
-            .withEmail("heinz@example.com").withAddress("wall street").build();
+            .withEmailId("E2234567").withAddress("wall street").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withStudentId("A1234567D")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends").build();
+            .withEmailId("E3456789").withAddress("10th street").withTags("friends").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withStudentId("A1234567V")
-            .withEmail("werner@example.com").withAddress("michegan ave").build();
+            .withEmailId("E1111111").withAddress("michegan ave").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withStudentId("A1234567R")
-            .withEmail("lydia@example.com").withAddress("little tokyo").build();
+            .withEmailId("E9248571").withAddress("little tokyo").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withStudentId("A1234567S")
-            .withEmail("anna@example.com").withAddress("4th street").build();
+            .withEmailId("E2845729").withAddress("4th street").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withStudentId("A4444444G")
-            .withEmail("stefan@example.com").withAddress("little india").build();
+            .withEmailId("E5938475").withAddress("little india").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withStudentId("A7777777F")
-            .withEmail("hans@example.com").withAddress("chicago ave").build();
+            .withEmailId("E1230495").withAddress("chicago ave").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withStudentId(VALID_STUDENT_ID_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmailId(VALID_EMAIL_ID_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withStudentId(VALID_STUDENT_ID_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withEmailId(VALID_EMAIL_ID_BOB).withAddress(VALID_ADDRESS_BOB)
+            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
