@@ -7,23 +7,24 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
+You can reach us at the emailId `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Lin Xinyi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xinnnyeee.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[github](https://github.com/xinnnyeee)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Project Member
+* Responsibility: Deliverables and Deadlines
 
 ### Jane Doe
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/simenggg.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
@@ -31,28 +32,29 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Tasmia Haque
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tasmiah0508.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/tasmiah0508)] 
+[[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Joshua Lai
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/laishuya.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/laishuya)]
+[[portfolio](https://www.linkedin.com/in/joshua-lai-401b65278)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Documentation
+* Responsibilities: Quality of project documents
 
 ### James Doe
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/haitao2003.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
