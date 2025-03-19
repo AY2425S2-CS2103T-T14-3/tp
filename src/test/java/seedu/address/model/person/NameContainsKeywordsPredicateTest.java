@@ -71,7 +71,7 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match studentId, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("A1111111H", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withStudentId("A1111111H")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withEmailId("E1104598").withAddress("Main Street").build()));
     }
 
     @Test
