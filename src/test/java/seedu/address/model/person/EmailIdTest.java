@@ -22,56 +22,42 @@ public class EmailIdTest {
     @Test
     public void isValidEmail() {
         // null email
-        assertThrows(NullPointerException.class, () -> EmailId.isValidEmail(null));
+        assertThrows(NullPointerException.class, () -> EmailId.isValidEmailId(null));
 
         // blank email
-        assertFalse(EmailId.isValidEmail("")); // empty string
-        assertFalse(EmailId.isValidEmail(" ")); // spaces only
+        assertFalse(EmailId.isValidEmailId("")); // empty string
+        assertFalse(EmailId.isValidEmailId(" ")); // spaces only
 
         // missing parts
-        assertFalse(EmailId.isValidEmail("@example.com")); // missing local part
-        assertFalse(EmailId.isValidEmail("peterjackexample.com")); // missing '@' symbol
-        assertFalse(EmailId.isValidEmail("peterjack@")); // missing domain name
+        assertFalse(EmailId.isValidEmailId("E")); // missing digits
+        assertFalse(EmailId.isValidEmailId("1234567")); // missing 'E' symbol
+        assertFalse(EmailId.isValidEmailId("E123")); // incorrect number of digits
 
         // invalid parts
-        assertFalse(EmailId.isValidEmail("peterjack@-")); // invalid domain name
-        assertFalse(EmailId.isValidEmail("peterjack@exam_ple.com")); // underscore in domain name
-        assertFalse(EmailId.isValidEmail("peter jack@example.com")); // spaces in local part
-        assertFalse(EmailId.isValidEmail("peterjack@exam ple.com")); // spaces in domain name
-        assertFalse(EmailId.isValidEmail(" peterjack@example.com")); // leading space
-        assertFalse(EmailId.isValidEmail("peterjack@example.com ")); // trailing space
-        assertFalse(EmailId.isValidEmail("peterjack@@example.com")); // double '@' symbol
-        assertFalse(EmailId.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
-        assertFalse(EmailId.isValidEmail("-peterjack@example.com")); // local part starts with a hyphen
-        assertFalse(EmailId.isValidEmail("peterjack-@example.com")); // local part ends with a hyphen
-        assertFalse(EmailId.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods
-        assertFalse(EmailId.isValidEmail("peterjack@example@com")); // '@' symbol in domain name
-        assertFalse(EmailId.isValidEmail("peterjack@.example.com")); // domain name starts with a period
-        assertFalse(EmailId.isValidEmail("peterjack@example.com.")); // domain name ends with a period
-        assertFalse(EmailId.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
-        assertFalse(EmailId.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
-        assertFalse(EmailId.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
+        assertFalse(EmailId.isValidEmailId("E@234567")); // invalid character '@'
+        assertFalse(EmailId.isValidEmailId("E1_34567")); // invalid character '_'
+        assertFalse(EmailId.isValidEmailId("E123.567")); // invalid character '.'
+        assertFalse(EmailId.isValidEmailId("E12345-7")); // invalid character "-"
+        assertFalse(EmailId.isValidEmailId(" E1234567")); // leading space
+        assertFalse(EmailId.isValidEmailId("E1234567 ")); // trailing space
+        assertFalse(EmailId.isValidEmailId("1E234567")); // E is not the first character
+        assertFalse(EmailId.isValidEmailId("E1234567@example.com")); // an actual email
 
-        // valid email
-        assertTrue(EmailId.isValidEmail("PeterJack_1190@example.com")); // underscore in local part
-        assertTrue(EmailId.isValidEmail("PeterJack.1190@example.com")); // period in local part
-        assertTrue(EmailId.isValidEmail("PeterJack+1190@example.com")); // '+' symbol in local part
-        assertTrue(EmailId.isValidEmail("PeterJack-1190@example.com")); // hyphen in local part
-        assertTrue(EmailId.isValidEmail("a@bc")); // minimal
-        assertTrue(EmailId.isValidEmail("test@localhost")); // alphabets only
-        assertTrue(EmailId.isValidEmail("123@145")); // numeric local part and domain name
-        assertTrue(EmailId.isValidEmail("a1+be.d@example1.com")); // mixture of alphanumeric and special characters
-        assertTrue(EmailId.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
-        assertTrue(EmailId.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
-        assertTrue(EmailId.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
+        // valid email id
+        assertTrue(EmailId.isValidEmailId("E1234567")); // E plus 7 digits
+        assertTrue(EmailId.isValidEmailId("E2234567")); // E plus 7 digits
+        assertTrue(EmailId.isValidEmailId("E0000000")); // E plus 7 digits
+        assertTrue(EmailId.isValidEmailId("E1122475")); // E plus 7 digits
+        assertTrue(EmailId.isValidEmailId("E5555555")); // E plus 7 digits
+        assertTrue(EmailId.isValidEmailId("E9876543")); // E plus 7 digits
     }
 
     @Test
     public void equals() {
-        EmailId emailId = new EmailId("valid@email");
+        EmailId emailId = new EmailId("E1234567");
 
         // same values -> returns true
-        assertTrue(emailId.equals(new EmailId("valid@email")));
+        assertTrue(emailId.equals(new EmailId("E1234567")));
 
         // same object -> returns true
         assertTrue(emailId.equals(emailId));
@@ -83,6 +69,6 @@ public class EmailIdTest {
         assertFalse(emailId.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(emailId.equals(new EmailId("other.valid@email")));
+        assertFalse(emailId.equals(new EmailId("E1234569")));
     }
 }

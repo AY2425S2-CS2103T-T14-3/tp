@@ -2,13 +2,13 @@
   "persons": [ {
     "name": "Alice Pauline",
     "studentId": "A1234567G",
-    "email": "alice@example.com",
+    "emailId": "E0123456",
     "address": "123, Jurong West Ave 6, #08-111",
     "tags": [ "friends" ]
   }, {
     "name": "Alice Pauline",
     "studentId": "A1234567G",
-    "email": "pauline@example.com",
+    "emailId": "E0123456",
     "address": "4th street"
   } ]
 }
