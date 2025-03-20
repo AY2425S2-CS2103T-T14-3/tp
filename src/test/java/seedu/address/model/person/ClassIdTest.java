@@ -22,16 +22,16 @@ public class ClassIdTest {
     @Test
     public void isValidAddress() {
         // null address
-        assertThrows(NullPointerException.class, () -> ClassId.isValidAddress(null));
+        assertThrows(NullPointerException.class, () -> ClassId.isValidClassId(null));
 
         // invalid addresses
-        assertFalse(ClassId.isValidAddress("")); // empty string
-        assertFalse(ClassId.isValidAddress(" ")); // spaces only
+        assertFalse(ClassId.isValidClassId("")); // empty string
+        assertFalse(ClassId.isValidClassId(" ")); // spaces only
 
         // valid addresses
-        assertTrue(ClassId.isValidAddress("Blk 456, Den Road, #01-355"));
-        assertTrue(ClassId.isValidAddress("-")); // one character
-        assertTrue(ClassId.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        assertTrue(ClassId.isValidClassId("Blk 456, Den Road, #01-355"));
+        assertTrue(ClassId.isValidClassId("-")); // one character
+        assertTrue(ClassId.isValidClassId("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
     }
 
     @Test

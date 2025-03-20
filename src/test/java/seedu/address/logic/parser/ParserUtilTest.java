@@ -29,7 +29,7 @@ public class ParserUtilTest {
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_STUDENT_ID = "A1234567B";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_CLASSID = "123 Main Street #0505";
     private static final String VALID_EMAIL_ID = "E1123857";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
@@ -104,25 +104,25 @@ public class ParserUtilTest {
 
     @Test
     public void parseAddress_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseClassId((String) null));
     }
 
     @Test
     public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
+        assertThrows(ParseException.class, () -> ParserUtil.parseClassId(INVALID_ADDRESS));
     }
 
     @Test
     public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        ClassId expectedClassId = new ClassId(VALID_ADDRESS);
-        assertEquals(expectedClassId, ParserUtil.parseAddress(VALID_ADDRESS));
+        ClassId expectedClassId = new ClassId(VALID_CLASSID);
+        assertEquals(expectedClassId, ParserUtil.parseClassId(VALID_CLASSID));
     }
 
     @Test
     public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        ClassId expectedClassId = new ClassId(VALID_ADDRESS);
-        assertEquals(expectedClassId, ParserUtil.parseAddress(addressWithWhitespace));
+        String addressWithWhitespace = WHITESPACE + VALID_CLASSID + WHITESPACE;
+        ClassId expectedClassId = new ClassId(VALID_CLASSID);
+        assertEquals(expectedClassId, ParserUtil.parseClassId(addressWithWhitespace));
     }
 
     @Test
