@@ -66,18 +66,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String classId} into a {@code ClassId}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code classId} is invalid.
      */
-    public static ClassId parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!ClassId.isValidAddress(trimmedAddress)) {
+    public static ClassId parseClassId(String classId) throws ParseException {
+        requireNonNull(classId);
+        String trimmedClassId = classId.trim();
+        if (!ClassId.isValidClassId(trimmedClassId)) {
             throw new ParseException(ClassId.MESSAGE_CONSTRAINTS);
         }
-        return new ClassId(trimmedAddress);
+        return new ClassId(trimmedClassId);
     }
 
     /**

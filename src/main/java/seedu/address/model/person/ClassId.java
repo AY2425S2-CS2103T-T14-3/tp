@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a student's class id in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidClassId(String)}
  */
 public class ClassId {
 
@@ -26,14 +26,14 @@ public class ClassId {
      */
     public ClassId(String classId) {
         requireNonNull(classId);
-        checkArgument(isValidAddress(classId), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidClassId(classId), MESSAGE_CONSTRAINTS);
         value = classId;
     }
 
     /**
      * Returns true if a given string is a valid email.
      */
-    public static boolean isValidAddress(String test) {
+    public static boolean isValidClassId(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
