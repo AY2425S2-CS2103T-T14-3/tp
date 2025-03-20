@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -20,8 +19,8 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the student id used in the displayed person list.\n"
-            + "Parameters: Student id (must be in the format AxxxxxxxX, where x is an integer from 0 to 9 and X is a capital letter\n"
+            + ": Deletes the person identified by the student id.\n"
+            + "Parameters: Student id (must be in the format AxxxxxxxX\n"
             + "Example: " + COMMAND_WORD + "A1234567J";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
