@@ -35,6 +35,8 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+
+
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
@@ -93,6 +95,21 @@ public class ParserUtil {
             throw new ParseException(EmailId.MESSAGE_CONSTRAINTS);
         }
         return new EmailId(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String studentIdString} into an {@code StudentId}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code studentIdString} is invalid.
+     */
+    public static StudentId parseStudentId(String studentIdString) throws ParseException {
+        requireNonNull(studentIdString);
+        String trimmedStudentId = studentIdString.trim();
+        if (!StudentId.isValidStudentId(trimmedStudentId)) {
+            throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
+        }
+        return new StudentId(trimmedStudentId);
     }
 
     /**
