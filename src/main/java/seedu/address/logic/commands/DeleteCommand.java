@@ -38,7 +38,7 @@ public class DeleteCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         Person personToDelete = lastShownList.stream()
-                .filter(person -> person.getStudentId() == targetId)
+                .filter(person -> person.getStudentId().equals(targetId))
                 .findFirst()
                 .orElse(null);
 
