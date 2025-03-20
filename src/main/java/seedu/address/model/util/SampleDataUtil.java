@@ -19,24 +19,24 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
-            new Person(new Name("Alex Yeoh"), new StudentId("87438807"), new EmailId("alexyeoh@example.com"),
-                new ClassId("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Person(new Name("Bernice Yu"), new StudentId("99272758"), new EmailId("berniceyu@example.com"),
-                new ClassId("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Person(new Name("Charlotte Oliveiro"), new StudentId("93210283"), new EmailId("charlotte@example.com"),
-                new ClassId("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Person(new Name("David Li"), new StudentId("91031282"), new EmailId("lidavid@example.com"),
-                new ClassId("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), new StudentId("92492021"), new EmailId("irfan@example.com"),
-                new ClassId("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Person(new Name("Roy Balakrishnan"), new StudentId("92624417"), new EmailId("royb@example.com"),
-                new ClassId("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+            new Person(new Name("Alex Yeoh"), new StudentId("A1234567B"), new EmailId("E1234567"),
+                    new ClassId("123456"),
+                    getTagSet("friends")),
+            new Person(new Name("Bernice Yu"), new StudentId("A2345678C"), new EmailId("E1234567"),
+                    new ClassId("234567"),
+                    getTagSet("colleagues", "friends")),
+            new Person(new Name("Charlotte Oliveiro"), new StudentId("A3456789D"), new EmailId("E1234567"),
+                    new ClassId("345678"),
+                    getTagSet("neighbours")),
+            new Person(new Name("David Li"), new StudentId("A4567890E"), new EmailId("E1234567"),
+                    new ClassId("456789"),
+                    getTagSet("family")),
+            new Person(new Name("Irfan Ibrahim"), new StudentId("A5678901F"), new EmailId("E1234567"),
+                    new ClassId("567890"),
+                    getTagSet("classmates")),
+            new Person(new Name("Roy Balakrishnan"), new StudentId("A6789012G"), new EmailId("E1234567"),
+                    new ClassId("678901"),
+                    getTagSet("colleagues"))
         };
     }
 
