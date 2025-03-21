@@ -40,9 +40,9 @@ public class Messages {
         builder.append(person.getName())
                 .append("; StudentId: ")
                 .append(person.getStudentId())
-                .append("; Email: ")
+                .append("; EmailId: ")
                 .append(person.getEmail())
-                .append("; Address: ")
+                .append("; ClassId: ")
                 .append(person.getAddress())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);

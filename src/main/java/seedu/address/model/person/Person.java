@@ -108,8 +108,8 @@ public class Person {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("studentId", studentId)
-                .add("email", emailId)
-                .add("address", classId)
+                .add("emailId", emailId)
+                .add("classId", classId)
                 .add("tags", tags)
                 .toString();
     }
