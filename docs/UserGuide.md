@@ -57,7 +57,7 @@ add n/Lin Xinyi i/A0277024H e/E1136951 c/110103
 will be automatically formatted to ```Title Case```. ✨
 - **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X). Strict, but it keeps things neat. 🔐
 - **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because we're nice like that). 📧
-- **Class:** Just an integer, formatted as _[course code] + [tutorial number]_ (e.g. 110103 for CS2101, Tutorial 03). 😎
+- **Class:** Just an integer, formatted as _[course code] + [tutorial number]_ (e.g. 110103 for CS1101, Tutorial 03). 😎
 
 🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we’ll stop you right there! No cloning allowed. 🚫
 
