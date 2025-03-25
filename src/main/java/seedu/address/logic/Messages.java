@@ -40,7 +40,7 @@ public class Messages {
         builder.append(person.getName())
                 .append("; StudentId: ")
                 .append(person.getStudentId())
-                .append("; EmailId: ")
+                .append("; Email: ")
                 .append(person.getEmail())
                 .append("; ClassId: ")
                 .append(person.getAddress())

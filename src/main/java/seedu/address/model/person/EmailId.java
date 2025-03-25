@@ -11,6 +11,7 @@ public class EmailId {
     public static final String MESSAGE_CONSTRAINTS =
             "EmailId should follow the format: Exxxxxxx, with 7 x's, where each x is a number";
     public static final String VALIDATION_REGEX = "E\\d{7}";
+    public static final String EMAIL_SUFFIX = "@u.nus.edu";
     public final String value;
 
     /**
@@ -21,13 +22,23 @@ public class EmailId {
     public EmailId(String emailId) {
         requireNonNull(emailId);
         checkArgument(isValidEmailId(emailId), MESSAGE_CONSTRAINTS);
-        value = emailId;
+        if (emailId.endsWith(EMAIL_SUFFIX)) {
+            value = emailId;
+        } else {
+            value = emailId + EMAIL_SUFFIX;
+        }
     }
 
     /**
      * Returns if a given string is a valid email.
+     *
+     * @param test The string to be checked for validity.
      */
     public static boolean isValidEmailId(String test) {
+        if (test.endsWith(EMAIL_SUFFIX)) {
+            String emailId = test.substring(0, test.indexOf('@'));
+            return emailId.matches(VALIDATION_REGEX);
+        }
         return test.matches(VALIDATION_REGEX);
     }
 
