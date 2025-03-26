@@ -53,21 +53,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code StudentId}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static StudentId parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!StudentId.isValidStudentId(trimmedPhone)) {
-            throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
-        }
-        return new StudentId(trimmedPhone);
-    }
-
-    /**
      * Parses a {@code String classId} into a {@code ClassId}.
      * Leading and trailing whitespaces will be trimmed.
      *
