@@ -11,7 +11,7 @@ public class StudentHasSameIdPredicate implements Predicate<Person> {
     private final String classId;
 
     public StudentHasSameIdPredicate(String classId) {
-        this.classId = classId;
+        this.classId = classId.toLowerCase();
     }
 
     @Override
