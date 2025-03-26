@@ -70,6 +70,18 @@ public class Person {
             return true;
         }
 
+        if (otherPerson == null) {
+            return false;
+        }
+
+        String otherPersonName = otherPerson.getName().toString();
+        String currentPersonName = getName().toString();
+        boolean isNameMatching = otherPersonName.equals(currentPersonName);
+        if (!isNameMatching) {
+            return false;
+        }
+
+        // We do the rest of the checking for cases where the name is the same
         String currentStudentId = getStudentId().toString();
         String otherPersonStudentId = otherPerson.getStudentId().toString();
         boolean isMatchingStudentId = currentStudentId.equals(otherPersonStudentId);
@@ -78,8 +90,7 @@ public class Person {
         String otherPersonEmail = otherPerson.getEmail().toString();
         boolean isMatchingEmail = currentEmail.equals(otherPersonEmail);
 
-        return otherPerson != null
-                && isMatchingStudentId
+        return isMatchingStudentId
                 && isMatchingEmail;
     }
 
