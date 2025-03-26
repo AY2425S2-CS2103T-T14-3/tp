@@ -11,6 +11,7 @@ public class EmailId {
     public static final String MESSAGE_CONSTRAINTS =
             "EmailId should follow the format: Exxxxxxx, with 7 x's, where each x is a number";
     public static final String VALIDATION_REGEX = "E\\d{7}";
+    public static final String EMAIL_SUFFIX = "@u.nus.edu";
     public final String value;
 
     /**
@@ -26,6 +27,8 @@ public class EmailId {
 
     /**
      * Returns if a given string is a valid email.
+     *
+     * @param test The string to be checked for validity.
      */
     public static boolean isValidEmailId(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -33,7 +36,7 @@ public class EmailId {
 
     @Override
     public String toString() {
-        return value;
+        return value + EMAIL_SUFFIX;
     }
 
     @Override

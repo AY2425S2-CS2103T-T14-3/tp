@@ -35,6 +35,8 @@ public class ParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+
+
     /**
      * Parses a {@code String name} into a {@code Name}.
      * Leading and trailing whitespaces will be trimmed.
@@ -66,18 +68,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Address}.
+     * Parses a {@code String classId} into a {@code ClassId}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code classId} is invalid.
      */
-    public static ClassId parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!ClassId.isValidAddress(trimmedAddress)) {
+    public static ClassId parseClassId(String classId) throws ParseException {
+        requireNonNull(classId);
+        String trimmedClassId = classId.trim();
+        if (!ClassId.isValidClassId(trimmedClassId)) {
             throw new ParseException(ClassId.MESSAGE_CONSTRAINTS);
         }
-        return new ClassId(trimmedAddress);
+        return new ClassId(trimmedClassId);
     }
 
     /**
@@ -93,6 +95,21 @@ public class ParserUtil {
             throw new ParseException(EmailId.MESSAGE_CONSTRAINTS);
         }
         return new EmailId(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String studentIdString} into an {@code StudentId}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code studentIdString} is invalid.
+     */
+    public static StudentId parseStudentId(String studentIdString) throws ParseException {
+        requireNonNull(studentIdString);
+        String trimmedStudentId = studentIdString.trim();
+        if (!StudentId.isValidStudentId(trimmedStudentId)) {
+            throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
+        }
+        return new StudentId(trimmedStudentId);
     }
 
     /**
