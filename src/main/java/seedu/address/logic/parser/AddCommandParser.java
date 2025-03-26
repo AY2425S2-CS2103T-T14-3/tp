@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_CLASS_ID;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLASS_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_ID;
@@ -45,7 +46,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         EmailId emailId = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL_ID).get());
         ClassId classId = ParserUtil.parseClassId(argMultimap.getValue(PREFIX_CLASS_ID).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-
+        if (!ClassId.isValidClassId(classId.value)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_CLASS_ID, AddCommand.MESSAGE_USAGE));
+        }
         Person person = new Person(name, studentId, emailId, classId, tagList);
 
         return new AddCommand(person);
