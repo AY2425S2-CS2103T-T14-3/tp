@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.StudentHasSameIdPredicate;
 
 /**
  * Filters the students based on their class id.
@@ -19,9 +19,9 @@ public class FilterCommand extends Command {
             + "Parameters: classId\n"
             + "Example: " + COMMAND_WORD + " CS1101S03";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final StudentHasSameIdPredicate predicate;
 
-    public FilterCommand(NameContainsKeywordsPredicate predicate) {
+    public FilterCommand(StudentHasSameIdPredicate predicate) {
         this.predicate = predicate;
     }
 
