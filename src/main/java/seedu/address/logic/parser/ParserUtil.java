@@ -86,7 +86,7 @@ public class ParserUtil {
      * Parses a {@code String studentIdString} into an {@code StudentId}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code studentIdString} is invalid.
+     * @throws ParseException if the given {@code studentIdsString} is invalid.
      */
     public static StudentId parseStudentId(String studentIdString) throws ParseException {
         requireNonNull(studentIdString);
@@ -95,6 +95,31 @@ public class ParserUtil {
             throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
         }
         return new StudentId(trimmedStudentId);
+    }
+
+    /**
+     * Parses a {@code String studentIdsString} into a {@code StudentId[]}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if any of the given {@code studentIdsString} is invalid.
+     */
+    public static StudentId[] parseMultipleStudentIds(String studentIdsString) throws ParseException {
+        requireNonNull(studentIdsString);
+        String[] studentIdStringsArray = separateStringByComma(studentIdsString);
+        int numStudentId = studentIdStringsArray.length;
+        StudentId[] studentIdsArray = new StudentId[numStudentId];
+        for (int i = 0; i < numStudentId; i++) {
+            studentIdsArray[i] = parseStudentId(studentIdStringsArray[i]);
+        }
+        return studentIdsArray;
+    }
+
+    /**
+     * Takes a comma-separated string and breaks it up into a {@code String[]}.
+     */
+    public static String[] separateStringByComma(String s) {
+        String[] stringParts = s.split(",");
+        return stringParts;
     }
 
     /**
