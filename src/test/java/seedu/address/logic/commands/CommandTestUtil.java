@@ -29,8 +29,8 @@ public class CommandTestUtil {
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_NAME_SARA = "Sara Lee";
-    public static final String VALID_STUDENT_ID_AMY = "A1234567H";
-    public static final String VALID_STUDENT_ID_BOB = "A1234567F";
+    public static final String VALID_STUDENT_ID_AMY = "A1234567X";
+    public static final String VALID_STUDENT_ID_BOB = "A1234567Y";
     public static final String VALID_EMAIL_ID_AMY = "E1234567";
     public static final String VALID_EMAIL_ID_BOB = "E0133457";
     public static final String VALID_CLASS_ID_AMY = "Block 312, Amy Street 1";
