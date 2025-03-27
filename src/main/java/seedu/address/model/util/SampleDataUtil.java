@@ -21,22 +21,22 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new StudentId("A1234567B"), new EmailId("E1234567"),
                     new ClassId("123456"),
-                    getTagSet("friends")),
+                    getTagSet("NeedHelp")),
             new Person(new Name("Bernice Yu"), new StudentId("A2345678C"), new EmailId("E1234567"),
                     new ClassId("234567"),
-                    getTagSet("colleagues", "friends")),
+                    getTagSet("NeedHelp", "LateSubmission")),
             new Person(new Name("Charlotte Oliveiro"), new StudentId("A3456789D"), new EmailId("E1234567"),
                     new ClassId("345678"),
-                    getTagSet("neighbours")),
+                    getTagSet("NoSubmission")),
             new Person(new Name("David Li"), new StudentId("A4567890E"), new EmailId("E1234567"),
                     new ClassId("456789"),
-                    getTagSet("family")),
+                    getTagSet("PendingConsultation")),
             new Person(new Name("Irfan Ibrahim"), new StudentId("A5678901F"), new EmailId("E1234567"),
                     new ClassId("567890"),
-                    getTagSet("classmates")),
+                    getTagSet("PendingResponse")),
             new Person(new Name("Roy Balakrishnan"), new StudentId("A6789012G"), new EmailId("E1234567"),
                     new ClassId("678901"),
-                    getTagSet("colleagues"))
+                    getTagSet("LateSubmission")),
         };
     }
 

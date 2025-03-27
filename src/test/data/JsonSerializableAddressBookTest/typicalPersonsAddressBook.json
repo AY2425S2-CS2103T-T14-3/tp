@@ -5,13 +5,13 @@
     "studentId": "A1234567H",
     "emailId" : "E0123456",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+    "tags" : [ "NeedHelp" ]
   }, {
     "name" : "Benson Meier",
     "studentId": "A1234567G",
     "emailId" : "E1234567",
     "address" : "311, Clementi Ave 2, #02-25",
-    "tags" : [ "owesMoney", "friends" ]
+    "tags" : [ "NeedHelp", "LateSubmission" ]
   }, {
     "name" : "Carl Kurz",
     "studentId": "A1234567F",
@@ -23,7 +23,7 @@
     "studentId": "A1234567D",
     "emailId" : "E3456789",
     "address" : "10th street",
-    "tags" : [ "friends" ]
+    "tags" : [ "NeedHelp" ]
   }, {
     "name" : "Elle Meyer",
     "studentId": "A1234567V",
