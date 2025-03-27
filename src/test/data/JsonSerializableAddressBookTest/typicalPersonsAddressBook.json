@@ -4,43 +4,43 @@
     "name" : "Alice Pauline",
     "studentId": "A1234567H",
     "emailId" : "E0123456",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "address" : "cs1101-01",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "studentId": "A1234567G",
     "emailId" : "E1234568",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "address" : "cs1101-01",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "studentId": "A1234567F",
     "emailId" : "E2234567",
-    "address" : "wall street",
+    "address" : "cs1101-01",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "studentId": "A1234567D",
     "emailId" : "E3456789",
-    "address" : "10th street",
+    "address" : "cs1101-01",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "studentId": "A1234567V",
     "emailId" : "E1111111",
-    "address" : "michegan ave",
+    "address" : "cs1101-01",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "studentId": "A1234567R",
     "emailId" : "E9248571",
-    "address" : "little tokyo",
+    "address" : "cs1101-01",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "studentId": "A1234567S",
     "emailId" : "E2845729",
-    "address" : "4th street",
+    "address" : "cs1101-01",
     "tags" : [ ]
   } ]
 }

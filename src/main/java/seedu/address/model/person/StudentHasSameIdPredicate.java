@@ -16,7 +16,7 @@ public class StudentHasSameIdPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        String idToTest = person.getAddress().value.toLowerCase();
+        String idToTest = person.getClassId().value.toLowerCase();
         String classIdCopy = classId.toLowerCase();
         return classIdCopy.equals(idToTest);
     }

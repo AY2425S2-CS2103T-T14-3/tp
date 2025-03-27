@@ -33,8 +33,8 @@ public class CommandTestUtil {
     public static final String VALID_STUDENT_ID_BOB = "A1234567Y";
     public static final String VALID_EMAIL_ID_AMY = "E1234567";
     public static final String VALID_EMAIL_ID_BOB = "E0133457";
-    public static final String VALID_CLASS_ID_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_CLASS_ID_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_CLASS_ID_AMY = "cs2103t-01";
+    public static final String VALID_CLASS_ID_BOB = "cs4555-01";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
@@ -63,10 +63,10 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_STUDENT_ID_AMY).withEmail(VALID_EMAIL_ID_AMY).withAddress(VALID_CLASS_ID_AMY)
+                .withPhone(VALID_STUDENT_ID_AMY).withEmail(VALID_EMAIL_ID_AMY).withClassId(VALID_CLASS_ID_AMY)
                 .withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_STUDENT_ID_BOB).withEmail(VALID_EMAIL_ID_BOB).withAddress(VALID_CLASS_ID_BOB)
+                .withPhone(VALID_STUDENT_ID_BOB).withEmail(VALID_EMAIL_ID_BOB).withClassId(VALID_CLASS_ID_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 

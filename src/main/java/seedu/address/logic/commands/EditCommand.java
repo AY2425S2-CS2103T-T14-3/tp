@@ -110,7 +110,7 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         StudentId updatedStudentId = editPersonDescriptor.getPhone().orElse(personToEdit.getStudentId());
         EmailId updatedEmailId = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        ClassId updatedClassId = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        ClassId updatedClassId = editPersonDescriptor.getClassId().orElse(personToEdit.getClassId());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedStudentId, updatedEmailId, updatedClassId, updatedTags);
@@ -161,7 +161,7 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.studentId);
             setEmail(toCopy.emailId);
-            setAddress(toCopy.classId);
+            setClassId(toCopy.classId);
             setTags(toCopy.tags);
         }
 
@@ -196,13 +196,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(emailId);
         }
 
-        public void setAddress(ClassId classId) {
+        public void setClassId(ClassId classId) {
             this.classId = classId;
         }
 
-        public Optional<ClassId> getAddress() {
+        public Optional<ClassId> getClassId() {
             return Optional.ofNullable(classId);
         }
+
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
