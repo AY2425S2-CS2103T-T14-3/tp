@@ -14,32 +14,35 @@ public class ClassIdTest {
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
-        String invalidAddress = "";
-        assertThrows(IllegalArgumentException.class, () -> new ClassId(invalidAddress));
+    public void constructor_invalidClassId_throwsIllegalArgumentException() {
+        String invalidClassId = "";
+        assertThrows(IllegalArgumentException.class, () -> new ClassId(invalidClassId));
     }
 
     @Test
-    public void isValidAddress() {
-        // null address
+    public void isValidClassId() {
+        // null class id
         assertThrows(NullPointerException.class, () -> ClassId.isValidClassId(null));
 
-        // invalid addresses
+        // invalid class ids
         assertFalse(ClassId.isValidClassId("")); // empty string
         assertFalse(ClassId.isValidClassId(" ")); // spaces only
 
-        // valid addresses
-        assertTrue(ClassId.isValidClassId("Blk 456, Den Road, #01-355"));
-        assertTrue(ClassId.isValidClassId("-")); // one character
-        assertTrue(ClassId.isValidClassId("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        // valid class ids
+        assertTrue(ClassId.isValidClassId("AB1234-56")); // 2 letters, 4 digits, dash, 2 digits
+        assertTrue(ClassId.isValidClassId("ABC1234-56")); // 3 letters, 4 digits, dash, 2 digits
+        assertTrue(ClassId.isValidClassId("AB1234A-56")); // with optional letter
+        assertTrue(ClassId.isValidClassId("ABC1234Z-56")); // 3 letters with optional letter
+        assertTrue(ClassId.isValidClassId("ab1234-56")); // lowercase letters
+        assertTrue(ClassId.isValidClassId("Ab1234c-56")); // mixed case
     }
 
     @Test
     public void equals() {
-        ClassId classId = new ClassId("Valid Address");
+        ClassId classId = new ClassId("AB1234-56");
 
         // same values -> returns true
-        assertTrue(classId.equals(new ClassId("Valid Address")));
+        assertTrue(classId.equals(new ClassId("AB1234-56")));
 
         // same object -> returns true
         assertTrue(classId.equals(classId));
@@ -51,6 +54,6 @@ public class ClassIdTest {
         assertFalse(classId.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(classId.equals(new ClassId("Other Valid Address")));
+        assertFalse(classId.equals(new ClassId("CD5678-90")));
     }
 }

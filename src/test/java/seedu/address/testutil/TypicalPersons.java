@@ -25,13 +25,13 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder()
             .withName("Alice Pauline")
-            .withClassId("123, Jurong West Ave 6, #08-111")
+            .withClassId("cs1101-01")
             .withEmailId("E0123456")
             .withStudentId("A1234567H")
             .withTags("NeedHelp").build();
     public static final Person BENSON = new PersonBuilder()
             .withName("Benson Meier")
-            .withClassId("311, Clementi Ave 2, #02-25")
+            .withClassId("cs1101-01")
             .withEmailId("E1234568")
             .withStudentId("A1234567G")
             .withTags("LateSubmission", "NeedHelp").build();
@@ -39,34 +39,35 @@ public class TypicalPersons {
             .withName("Carl Kurz")
             .withStudentId("A1234567F")
             .withEmailId("E2234567")
-            .withClassId("wall street").build();
+            .withClassId("cs1101-01").build();
     public static final Person DANIEL = new PersonBuilder()
             .withName("Daniel Meier")
             .withStudentId("A1234567D")
             .withEmailId("E3456789")
-            .withClassId("10th street")
+            .withClassId("cs1101-01")
             .withTags("NeedHelp").build();
+
     public static final Person ELLE = new PersonBuilder()
             .withName("Elle Meyer")
             .withStudentId("A1234567V")
             .withEmailId("E1111111")
-            .withClassId("michegan ave").build();
+            .withClassId("cs1101-01").build();
     public static final Person FIONA = new PersonBuilder()
             .withName("Fiona Kunz")
             .withStudentId("A1234567R")
             .withEmailId("E9248571")
-            .withClassId("little tokyo").build();
+            .withClassId("cs1101-01").build();
     public static final Person GEORGE = new PersonBuilder()
             .withName("George Best")
             .withStudentId("A1234567S")
             .withEmailId("E2845729")
-            .withClassId("4th street").build();
+            .withClassId("cs1101-01").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withStudentId("A4444444G")
-            .withEmailId("E5938475").withClassId("little india").build();
+            .withEmailId("E5938475").withClassId("cs1101-08").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withStudentId("A7777777F")
-            .withEmailId("E1230495").withClassId("chicago ave").build();
+            .withEmailId("E1230495").withClassId("cs1101t-01").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY).withStudentId(VALID_STUDENT_ID_AMY)
