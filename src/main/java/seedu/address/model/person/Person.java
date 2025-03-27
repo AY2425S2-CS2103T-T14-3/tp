@@ -49,7 +49,7 @@ public class Person {
         return emailId;
     }
 
-    public ClassId getAddress() {
+    public ClassId getClassId() {
         return classId;
     }
 
