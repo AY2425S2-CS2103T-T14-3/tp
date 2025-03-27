@@ -6,30 +6,51 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.StudentIdMatchPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is case-insensitive.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
+            + "the specified keywords (case-insensitive)"
+            + "or match the given student number"
+            + "and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final NameContainsKeywordsPredicate name_predicate;
+
+    private final StudentIdMatchPredicate id_predicate;
+
+    public FindCommand(NameContainsKeywordsPredicate name_predicate, StudentIdMatchPredicate id_predicate) {
+        if (name_predicate == null && id_predicate == null) {
+            throw new IllegalArgumentException("At least one predicate must be provided.");
+        }
+        this.name_predicate = name_predicate;
+        this.id_predicate = id_predicate;
+    }
 
     public FindCommand(NameContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
+        this(predicate, null);
+    }
+
+    public FindCommand(StudentIdMatchPredicate predicate) {
+        this(null, predicate);
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredPersonList(predicate);
+        if(id_predicate == null) {
+            model.updateFilteredPersonList(name_predicate);
+        } else {
+            model.updateFilteredPersonList(id_predicate);
+        }
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
@@ -46,13 +67,24 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        return predicate.equals(otherFindCommand.predicate);
+        if(name_predicate == null) {
+            return otherFindCommand.name_predicate == null && otherFindCommand.id_predicate.equals(id_predicate);
+        } else {
+            return otherFindCommand.id_predicate == null && name_predicate.equals(otherFindCommand.name_predicate);
+        }
+
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("predicate", predicate)
-                .toString();
+        if(id_predicate == null) {
+            return new ToStringBuilder(this)
+                    .add("name predicate", name_predicate)
+                    .toString();
+        } else {
+            return new ToStringBuilder(this)
+                    .add("id predicate", id_predicate)
+                    .toString();
+        }
     }
 }
