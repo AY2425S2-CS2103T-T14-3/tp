@@ -27,6 +27,10 @@ public class FindCommand extends Command {
 
     private final StudentIdMatchPredicate id_predicate;
 
+    /**
+     * @param name_predicate predicate regarding the keywords in a student's name the user wants to find
+     * @param id_predicate predicate regarding the studentId the user wants to find
+     */
     public FindCommand(NameContainsKeywordsPredicate name_predicate, StudentIdMatchPredicate id_predicate) {
         if (name_predicate == null && id_predicate == null) {
             throw new IllegalArgumentException("At least one predicate must be provided.");
@@ -46,7 +50,7 @@ public class FindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        if(id_predicate == null) {
+        if (id_predicate == null) {
             model.updateFilteredPersonList(name_predicate);
         } else {
             model.updateFilteredPersonList(id_predicate);
@@ -67,7 +71,7 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        if(name_predicate == null) {
+        if (name_predicate == null) {
             return otherFindCommand.name_predicate == null && otherFindCommand.id_predicate.equals(id_predicate);
         } else {
             return otherFindCommand.id_predicate == null && name_predicate.equals(otherFindCommand.name_predicate);
@@ -77,7 +81,7 @@ public class FindCommand extends Command {
 
     @Override
     public String toString() {
-        if(id_predicate == null) {
+        if (id_predicate == null) {
             return new ToStringBuilder(this)
                     .add("name predicate", name_predicate)
                     .toString();
