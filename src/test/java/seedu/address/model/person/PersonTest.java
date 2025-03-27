@@ -3,7 +3,7 @@ package seedu.address.model.person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_STUDENT_ID_BOB;
@@ -25,31 +25,58 @@ public class PersonTest {
     }
 
     @Test
-    public void isSamePerson() {
+    public void hasSameStudentIdAndEmailId() {
         // same object -> returns true
-        assertTrue(ALICE.isSamePerson(ALICE));
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(ALICE));
 
         // null -> returns false
-        assertFalse(ALICE.isSamePerson(null));
+        assertFalse(ALICE.hasSameStudentIdAndEmailId(null));
 
-        // same name, all other attributes different -> returns true
+        // same name, all other attributes different -> returns false
         Person editedAlice = new PersonBuilder(ALICE).withStudentId(VALID_STUDENT_ID_BOB)
                 .withEmailId(VALID_EMAIL_ID_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSamePerson(editedAlice));
+                .withClassId(VALID_CLASS_ID_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertFalse(ALICE.hasSameStudentIdAndEmailId(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // same name, same student id, same email id, other attributes different -> returns true
+        editedAlice = new PersonBuilder(ALICE).withClassId(VALID_CLASS_ID_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // same name, same student id, other attributes different -> returns true
+        editedAlice = new PersonBuilder(ALICE).withEmailId(VALID_EMAIL_ID_BOB)
+                .withClassId(VALID_CLASS_ID_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // same name, same email id, all other attributes different -> returns true
+        editedAlice = new PersonBuilder(ALICE).withStudentId(VALID_STUDENT_ID_BOB)
+                .withClassId(VALID_CLASS_ID_BOB).withTags(VALID_TAG_HUSBAND).build();
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // different name, all other attributes same -> returns true
         editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // different name, different student id -> returns true
+        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withStudentId(VALID_STUDENT_ID_BOB).build();
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // different name, different email id -> returns true
+        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withEmailId(VALID_EMAIL_ID_BOB).build();
+        assertTrue(ALICE.hasSameStudentIdAndEmailId(editedAlice));
+
+        // different name, different email id, different student id -> returns false
+        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withEmailId(VALID_EMAIL_ID_BOB)
+                .withStudentId(VALID_STUDENT_ID_BOB).build();
+        assertFalse(ALICE.hasSameStudentIdAndEmailId(editedAlice));
 
         // name differs in case, all other attributes same -> returns true
         Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
-        assertTrue(BOB.isSamePerson(editedBob));
+        assertTrue(BOB.hasSameStudentIdAndEmailId(editedBob));
 
         // name has trailing spaces, all other attributes same -> returns true
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
-        assertTrue(BOB.isSamePerson(editedBob));
+        assertTrue(BOB.hasSameStudentIdAndEmailId(editedBob));
     }
 
     @Test
@@ -83,7 +110,7 @@ public class PersonTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different address -> returns false
-        editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
+        editedAlice = new PersonBuilder(ALICE).withClassId(VALID_CLASS_ID_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false

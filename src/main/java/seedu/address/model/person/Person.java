@@ -62,16 +62,27 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same name.
+     * Returns true if both persons have the same student id or email id.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Person otherPerson) {
+    public boolean hasSameStudentIdAndEmailId(Person otherPerson) {
         if (otherPerson == this) {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName());
+        if (otherPerson == null) {
+            return false;
+        }
+
+        String otherStudentId = otherPerson.getStudentId().toString();
+        String currentStudentId = getStudentId().toString();
+        boolean isSameStudentId = otherStudentId.equals(currentStudentId);
+
+        String otherEmail = otherPerson.getEmail().toString();
+        String currentEmail = getEmail().toString();
+        boolean isSameEmail = otherEmail.equals(currentEmail);
+
+        return isSameEmail || isSameStudentId;
     }
 
     /**

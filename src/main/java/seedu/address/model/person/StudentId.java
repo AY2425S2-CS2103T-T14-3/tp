@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a student's student id in the address book.
+ * Represents a student's student id in the contact list.
  * Guarantees: immutable; is valid as declared in {@link #isValidStudentId(String)}
  */
 public class StudentId {
@@ -21,8 +21,8 @@ public class StudentId {
      * @param studentId A valid studentId number.
      */
     public StudentId(String studentId) {
-        studentId.trim();
-        requireNonNull(studentId);
+        String trimmedStudentId = studentId.trim();
+        requireNonNull(trimmedStudentId);
         checkArgument(isValidStudentId(studentId), MESSAGE_CONSTRAINTS);
         value = studentId;
     }
