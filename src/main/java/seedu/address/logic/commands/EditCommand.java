@@ -96,7 +96,7 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        StudentId updatedStudentId = editPersonDescriptor.getPhone().orElse(personToEdit.getStudentId());
+        StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         EmailId updatedEmailId = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         ClassId updatedClassId = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
@@ -147,7 +147,7 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.studentId);
+            setStudentId(toCopy.studentId);
             setEmail(toCopy.emailId);
             setAddress(toCopy.classId);
             setTags(toCopy.tags);
@@ -168,11 +168,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(StudentId studentId) {
+        public void setStudentId(StudentId studentId) {
             this.studentId = studentId;
         }
 
-        public Optional<StudentId> getPhone() {
+        public Optional<StudentId> getStudentId() {
             return Optional.ofNullable(studentId);
         }
 
