@@ -66,10 +66,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Person} that we are building.
+     * Sets the {@code classId} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
-        this.classId = new ClassId(address);
+    public PersonBuilder withClassId(String classId) {
+        this.classId = new ClassId(classId);
         return this;
     }
 
