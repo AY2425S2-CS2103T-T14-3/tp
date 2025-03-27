@@ -27,17 +27,12 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        if (trimmedArgs.matches("[a-zA-Z]+")) {
-            String[] nameKeywords = trimmedArgs.split("\\s+");
-            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
-
-        } else if (trimmedArgs.matches("A\\d{7}[A-Z]")) {
+        if (trimmedArgs.matches("A\\d{7}[A-Z]")) {
             StudentId studentId = new StudentId(trimmedArgs);
             return new FindCommand(new StudentIdMatchPredicate(studentId));
         } else {
-            throw new ParseException(
-                    String.format("Please enter either a student id or a name!\\n%s", FindCommand.MESSAGE_USAGE));
+            String[] nameKeywords = trimmedArgs.split("\\s+");
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
         }
-
     }
 }
