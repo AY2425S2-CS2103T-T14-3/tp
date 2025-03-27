@@ -66,9 +66,9 @@ public class FilterCommandTest {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
         StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS210501");
         Person james = new PersonBuilder().withName("James").withStudentId("A7777777F")
-                .withEmailId("E1230495").withAddress("CS210501").build();
+                .withEmailId("E1230495").withClassId("CS210501").build();
         Person raj = new PersonBuilder().withName("Rajaratnam").withStudentId("A4444444G")
-                .withEmailId("E5938475").withAddress("CS210501").build();
+                .withEmailId("E5938475").withClassId("CS210501").build();
         expectedModel.updateFilteredPersonList(predicate);
         model.addPerson(james);
         model.addPerson(raj);
