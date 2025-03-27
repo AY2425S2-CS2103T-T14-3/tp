@@ -32,22 +32,22 @@ public class StudentHasSameIdPredicateTest {
     public void test_classIdMatches_returnsTrue() {
         // matching class ids
         StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS323019");
-        assertTrue(predicate.test(new PersonBuilder().withAddress("CS323019").build()));
+        assertTrue(predicate.test(new PersonBuilder().withClassId("CS323019").build()));
 
         // matching class ids but with different case
         predicate = new StudentHasSameIdPredicate("cs323019");
-        assertTrue(predicate.test(new PersonBuilder().withAddress("CS323019").build()));
+        assertTrue(predicate.test(new PersonBuilder().withClassId("CS323019").build()));
     }
 
     @Test
     public void test_classIdDoesNotMatch_returnsFalse() {
         // non-matching class ids
         StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS323019");
-        assertFalse(predicate.test(new PersonBuilder().withAddress("CS1101S").build()));
+        assertFalse(predicate.test(new PersonBuilder().withClassId("CS1101S").build()));
 
         // non-matching with different case
         predicate = new StudentHasSameIdPredicate("CS323019");
-        assertFalse(predicate.test(new PersonBuilder().withAddress("cs1101s").build()));
+        assertFalse(predicate.test(new PersonBuilder().withClassId("cs1101s").build()));
     }
 
     @Test
