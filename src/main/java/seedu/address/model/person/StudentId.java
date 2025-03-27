@@ -10,7 +10,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class StudentId {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "StudentId should follow the format: AxxxxxxxX, where x is a number and X is a capital letter.";
+            "Invalid command format! \n"
+                    + "edit: Edits the details of the person identified by the the student's student ID. "
+                    + "Existing values will be overwritten by the input values.\n"
+                    + "Parameters: Student ID [n/NAME] [i/STUDENT ID] [e/EMAIL ID] [c/CLASS ID] [t/TAG]...\n"
+                    + "Example: edit 1 i/91234567 e/johndoe@example.com";
     public static final String VALIDATION_REGEX = "A\\d{7}[A-Z]";
     public final String value;
 
