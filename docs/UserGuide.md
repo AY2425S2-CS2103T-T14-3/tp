@@ -11,6 +11,7 @@
     - [📝 Update/Edit Contact](#-feature-4-updateedit-contact)
     - [🔎 Search for Contact](#-feature-5-search-for-contact)
     - [🎯 Filter Contact](#-feature-6-filter-contact)
+    - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
 5. [🛠 Troubleshooting](#-troubleshooting)
 6. [🤔 FAQs](#-faqs)
 7. [📧 Contact Support](#-contact-support)
@@ -146,6 +147,26 @@ filter 14
 - The class **must** be a number. If not, we’ll kindly remind you. 🚦
 
 ---
+
+### ❌❌ Feature 7: Mass Delete Contacts
+**🎯 Purpose:** Remove multiple students at one go. 🗑
+
+**🔤 Command Format:**
+```
+m_delete ID1, ID2, ...
+```
+
+**🖥 Example:**
+```
+m_delete A0272111H, A1234567G, A0123456F
+```
+
+🛑 **What to expect:**
+- If all the student IDs exist, all of them are **gone forever**.
+- If some of the student IDs **don’t exist**, we’ll delete only those that actually exist.
+
+---
+
 ## 🛠 Troubleshooting
 🔍 **Invalid input?** Follow the error messages—they exist for a reason! 😜
 
