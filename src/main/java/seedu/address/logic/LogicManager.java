@@ -51,7 +51,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveWhoDat(model.getWhoDat());
         } catch (AccessDeniedException e) {
             logger.warning("Failed to save data due to insufficient permissions: " + e.getMessage());
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
@@ -64,8 +64,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyWhoDat getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyWhoDat getWhoDat() {
+        return model.getWhoDat();
     }
 
     @Override
@@ -74,8 +74,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getWhoDatFilePath() {
+        return model.getWhoDatFilePath();
     }
 
     @Override

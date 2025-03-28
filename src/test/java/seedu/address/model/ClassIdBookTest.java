@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CLASS_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalWhoDat;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -37,8 +37,8 @@ public class ClassIdBookTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        WhoDat newData = getTypicalAddressBook();
+    public void resetData_withValidReadOnlyWhoDat_replacesData() {
+        WhoDat newData = getTypicalWhoDat();
         whoDat.resetData(newData);
         assertEquals(newData, whoDat);
     }
@@ -60,18 +60,18 @@ public class ClassIdBookTest {
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasPerson_personNotInWhoDat_returnsFalse() {
         assertFalse(whoDat.hasPerson(ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasPerson_personInWhoDat_returnsTrue() {
         whoDat.addPerson(ALICE);
         assertTrue(whoDat.hasPerson(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasPerson_personWithSameIdentityFieldsInWhoDat_returnsTrue() {
         whoDat.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withClassId(VALID_CLASS_ID_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();

@@ -81,9 +81,9 @@ public class TypicalPersons {
     private TypicalPersons() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code WhoDat} with all the typical persons.
      */
-    public static WhoDat getTypicalAddressBook() {
+    public static WhoDat getTypicalWhoDat() {
         WhoDat ab = new WhoDat();
         for (Person person : getTypicalPersons()) {
             ab.addPerson(person);

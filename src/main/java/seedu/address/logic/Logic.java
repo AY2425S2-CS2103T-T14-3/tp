@@ -24,19 +24,19 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the WhoDat.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getWhoDat()
      */
-    ReadOnlyWhoDat getAddressBook();
+    ReadOnlyWhoDat getWhoDat();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' WhoDat file path.
      */
-    Path getAddressBookFilePath();
+    Path getWhoDatFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

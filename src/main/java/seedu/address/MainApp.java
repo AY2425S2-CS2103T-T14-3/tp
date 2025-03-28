@@ -44,7 +44,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing WhoDat ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -53,7 +53,7 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        WhoDatStorage whoDatStorage = new JsonWhoDatStorage(userPrefs.getAddressBookFilePath());
+        WhoDatStorage whoDatStorage = new JsonWhoDatStorage(userPrefs.getWhoDatFilePath());
         storage = new StorageManager(whoDatStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
@@ -64,25 +64,25 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s WhoDat and {@code userPrefs}. <br>
+     * The data from the sample WhoDat will be used instead if {@code storage}'s WhoDat is not found,
+     * or an empty WhoDat will be used instead if errors occur when reading {@code storage}'s contact list.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        logger.info("Using data file : " + storage.getAddressBookFilePath());
+        logger.info("Using data file : " + storage.getWhoDatFilePath());
 
-        Optional<ReadOnlyWhoDat> addressBookOptional;
+        Optional<ReadOnlyWhoDat> whoDatOptional;
         ReadOnlyWhoDat initialData;
         try {
-            addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Creating a new data file " + storage.getAddressBookFilePath()
-                        + " populated with a sample AddressBook.");
+            whoDatOptional = storage.readWhoDat();
+            if (!whoDatOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getWhoDatFilePath()
+                        + " populated with a sample WhoDat.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = whoDatOptional.orElseGet(SampleDataUtil::getSampleWhoDat);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+            logger.warning("Data file at " + storage.getWhoDatFilePath() + " could not be loaded."
+                    + " Will be starting with an empty WhoDat.");
             initialData = new WhoDat();
         }
 
@@ -166,13 +166,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting WhoDat " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping AddressBook ] =============================");
+        logger.info("============================ [ Stopping WhoDat ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

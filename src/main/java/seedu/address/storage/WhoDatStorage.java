@@ -16,31 +16,31 @@ public interface WhoDatStorage {
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getWhoDatFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyWhoDat}.
+     * Returns WhoDat data as a {@link ReadOnlyWhoDat}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    Optional<ReadOnlyWhoDat> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyWhoDat> readWhoDat() throws DataLoadingException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getWhoDatFilePath()
      */
-    Optional<ReadOnlyWhoDat> readAddressBook(Path filePath) throws DataLoadingException;
+    Optional<ReadOnlyWhoDat> readWhoDat(Path filePath) throws DataLoadingException;
 
     /**
      * Saves the given {@link ReadOnlyWhoDat} to the storage.
-     * @param addressBook cannot be null.
+     * @param whoDat cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyWhoDat addressBook) throws IOException;
+    void saveWhoDat(ReadOnlyWhoDat whoDat) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyWhoDat)
+     * @see #saveWhoDat(ReadOnlyWhoDat)
      */
-    void saveAddressBook(ReadOnlyWhoDat addressBook, Path filePath) throws IOException;
+    void saveWhoDat(ReadOnlyWhoDat whoDat, Path filePath) throws IOException;
 
 }

@@ -21,12 +21,12 @@ public interface Storage extends WhoDatStorage, UserPrefsStorage {
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getAddressBookFilePath();
+    Path getWhoDatFilePath();
 
     @Override
-    Optional<ReadOnlyWhoDat> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyWhoDat> readWhoDat() throws DataLoadingException;
 
     @Override
-    void saveAddressBook(ReadOnlyWhoDat addressBook) throws IOException;
+    void saveWhoDat(ReadOnlyWhoDat whoDat) throws IOException;
 
 }

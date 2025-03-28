@@ -12,7 +12,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of WhoDat data in local storage.
  */
 public class StorageManager implements Storage {
 
@@ -21,7 +21,7 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code WhoDatStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(WhoDatStorage whoDatStorage, UserPrefsStorage userPrefsStorage) {
         this.whoDatStorage = whoDatStorage;
@@ -46,33 +46,33 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ WhoDat methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return whoDatStorage.getAddressBookFilePath();
+    public Path getWhoDatFilePath() {
+        return whoDatStorage.getWhoDatFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyWhoDat> readAddressBook() throws DataLoadingException {
-        return readAddressBook(whoDatStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyWhoDat> readWhoDat() throws DataLoadingException {
+        return readWhoDat(whoDatStorage.getWhoDatFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyWhoDat> readAddressBook(Path filePath) throws DataLoadingException {
+    public Optional<ReadOnlyWhoDat> readWhoDat(Path filePath) throws DataLoadingException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return whoDatStorage.readAddressBook(filePath);
+        return whoDatStorage.readWhoDat(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyWhoDat addressBook) throws IOException {
-        saveAddressBook(addressBook, whoDatStorage.getAddressBookFilePath());
+    public void saveWhoDat(ReadOnlyWhoDat whoDat) throws IOException {
+        saveWhoDat(whoDat, whoDatStorage.getWhoDatFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyWhoDat addressBook, Path filePath) throws IOException {
+    public void saveWhoDat(ReadOnlyWhoDat whoDat, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        whoDatStorage.saveAddressBook(addressBook, filePath);
+        whoDatStorage.saveWhoDat(whoDat, filePath);
     }
 
 }

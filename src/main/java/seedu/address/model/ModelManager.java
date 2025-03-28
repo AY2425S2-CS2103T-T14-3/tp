@@ -14,7 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the contact list data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -29,7 +29,7 @@ public class ModelManager implements Model {
     public ModelManager(ReadOnlyWhoDat addressBook, ReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with WhoDat: " + addressBook + " and user prefs " + userPrefs);
 
         this.whoDat = new WhoDat(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -65,25 +65,25 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getWhoDatFilePath() {
+        return userPrefs.getWhoDatFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setWhoDatFilePath(Path whoDatFilePath) {
+        requireNonNull(whoDatFilePath);
+        userPrefs.setWhoDatFilePath(whoDatFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== WhoDat ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyWhoDat addressBook) {
-        this.whoDat.resetData(addressBook);
+    public void setWhoDat(ReadOnlyWhoDat whoDat) {
+        this.whoDat.resetData(whoDat);
     }
 
     @Override
-    public ReadOnlyWhoDat getAddressBook() {
+    public ReadOnlyWhoDat getWhoDat() {
         return whoDat;
     }
 
@@ -115,7 +115,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedWhoDat}
      */
     @Override
     public ObservableList<Person> getFilteredPersonList() {
