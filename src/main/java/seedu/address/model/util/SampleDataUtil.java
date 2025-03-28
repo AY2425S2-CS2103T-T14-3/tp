@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.WhoDat;
+import seedu.address.model.ReadOnlyWhoDat;
 import seedu.address.model.person.ClassId;
 import seedu.address.model.person.EmailId;
 import seedu.address.model.person.Name;
@@ -14,7 +14,7 @@ import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code WhoDat} with sample data.
  */
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
@@ -25,7 +25,7 @@ public class SampleDataUtil {
             new Person(new Name("Bernice Yu"), new StudentId("A2345678C"), new EmailId("E3234567"),
                     new ClassId("CS5446-01"),
                     getTagSet("NeedHelp", "LateSubmission")),
-            new Person(new Name("Charlotte Oliveiro"), new StudentId("A3456789D"), new EmailId("E4234567"),
+                new Person(new Name("Charlotte Oliveiro"), new StudentId("A3456789D"), new EmailId("E4234567"),
                     new ClassId("CS5446-01"),
                     getTagSet("NoSubmission")),
             new Person(new Name("David Li"), new StudentId("A4567890E"), new EmailId("E5234567"),
@@ -40,8 +40,8 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyWhoDat getSampleWhoDat() {
+        WhoDat sampleAb = new WhoDat();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
         }
