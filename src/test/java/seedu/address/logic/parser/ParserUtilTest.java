@@ -29,7 +29,7 @@ public class ParserUtilTest {
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_STUDENT_ID = "A1234567B";
-    private static final String VALID_CLASSID = "123 Main Street #0505";
+    private static final String VALID_CLASSID = "cs2101-01";
     private static final String VALID_EMAIL_ID = "E1123857";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
@@ -81,25 +81,25 @@ public class ParserUtilTest {
 
     @Test
     public void parseStudentId_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseStudentId((String) null));
     }
 
     @Test
     public void parseStudentId_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parsePhone(INVALID_STUDENT_ID));
+        assertThrows(ParseException.class, () -> ParserUtil.parseStudentId(INVALID_STUDENT_ID));
     }
 
     @Test
     public void parseStudentId_validValueWithoutWhitespace_returnsStudentId() throws Exception {
         StudentId expectedStudentId = new StudentId(VALID_STUDENT_ID);
-        assertEquals(expectedStudentId, ParserUtil.parsePhone(VALID_STUDENT_ID));
+        assertEquals(expectedStudentId, ParserUtil.parseStudentId(VALID_STUDENT_ID));
     }
 
     @Test
     public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
-        String phoneWithWhitespace = WHITESPACE + VALID_STUDENT_ID + WHITESPACE;
+        String studentIdWithWhitespace = WHITESPACE + VALID_STUDENT_ID + WHITESPACE;
         StudentId expectedStudentId = new StudentId(VALID_STUDENT_ID);
-        assertEquals(expectedStudentId, ParserUtil.parsePhone(phoneWithWhitespace));
+        assertEquals(expectedStudentId, ParserUtil.parseStudentId(studentIdWithWhitespace));
     }
 
     @Test

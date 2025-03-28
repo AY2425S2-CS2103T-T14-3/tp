@@ -33,9 +33,9 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder(Person person) {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(person.getName());
-        descriptor.setPhone(person.getStudentId());
+        descriptor.setStudentId(person.getStudentId());
         descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
+        descriptor.setClassId(person.getClassId());
         descriptor.setTags(person.getTags());
     }
 
@@ -51,7 +51,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code StudentId} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new StudentId(phone));
+        descriptor.setStudentId(new StudentId(phone));
         return this;
     }
 
@@ -64,10 +64,10 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code class id} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new ClassId(address));
+    public EditPersonDescriptorBuilder withClassId(String classId) {
+        descriptor.setClassId(new ClassId(classId));
         return this;
     }
 
