@@ -28,13 +28,13 @@ public class TypicalPersons {
             .withClassId("cs1101-01")
             .withEmailId("E0123456")
             .withStudentId("A1234567H")
-            .withTags("friends").build();
+            .withTags("NeedHelp").build();
     public static final Person BENSON = new PersonBuilder()
             .withName("Benson Meier")
             .withClassId("cs1101-01")
             .withEmailId("E1234568")
             .withStudentId("A1234567G")
-            .withTags("owesMoney", "friends").build();
+            .withTags("LateSubmission", "NeedHelp").build();
     public static final Person CARL = new PersonBuilder()
             .withName("Carl Kurz")
             .withStudentId("A1234567F")
@@ -45,7 +45,7 @@ public class TypicalPersons {
             .withStudentId("A1234567D")
             .withEmailId("E3456789")
             .withClassId("cs1101-01")
-            .withTags("friends").build();
+            .withTags("NeedHelp").build();
     public static final Person ELLE = new PersonBuilder()
             .withName("Elle Meyer")
             .withStudentId("A1234567V")

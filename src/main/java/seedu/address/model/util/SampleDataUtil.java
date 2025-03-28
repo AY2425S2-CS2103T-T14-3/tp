@@ -21,22 +21,22 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new StudentId("A1234567B"), new EmailId("E2234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("friends")),
+                    getTagSet("NeedHelp")),
             new Person(new Name("Bernice Yu"), new StudentId("A2345678C"), new EmailId("E3234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("colleagues", "friends")),
+                    getTagSet("NeedHelp", "LateSubmission")),
             new Person(new Name("Charlotte Oliveiro"), new StudentId("A3456789D"), new EmailId("E4234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("neighbours")),
+                    getTagSet("NoSubmission")),
             new Person(new Name("David Li"), new StudentId("A4567890E"), new EmailId("E5234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("family")),
+                    getTagSet("PendingConsultation")),
             new Person(new Name("Irfan Ibrahim"), new StudentId("A5678901F"), new EmailId("E6234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("classmates")),
+                    getTagSet("PendingResponse")),
             new Person(new Name("Roy Balakrishnan"), new StudentId("A6789012G"), new EmailId("E7234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("colleagues"))
+                    getTagSet("LateSubmission"))
         };
     }
 
@@ -58,3 +58,4 @@ public class SampleDataUtil {
     }
 
 }
+
