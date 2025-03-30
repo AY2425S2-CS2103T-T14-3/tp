@@ -28,8 +28,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyWhoDat;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
-import seedu.address.storage.JsonWhoDatStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.JsonWhoDatStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.PersonBuilder;
 
