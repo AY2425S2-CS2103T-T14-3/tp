@@ -14,6 +14,8 @@ import seedu.address.model.person.StudentId;
  */
 public class MultipleDeleteCommandParser implements Parser<MultipleDeleteCommand> {
 
+    public static final String INVALID_INPUT_MESSAGE = "There needs to be at least one student id.";
+
     /**
      * Parses the given {@code String} of arguments in the context of the MultipleDeleteCommand
      * and returns a MultipleDeleteCommand object for execution.
@@ -23,14 +25,18 @@ public class MultipleDeleteCommandParser implements Parser<MultipleDeleteCommand
         requireNonNull(args);
         String trimmedUserInput = args.trim();
         if (trimmedUserInput.isEmpty()) {
-            throw new ParseException("There needs to be at least one student id.");
+            throw new ParseException(INVALID_INPUT_MESSAGE);
         }
         List<String> invalidStudentIdStrings = getInvalidStudentIds(trimmedUserInput);
+        // returns array of valid student ids
         StudentId[] studentIdsToRemove = ParserUtil.parseMultipleStudentIds(args);
         return new MultipleDeleteCommand(studentIdsToRemove, invalidStudentIdStrings);
     }
 
-    public List<String> getInvalidStudentIds(String input) {
+    /**
+     * Returns a list of all the invalid student id strings.
+     */
+    public static List<String> getInvalidStudentIds(String input) {
         assert !input.isEmpty() : "An error would have been thrown by MultipleDeleteCommand: parse";
         String[] studentIdStrings = ParserUtil.separateStringByComma(input);
         List<String> invalidStudentIdStrings = new LinkedList<>();

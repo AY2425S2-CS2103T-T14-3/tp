@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,23 +29,29 @@ public class MultipleDeleteCommand extends Command {
     private List<String> missingStudentStringsList = new LinkedList<>();
     private List<String> successfullyDeletedStudentStringsList = new LinkedList<>();
 
+    private DeleteCommand[] deleteCommandsToExecute;
+
     /**
      * Creates MultipleDeleteCommandObject.
      */
     public MultipleDeleteCommand(StudentId[] studentIdArray, List<String> invalidStudentIdStrings) {
         this.validStudentIdsToRemove = studentIdArray;
         this.invalidStudentIdStrings = invalidStudentIdStrings;
-    }
 
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
         int numStudentIdsToRemove = validStudentIdsToRemove.length;
-        DeleteCommand[] deleteCommandsToExecute = new DeleteCommand[numStudentIdsToRemove];
+        deleteCommandsToExecute = new DeleteCommand[numStudentIdsToRemove];
         for (int i = 0; i < numStudentIdsToRemove; i++) {
             StudentId studentIdToRemove = validStudentIdsToRemove[i];
             deleteCommandsToExecute[i] = new DeleteCommand(studentIdToRemove);
         }
+    }
 
+    public DeleteCommand[] getDeleteCommandsToExecute() {
+        return deleteCommandsToExecute;
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
         for (DeleteCommand deleteCommandToExecute : deleteCommandsToExecute) {
             handleDeleteCommandExecution(deleteCommandToExecute, model);
         }
@@ -60,7 +68,8 @@ public class MultipleDeleteCommand extends Command {
         return new CommandResult(message);
     }
 
-    public String getCombinedStringFromListOfString(List<String> stringList) {
+    public static String getCombinedStringFromListOfString(List<String> stringList) {
+        requireNonNull(stringList);
         String resultingString = "";
         int numStrings = stringList.size();
         for (int i = 0; i < numStrings; i++) {
