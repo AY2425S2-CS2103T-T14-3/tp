@@ -23,20 +23,20 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
-    private final NameContainsKeywordsPredicate name_predicate;
+    private final NameContainsKeywordsPredicate namePredicate;
 
-    private final StudentIdMatchPredicate id_predicate;
+    private final StudentIdMatchPredicate idPredicate;
 
     /**
-     * @param name_predicate predicate regarding the keywords in a student's name the user wants to find
-     * @param id_predicate predicate regarding the studentId the user wants to find
+     * @param namePredicate predicate regarding the keywords in a student's name the user wants to find
+     * @param idPredicate predicate regarding the studentId the user wants to find
      */
-    public FindCommand(NameContainsKeywordsPredicate name_predicate, StudentIdMatchPredicate id_predicate) {
-        if (name_predicate == null && id_predicate == null) {
+    public FindCommand(NameContainsKeywordsPredicate namePredicate, StudentIdMatchPredicate idPredicate) {
+        if (namePredicate == null && idPredicate == null) {
             throw new IllegalArgumentException("At least one predicate must be provided.");
         }
-        this.name_predicate = name_predicate;
-        this.id_predicate = id_predicate;
+        this.namePredicate = namePredicate;
+        this.idPredicate = idPredicate;
     }
 
     public FindCommand(NameContainsKeywordsPredicate predicate) {
@@ -50,10 +50,10 @@ public class FindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        if (id_predicate == null) {
-            model.updateFilteredPersonList(name_predicate);
+        if (idPredicate == null) {
+            model.updateFilteredPersonList(namePredicate);
         } else {
-            model.updateFilteredPersonList(id_predicate);
+            model.updateFilteredPersonList(idPredicate);
         }
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
@@ -71,23 +71,23 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        if (name_predicate == null) {
-            return otherFindCommand.name_predicate == null && otherFindCommand.id_predicate.equals(id_predicate);
+        if (namePredicate == null) {
+            return otherFindCommand.namePredicate == null && otherFindCommand.idPredicate.equals(idPredicate);
         } else {
-            return otherFindCommand.id_predicate == null && name_predicate.equals(otherFindCommand.name_predicate);
+            return otherFindCommand.idPredicate == null && namePredicate.equals(otherFindCommand.namePredicate);
         }
 
     }
 
     @Override
     public String toString() {
-        if (id_predicate == null) {
+        if (idPredicate == null) {
             return new ToStringBuilder(this)
-                    .add("name predicate", name_predicate)
+                    .add("name predicate", namePredicate)
                     .toString();
         } else {
             return new ToStringBuilder(this)
-                    .add("id predicate", id_predicate)
+                    .add("id predicate", idPredicate)
                     .toString();
         }
     }
