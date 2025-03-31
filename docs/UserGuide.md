@@ -2,9 +2,10 @@
 
 ## 📌 Table of Contents
 1. [✨ Introduction](#-introduction)
-2. [🛠 Installation](#-installation)
-3. [🚀 Getting Started](#-getting-started)
-4. [📚 Features](#-features)
+2. [👋 Quick Overview](#-quick-overview)
+3. [🛠 Installation](#-installation)
+4. [🚀 Getting Started](#-getting-started)
+5. [📚 Features](#-features)
     - [➕ Add Contact](#-feature-1-add-contact)
     - [❌ Delete Contact](#-feature-2-delete-contact)
     - [📜 List Contact](#-feature-3-list-contact)
@@ -12,15 +13,22 @@
     - [🔎 Search for Contact](#-feature-5-search-for-contact)
     - [🎯 Filter Contact](#-feature-6-filter-contact)
     - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
-5. [🛠 Troubleshooting](#-troubleshooting)
-6. [🤔 FAQs](#-faqs)
-7. [Command Summary](#command-summary)
-8. [📧 Contact Support](#-contact-support)
+6. [🛠 Troubleshooting](#-troubleshooting)
+7. [🤔 FAQs](#-faqs)
+8. [📝 Command Summary](#-command-summary)
+9. [📧 Contact Support](#-contact-support)
 
 ## ✨ Introduction
 Welcome to your new contact management system — **WhoDat**. This command-line based application aided with simple graphic 
 interface is designed for teaching assistants like YOU!\
 It will help keep your NUS students’ details organized so you don’t have to dig through Excel sheets at 3 AM. 🚀
+
+## 👋 Quick Overview
+First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
+
+* To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
+* If you need a compilation of the available commands, check out our [Command Summary](#command-summary).
+* Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
 
 ## 🛠 Installation
 1. **Download and install** the software like a pro. 💾
@@ -132,20 +140,26 @@ search Jane Doe
 
 ---
 ### 🎯 Feature 6: Filter Contact
-**🎯 Purpose:** Want to see only students from a specific tutorial class? This feature helps you organize your list. 🎯
+**🎯 Purpose:** Want to only see students from a specific tutorial class, or with a specific tag? You can use the filter command!
 
 **🔤 Command Format:**
 ```
-filter class
+filter classId
+```
+```
+filter tag
 ```
 
 **🖥 Example:**
 ```
-filter 14
+filter cs1231-05
+```
+```
+filter NeedsHelp
 ```
 
 💡 **Keep in mind:**
-- The class **must** be a number. If not, we’ll kindly remind you. 🚦
+- You can filter by class id or student tag, but not both! 🚦
 
 ---
 
@@ -184,7 +198,7 @@ m_delete A0272111H, A1234567G, A0123456F
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
 ---
-## Command Summary
+## 📝 Command Summary
 
 | Command             | Format, Examples                                                                                             |
 |---------------------|--------------------------------------------------------------------------------------------------------------|
