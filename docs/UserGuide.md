@@ -155,7 +155,7 @@ filter tag
 filter cs1231-05
 ```
 ```
-filter NeedsHelp
+filter NeedHelp
 ```
 
 💡 **Keep in mind:**
