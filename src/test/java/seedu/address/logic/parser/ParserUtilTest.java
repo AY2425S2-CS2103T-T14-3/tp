@@ -1,8 +1,11 @@
 package seedu.address.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.address.logic.parser.ParserUtil.parseMultipleStudentIds;
+import static seedu.address.logic.parser.ParserUtil.separateStringByComma;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -192,5 +195,103 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void test_splitStringByComma() {
+        String nullInput = null;
+        String[] expectedResult = null;
+        assertEquals(expectedResult, separateStringByComma(nullInput));
+
+        String emptyString = "";
+        expectedResult = new String[]{""};
+        assertArrayEquals(expectedResult, separateStringByComma(emptyString));
+
+        String stringWithNoComma = "hello";
+        expectedResult = new String[]{"hello"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithNoComma));
+
+        String stringWithCommaOnly = "hello,helloAgain";
+        expectedResult = new String[]{"hello", "helloAgain"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithCommaOnly));
+
+        String stringWithCommaAndSpacing = "hello, hello Hello";
+        expectedResult = new String[]{"hello", " hello Hello"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithCommaAndSpacing));
+    }
+
+    @Test
+    public void test_parseMultipleStudentIds_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> parseMultipleStudentIds(null));
+    }
+
+    @Test
+    public void test_parseMultipleStudentIds_returnsArrayOfStudentIds() throws ParseException {
+        String studentIdString1 = "A1234567H";
+        StudentId studentId1 = new StudentId(studentIdString1);
+        String studentIdString2 = "A7654321G";
+        StudentId studentId2 = new StudentId(studentIdString2);
+
+        // only one correct studentId, no spacing
+        StudentId[] actualResults = parseMultipleStudentIds(studentIdString1);
+        assertTrue(studentId1.equals(actualResults[0]));
+
+        // only one correct studentId, with spacing
+        String inputStudentIds = studentIdString1 + " ";
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        assertTrue(studentId1.equals(actualResults[0]));
+
+        // two correct inputStudentIds, without spacing, with comma
+        inputStudentIds = studentIdString1 + "," + studentIdString2;
+        StudentId[] expectedResults = new StudentId[]{studentId1, studentId2};
+        int numStudents = 2;
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        for (int i = 0; i < numStudents; i++) {
+            assertTrue(expectedResults[i].equals(actualResults[i]));
+        }
+
+        // two correct inputStudentIds, with spacing, with comma
+        inputStudentIds = studentIdString1 + " , " + studentIdString2;
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        for (int i = 0; i < numStudents; i++) {
+            assertTrue(expectedResults[i].equals(actualResults[i]));
+        }
+    }
+
+    @Test
+    public void test_parseMultipleStudentIds_throwsParseException() {
+        String incorrectStudentId = "A12345X";
+        String correctStudentId = "A1234567H";
+
+        // only one incorrect student id
+        String input = incorrectStudentId;
+        try {
+            parseMultipleStudentIds(input);
+        } catch (ParseException pe) {
+            String expectedErrorMessage = StudentId.MESSAGE_CONSTRAINTS;
+            String actualErrorMessage = pe.getMessage();
+            assertTrue(expectedErrorMessage.equals(actualErrorMessage));
+        }
+
+        // one incorrect and one correct student id
+        input = incorrectStudentId + "," + correctStudentId;
+        try {
+            parseMultipleStudentIds(input);
+        } catch (ParseException pe) {
+            String expectedErrorMessage = StudentId.MESSAGE_CONSTRAINTS;
+            String actualErrorMessage = pe.getMessage();
+            assertTrue(expectedErrorMessage.equals(actualErrorMessage));
+        }
+
+        // empty string
+        input = "";
+        try {
+            parseMultipleStudentIds(input);
+        } catch (ParseException pe) {
+            String expectedErrorMessage = StudentId.MESSAGE_CONSTRAINTS;
+            String actualErrorMessage = pe.getMessage();
+            assertTrue(expectedErrorMessage.equals(actualErrorMessage));
+        }
+
     }
 }

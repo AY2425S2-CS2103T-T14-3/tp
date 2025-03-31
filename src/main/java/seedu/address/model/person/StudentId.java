@@ -25,9 +25,9 @@ public class StudentId {
      * @param studentId A valid studentId number.
      */
     public StudentId(String studentId) {
+        requireNonNull(studentId);
         String trimmedStudentId = studentId.trim();
-        requireNonNull(trimmedStudentId);
-        checkArgument(isValidStudentId(studentId), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStudentId(trimmedStudentId), MESSAGE_CONSTRAINTS);
         value = studentId;
     }
 

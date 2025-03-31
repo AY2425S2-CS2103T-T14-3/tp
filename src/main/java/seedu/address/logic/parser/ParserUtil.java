@@ -118,6 +118,10 @@ public class ParserUtil {
      * Takes a comma-separated string and breaks it up into a {@code String[]}.
      */
     public static String[] separateStringByComma(String s) {
+        if (s == null) {
+            return null;
+        }
+
         String[] stringParts = s.split(",");
         return stringParts;
     }
