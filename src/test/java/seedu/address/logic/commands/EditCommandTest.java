@@ -11,7 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPersons.getTypicalWhoDat;
 import static seedu.address.testutil.TypicalStudentIds.STUDENT_ID_FIRST_PERSON;
 import static seedu.address.testutil.TypicalStudentIds.STUDENT_ID_SECOND_PERSON;
 
@@ -20,20 +20,21 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WhoDat;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.StudentId;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWhoDat(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -43,7 +44,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new WhoDat(model.getWhoDat()), new UserPrefs());
         Person firstPerson = EditCommand.findPersonByStudentId(model.getFilteredPersonList(),
                 STUDENT_ID_FIRST_PERSON.value);
         expectedModel.setPerson(firstPerson, editedPerson);
@@ -67,7 +68,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new WhoDat(model.getWhoDat()), new UserPrefs());
         expectedModel.setPerson(lastPerson, editedPerson);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -82,7 +83,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new WhoDat(model.getWhoDat()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -100,7 +101,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new WhoDat(model.getWhoDat()), new UserPrefs());
         expectedModel.setPerson(personInFilteredList, editedPerson);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -129,14 +130,14 @@ public class EditCommandTest {
     }
 
     /**
-     * Edit where student ID doesn't exist in filtered list but exists in address book
+     * Edit where student ID doesn't exist in filtered list but exists in contact list
      */
     @Test
     public void execute_invalidStudentIdFilteredList_failure() {
         showPersonAtIndex(model, Index.fromOneBased(1));
 
-        // Find a student ID that doesn't exist in the filtered list but exists in the address book
-        String studentIdOutsideFilteredList = model.getAddressBook().getPersonList().get(1).getStudentId().value;
+        // Find a student ID that doesn't exist in the filtered list but exists in the contact list
+        String studentIdOutsideFilteredList = model.getWhoDat().getPersonList().get(1).getStudentId().value;
         StudentId studentIdNotInFilteredList = new StudentId(studentIdOutsideFilteredList);
 
         EditCommand editCommand = new EditCommand(studentIdNotInFilteredList,
