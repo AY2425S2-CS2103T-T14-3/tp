@@ -1,11 +1,13 @@
 package seedu.address.logic.commands;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.StudentId;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Deletes multiple students using their student ids at the same time.
@@ -18,11 +20,16 @@ public class MultipleDeleteCommand extends Command {
     public static final String MISSING_STUDENTS_PREFIX = "Students not found(Student ID):";
     public static final String INVALID_STUDENTS_PREFIX = "Invalid Student ID(s):";
 
+    private static Logger logger = Logger.getLogger("Foo");
+
     private StudentId[] validStudentIdsToRemove;
     private List<String> invalidStudentIdStrings;
     private List<String> missingStudentStringsList = new LinkedList<>();
     private List<String> successfullyDeletedStudentStringsList = new LinkedList<>();
 
+    /**
+     * Creates MultipleDeleteCommandObject.
+     */
     public MultipleDeleteCommand(StudentId[] studentIdArray, List<String> invalidStudentIdStrings) {
         this.validStudentIdsToRemove = studentIdArray;
         this.invalidStudentIdStrings = invalidStudentIdStrings;
@@ -67,11 +74,16 @@ public class MultipleDeleteCommand extends Command {
         return resultingString;
     }
 
+    /**
+     * Executes delete command. If the delete command fails, it is handled here as well.
+     */
     public void handleDeleteCommandExecution(DeleteCommand deleteCommand, Model model) {
         try {
             deleteCommand.execute(model);
             StudentId successfullyDeletedStudent = deleteCommand.getStudentIdToDelete();
             String successfullyDeletedStudentString = successfullyDeletedStudent.toString();
+            String loggerMessage = "Deleted: " + successfullyDeletedStudentString;
+            logger.log(Level.INFO, loggerMessage);
             successfullyDeletedStudentStringsList.add(successfullyDeletedStudentString);
         } catch (CommandException ce) {
             StudentId missingStudentId = deleteCommand.getStudentIdToDelete();

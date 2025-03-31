@@ -1,13 +1,13 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.MultipleDeleteCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.StudentId;
+import static java.util.Objects.requireNonNull;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import seedu.address.logic.commands.MultipleDeleteCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.StudentId;
 
 /**
  * Parses arguments and creates MultipleDeleteCommand object.

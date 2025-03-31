@@ -145,8 +145,8 @@ public class ParserUtil {
     public static void updateStudentIdArray(StudentId[] arr, String studentIdString, int i) {
         int numStudents = arr.length;
         assert i < numStudents && i >= 0
-                : "Since the function call originates from the loop inside the function body of " +
-                "parseMultipleStudentIds, where i is a loop parameter, i is always within the array bounds.";
+                : "Since the function call originates from the loop inside the function body of "
+                + "parseMultipleStudentIds, where i is a loop parameter, i is always within the array bounds.";
         try {
             arr[i] = parseStudentId(studentIdString);
         } catch (ParseException | NullPointerException exception) {
