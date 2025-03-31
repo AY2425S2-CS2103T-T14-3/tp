@@ -14,10 +14,10 @@ Class UserPrefs
 
 Class UniquePersonList
 Class Person
-Class Address
-Class Email
+Class ClassId
+Class EmailId
 Class Name
-Class Phone
+Class StudentId
 Class Tag
 
 Class I #FFFFFF
@@ -38,17 +38,17 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 WhoDat *--> "1" UniquePersonList
 UniquePersonList --> "~* all" Person
 Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
+Person *--> StudentId
+Person *--> EmailId
+Person *--> ClassId
 Person *--> "*" Tag
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Name -[hidden]right-> StudentId
+StudentId -[hidden]right-> ClassId
+ClassId -[hidden]right-> EmailId
 
 ModelManager --> "~* filtered" Person
 @enduml
