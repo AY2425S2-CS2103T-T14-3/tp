@@ -27,7 +27,7 @@ It will help keep your NUS students’ details organized so you don’t have to 
 First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
 
 * To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
-* If you need a compilation of the available commands, check out our [Command Summary](#command-summary).
+* If you need a compilation of the available commands, check out our [Command Summary](#-command-summary).
 * Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
 
 ## 🛠 Installation
@@ -106,12 +106,12 @@ list
 
 **🔤 Command Format:**
 ```
-update StudentID field/new_value
+edit StudentID field/new_value
 ```
 
 **🖥 Example:**
 ```
-update A0272222H n/Xinyi
+edit A0272222H n/Xinyi
 ```
 
 🛠 **How to use:**
@@ -121,17 +121,17 @@ update A0272222H n/Xinyi
 
 
 ---
-### 🔎 Feature 5: Search for Contact
+### 🔎 Feature 5: Find Contact
 **🎯 Purpose:** Need to find a student’s details fast? Search by name! 🔍
 
 **🔤 Command Format:**
 ```
-search name
+find name
 ```
 
 **🖥 Example:**
 ```
-search Jane Doe
+find Jane Doe
 ```
 
 💡 **Cool Features:**
@@ -205,9 +205,9 @@ m_delete A0272111H, A1234567G, A0123456F
 | **Help**            | `help`                                                                                                       |
 | **Add**             | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
 | **Delete**          | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
-| **Multiple Delete** | `m_delete studentId1 studentId2` <br> e.g. `delete A1234567S`                                                |
+| **Multiple Delete** | `m_delete studentId1, studentId2` <br> e.g. `delete A1234567S, A0123456B`                                    |
 | **List**            | `list`                                                                                                       |
-| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                     |
+| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
 | **Filter**          | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
 | **Clear**           | `clear`                                                                                                      |
 | **Exit**            | `exit`                                                                                                       |
