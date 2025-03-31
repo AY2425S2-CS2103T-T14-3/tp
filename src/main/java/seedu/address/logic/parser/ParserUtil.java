@@ -100,6 +100,7 @@ public class ParserUtil {
     /**
      * Parses a {@code String studentIdsString} into a {@code StudentId[]}.
      * Leading and trailing whitespaces will be trimmed.
+     * The array returned contains only valid {@code StudentId} objects.
      */
     public static StudentId[] parseMultipleStudentIds(String studentIdsString) {
         requireNonNull(studentIdsString);
@@ -114,9 +115,10 @@ public class ParserUtil {
     }
 
     /**
-     * Removes null entries from the student id array.
+     * Removes null entries from the {@code StudentId[]}.
      */
     public static StudentId[] removeNullEntriesFromStudentIdArray(StudentId[] arr) {
+        requireNonNull(arr);
         int numNonNullEntries = 0;
         int arrayLength = arr.length;
         for (int i = 0; i < arrayLength; i++) {
@@ -147,7 +149,7 @@ public class ParserUtil {
                 "parseMultipleStudentIds, where i is a loop parameter, i is always within the array bounds.";
         try {
             arr[i] = parseStudentId(studentIdString);
-        } catch (ParseException pe) {
+        } catch (ParseException | NullPointerException exception) {
             arr[i] = null;
         }
     }

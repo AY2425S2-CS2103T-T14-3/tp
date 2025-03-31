@@ -35,7 +35,8 @@ public class StudentId {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidStudentId(String test) {
-        return test.matches(VALIDATION_REGEX);
+        String trimmedTestString = test.trim();
+        return trimmedTestString.matches(VALIDATION_REGEX);
     }
 
     @Override

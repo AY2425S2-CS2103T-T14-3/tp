@@ -40,6 +40,8 @@ public class StudentIdTest {
         // valid student id
         assertTrue(StudentId.isValidStudentId("A1234567B"));
         assertTrue(StudentId.isValidStudentId("A7654321F"));
+        assertTrue(StudentId.isValidStudentId(" A7654321F"));
+        assertTrue(StudentId.isValidStudentId("A7654321F "));
     }
 
     @Test
