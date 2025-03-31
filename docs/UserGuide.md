@@ -10,7 +10,7 @@
     - [❌ Delete Contact](#-feature-2-delete-contact)
     - [📜 List Contact](#-feature-3-list-contact)
     - [📝 Update/Edit Contact](#-feature-4-updateedit-contact)
-    - [🔎 Search for Contact](#-feature-5-search-for-contact)
+    - [🔎 Find Contact](#-feature-5-find-contact)
     - [🎯 Filter Contact](#-feature-6-filter-contact)
     - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
 6. [🛠 Troubleshooting](#-troubleshooting)
