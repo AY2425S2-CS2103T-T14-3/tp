@@ -14,7 +14,8 @@
     - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
 5. [🛠 Troubleshooting](#-troubleshooting)
 6. [🤔 FAQs](#-faqs)
-7. [📧 Contact Support](#-contact-support)
+7. [Command Summary](#command-summary)
+8. [📧 Contact Support](#-contact-support)
 
 ## ✨ Introduction
 Welcome to your new contact management system — **WhoDat**. This command-line based application aided with simple graphic 
@@ -26,7 +27,7 @@ It will help keep your NUS students’ details organized so you don’t have to 
 2. **Run the program** and feel the power. ⚡
 
 ## 🚀 Getting Started
-1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.3 🔥
+1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 2. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
 ```shell
     cd ~/Downloads
@@ -181,6 +182,21 @@ m_delete A0272111H, A1234567G, A0123456F
 
 ❓ **Q: Can I update any field?**  
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
+
+---
+## Command Summary
+
+| Command             | Format, Examples                                                                                             |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Help**            | `help`                                                                                                       |
+| **Add**             | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
+| **Delete**          | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Multiple Delete** | `m_delete studentId1 studentId2` <br> e.g. `delete A1234567S`                                                |
+| **List**            | `list`                                                                                                       |
+| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                     |
+| **Filter**          | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
+| **Clear**           | `clear`                                                                                                      |
+| **Exit**            | `exit`                                                                                                       |
 
 ---
 ## 📧 Contact Support
