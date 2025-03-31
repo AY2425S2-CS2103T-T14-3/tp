@@ -14,8 +14,13 @@ public class MultipleDeleteCommandParser implements Parser<MultipleDeleteCommand
      * and returns a MultipleDeleteCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public MultipleDeleteCommand parse(String userInput) throws ParseException {
-        StudentId[] studentIdsToRemove = ParserUtil.parseMultipleStudentIds(userInput);
+    public MultipleDeleteCommand parse(String args) throws ParseException {
+        assert args != null : "The  input is a substring of the original input.";
+        String trimmedUserInput = args.trim();
+        if (trimmedUserInput.isEmpty()) {
+            throw new ParseException("There needs to be at least one student id.");
+        }
+        StudentId[] studentIdsToRemove = ParserUtil.parseMultipleStudentIds(args);
         return new MultipleDeleteCommand(studentIdsToRemove);
     }
 
