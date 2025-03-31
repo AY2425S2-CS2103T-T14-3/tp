@@ -2,31 +2,40 @@
 
 ## 📌 Table of Contents
 1. [✨ Introduction](#-introduction)
-2. [🛠 Installation](#-installation)
-3. [🚀 Getting Started](#-getting-started)
-4. [📚 Features](#-features)
+2. [👋 Quick Overview](#-quick-overview)
+3. [🛠 Installation](#-installation)
+4. [🚀 Getting Started](#-getting-started)
+5. [📚 Features](#-features)
     - [➕ Add Contact](#-feature-1-add-contact)
     - [❌ Delete Contact](#-feature-2-delete-contact)
     - [📜 List Contact](#-feature-3-list-contact)
     - [📝 Update/Edit Contact](#-feature-4-updateedit-contact)
-    - [🔎 Search for Contact](#-feature-5-search-for-contact)
+    - [🔎 Find Contact](#-feature-5-find-contact)
     - [🎯 Filter Contact](#-feature-6-filter-contact)
     - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
-5. [🛠 Troubleshooting](#-troubleshooting)
-6. [🤔 FAQs](#-faqs)
-7. [📧 Contact Support](#-contact-support)
+6. [🛠 Troubleshooting](#-troubleshooting)
+7. [🤔 FAQs](#-faqs)
+8. [📝 Command Summary](#-command-summary)
+9. [📧 Contact Support](#-contact-support)
 
 ## ✨ Introduction
 Welcome to your new contact management system — **WhoDat**. This command-line based application aided with simple graphic 
 interface is designed for teaching assistants like YOU!\
 It will help keep your NUS students’ details organized so you don’t have to dig through Excel sheets at 3 AM. 🚀
 
+## 👋 Quick Overview
+First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
+
+* To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
+* If you need a compilation of the available commands, check out our [Command Summary](#-command-summary).
+* Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
+
 ## 🛠 Installation
 1. **Download and install** the software like a pro. 💾
 2. **Run the program** and feel the power. ⚡
 
 ## 🚀 Getting Started
-1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.3 🔥
+1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 2. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
 ```shell
     cd ~/Downloads
@@ -97,12 +106,12 @@ list
 
 **🔤 Command Format:**
 ```
-update StudentID field/new_value
+edit StudentID field/new_value
 ```
 
 **🖥 Example:**
 ```
-update A0272222H n/Xinyi
+edit A0272222H n/Xinyi
 ```
 
 🛠 **How to use:**
@@ -112,17 +121,17 @@ update A0272222H n/Xinyi
 
 
 ---
-### 🔎 Feature 5: Search for Contact
+### 🔎 Feature 5: Find Contact
 **🎯 Purpose:** Need to find a student’s details fast? Search by name! 🔍
 
 **🔤 Command Format:**
 ```
-search name
+find name
 ```
 
 **🖥 Example:**
 ```
-search Jane Doe
+find Jane Doe
 ```
 
 💡 **Cool Features:**
@@ -131,20 +140,26 @@ search Jane Doe
 
 ---
 ### 🎯 Feature 6: Filter Contact
-**🎯 Purpose:** Want to see only students from a specific tutorial class? This feature helps you organize your list. 🎯
+**🎯 Purpose:** Want to only see students from a specific tutorial class, or with a specific tag? You can use the filter command!
 
 **🔤 Command Format:**
 ```
-filter class
+filter classId
+```
+```
+filter tag
 ```
 
 **🖥 Example:**
 ```
-filter 14
+filter cs1231-05
+```
+```
+filter NeedHelp
 ```
 
 💡 **Keep in mind:**
-- The class **must** be a number. If not, we’ll kindly remind you. 🚦
+- You can filter by class id or student tag, but not both! 🚦
 
 ---
 
@@ -181,6 +196,21 @@ m_delete A0272111H, A1234567G, A0123456F
 
 ❓ **Q: Can I update any field?**  
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
+
+---
+## 📝 Command Summary
+
+| Command             | Format, Examples                                                                                             |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Help**            | `help`                                                                                                       |
+| **Add**             | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
+| **Delete**          | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Multiple Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
+| **List**            | `list`                                                                                                       |
+| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
+| **Filter**          | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
+| **Clear**           | `clear`                                                                                                      |
+| **Exit**            | `exit`                                                                                                       |
 
 ---
 ## 📧 Contact Support
