@@ -6,7 +6,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
 /**
- * Tests that a {@code Person}'s {@code ClassId} matches the given class id.
+ * Tests that a {@code Person}'s {@code Tag} matches the given class id.
  */
 public class StudentHasSameTagPredicate implements Predicate<Person> {
     private final Tag tag;
