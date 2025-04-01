@@ -8,11 +8,11 @@
 5. [📚 Features](#-features)
     - [➕ Add Contact](#-feature-1-add-contact)
     - [❌ Delete Contact](#-feature-2-delete-contact)
+    - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
     - [📜 List Contact](#-feature-3-list-contact)
     - [📝 Update/Edit Contact](#-feature-4-updateedit-contact)
     - [🔎 Find Contact](#-feature-5-find-contact)
     - [🎯 Filter Contact](#-feature-6-filter-contact)
-    - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
 6. [🛠 Troubleshooting](#-troubleshooting)
 7. [🤔 FAQs](#-faqs)
 8. [📝 Command Summary](#-command-summary)
@@ -90,7 +90,26 @@ delete A0272111H
 - If the ID **doesn’t exist**, we’ll let you know—because deleting a ghost isn’t possible. 👻
 
 ---
-### 📜 Feature 3: List Contact
+### ❌❌ Feature 3: Mass Delete Contacts
+**🎯 Purpose:** Remove multiple students at one go. 🗑
+
+**🔤 Command Format:**
+```
+m_delete ID1, ID2, ...
+```
+
+**🖥 Example:**
+```
+m_delete A0272111H, A1234567G, A0123456F
+```
+
+🛑 **What to expect:**
+- If all the student IDs exist, all of them are **gone for good**.
+- If some of the student IDs **don’t exist**, we will delete only those that actually exist.
+- If the student ids are not comma-separated or are invalid, we will let you know!
+
+---
+### 📜 Feature 4: List Contact
 **🎯 Purpose:** Want a bird’s-eye view of all your students? Use this to list all stored contacts. 🦅
 
 **🔤 Command Format:**
@@ -101,7 +120,7 @@ list
 💡 **Bonus:** If you accidentally type something extra, don’t worry—we’ll still show the list and gently correct you. 🤗
 
 ---
-### 📝 Feature 4: Update/Edit Contact
+### 📝 Feature 5: Update/Edit Contact
 **🎯 Purpose:** Mistakes are meant to be made. So are typos. No problem—this feature lets you update any information easily. 🔄
 
 **🔤 Command Format:**
@@ -121,7 +140,7 @@ edit A0272222H n/Xinyi
 
 
 ---
-### 🔎 Feature 5: Find Contact
+### 🔎 Feature 6: Find Contact
 **🎯 Purpose:** Need to find a student’s details fast? Search by name! 🔍
 
 **🔤 Command Format:**
@@ -139,7 +158,7 @@ find Jane Doe
 - Partial matches work—so even if you only remember "Jane," you’re good. 🧠
 
 ---
-### 🎯 Feature 6: Filter Contact
+### 🎯 Feature 7: Filter Contact
 **🎯 Purpose:** Want to only see students from a specific tutorial class, or with a specific tag? You can use the filter command!
 
 **🔤 Command Format:**
@@ -160,25 +179,6 @@ filter NeedHelp
 
 💡 **Keep in mind:**
 - You can filter by class id or student tag, but not both! 🚦
-
----
-
-### ❌❌ Feature 7: Mass Delete Contacts
-**🎯 Purpose:** Remove multiple students at one go. 🗑
-
-**🔤 Command Format:**
-```
-m_delete ID1, ID2, ...
-```
-
-**🖥 Example:**
-```
-m_delete A0272111H, A1234567G, A0123456F
-```
-
-🛑 **What to expect:**
-- If all the student IDs exist, all of them are **gone forever**.
-- If some of the student IDs **don’t exist**, we’ll delete only those that actually exist.
 
 ---
 
