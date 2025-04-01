@@ -7,10 +7,10 @@ import seedu.address.commons.util.ToStringBuilder;
 /**
  * Tests that a {@code Person}'s {@code ClassId} matches the given class id.
  */
-public class StudentHasSameIdPredicate implements Predicate<Person> {
+public class StudentHasSameClassIdPredicate implements Predicate<Person> {
     private final String classId;
 
-    public StudentHasSameIdPredicate(String classId) {
+    public StudentHasSameClassIdPredicate(String classId) {
         this.classId = classId.toLowerCase();
     }
 
@@ -28,12 +28,12 @@ public class StudentHasSameIdPredicate implements Predicate<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof StudentHasSameIdPredicate)) {
+        if (!(other instanceof StudentHasSameClassIdPredicate)) {
             return false;
         }
 
-        StudentHasSameIdPredicate otherStudentHasSameIdPredicate = (StudentHasSameIdPredicate) other;
-        return classId.equals(otherStudentHasSameIdPredicate.classId);
+        StudentHasSameClassIdPredicate otherStudentHasSameClassIdPredicate = (StudentHasSameClassIdPredicate) other;
+        return classId.equals(otherStudentHasSameClassIdPredicate.classId);
     }
 
     @Override

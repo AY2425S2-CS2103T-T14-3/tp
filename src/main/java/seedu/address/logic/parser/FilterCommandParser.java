@@ -4,7 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.StudentHasSameIdPredicate;
+import seedu.address.model.person.StudentHasSameClassIdPredicate;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
@@ -19,7 +19,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
     public FilterCommand parse(String args) throws ParseException {
         try {
             String classId = ParserUtil.parseClassId(args).value;
-            return new FilterCommand(new StudentHasSameIdPredicate(classId));
+            return new FilterCommand(new StudentHasSameClassIdPredicate(classId));
         } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));

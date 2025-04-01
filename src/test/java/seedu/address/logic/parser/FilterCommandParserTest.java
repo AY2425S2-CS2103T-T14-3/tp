@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FilterCommand;
-import seedu.address.model.person.StudentHasSameIdPredicate;
+import seedu.address.model.person.StudentHasSameClassIdPredicate;
 
 public class FilterCommandParserTest {
 
@@ -22,7 +22,7 @@ public class FilterCommandParserTest {
     public void parse_validArgs_returnsFilterCommand() {
         String validClassId = "CS323019";
         FilterCommand expectedFilterCommand =
-                new FilterCommand(new StudentHasSameIdPredicate(validClassId));
+                new FilterCommand(new StudentHasSameClassIdPredicate(validClassId));
         // class id's match
         assertParseSuccess(parser, "CS323019", expectedFilterCommand);
 

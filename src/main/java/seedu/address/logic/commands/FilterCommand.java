@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.StudentHasSameIdPredicate;
+import seedu.address.model.person.StudentHasSameClassIdPredicate;
 
 /**
  * Filters the students based on their class id.
@@ -14,14 +14,15 @@ public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters the students based on the given "
-            + "class id (case-insensitive) and displays them as a list.\n"
-            + "Parameters: classId\n"
-            + "Example: " + COMMAND_WORD + " CS1101S03";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters and lists the students based on the given "
+            + "class id OR tag (case-insensitive)\n"
+            + "Parameters: classId OR tag\n"
+            + "Example: " + COMMAND_WORD + " CS1101S03\n"
+            + "Example: " + COMMAND_WORD + " NeedHelp\n";
 
-    private final StudentHasSameIdPredicate predicate;
+    private final StudentHasSameClassIdPredicate predicate;
 
-    public FilterCommand(StudentHasSameIdPredicate predicate) {
+    public FilterCommand(StudentHasSameClassIdPredicate predicate) {
         this.predicate = predicate;
     }
 

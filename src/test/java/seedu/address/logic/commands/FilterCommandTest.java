@@ -15,7 +15,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.StudentHasSameIdPredicate;
+import seedu.address.model.person.StudentHasSameClassIdPredicate;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -27,8 +27,8 @@ public class FilterCommandTest {
 
     @Test
     public void equals() {
-        StudentHasSameIdPredicate firstPredicate = new StudentHasSameIdPredicate("CS1101S03");
-        StudentHasSameIdPredicate secondPredicate = new StudentHasSameIdPredicate("CS2040S");
+        StudentHasSameClassIdPredicate firstPredicate = new StudentHasSameClassIdPredicate("CS1101S03");
+        StudentHasSameClassIdPredicate secondPredicate = new StudentHasSameClassIdPredicate("CS2040S");
 
         FilterCommand filterFirstCommand = new FilterCommand(firstPredicate);
         FilterCommand filterSecondCommand = new FilterCommand(secondPredicate);
@@ -54,7 +54,7 @@ public class FilterCommandTest {
     public void execute_emptyId_noIdFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         // A class id that doesn't exist
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("");
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate("");
         FilterCommand command = new FilterCommand(predicate);
         expectedModel.updateFilteredPersonList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -64,7 +64,7 @@ public class FilterCommandTest {
     @Test
     public void execute_oneId_twoPersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS210501");
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate("CS210501");
         Person james = new PersonBuilder().withName("James").withStudentId("A7777777F")
                 .withEmailId("E1230495").withClassId("CS210501").build();
         Person raj = new PersonBuilder().withName("Rajaratnam").withStudentId("A4444444G")
@@ -83,7 +83,7 @@ public class FilterCommandTest {
 
     @Test
     public void toStringMethod() {
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate(("CS210605"));
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate(("CS210605"));
         FilterCommand filterCommand = new FilterCommand(predicate);
         String expected = FilterCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, filterCommand.toString());

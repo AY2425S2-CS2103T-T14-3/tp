@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
-public class StudentHasSameIdPredicateTest {
+public class StudentHasSameClassIdPredicateTest {
 
     @Test
     public void equals() {
         // Same class id -> returns true
-        StudentHasSameIdPredicate firstPredicate = new StudentHasSameIdPredicate("CS323019");
-        StudentHasSameIdPredicate secondPredicate = new StudentHasSameIdPredicate("CS323019");
+        StudentHasSameClassIdPredicate firstPredicate = new StudentHasSameClassIdPredicate("CS323019");
+        StudentHasSameClassIdPredicate secondPredicate = new StudentHasSameClassIdPredicate("CS323019");
         assertTrue(firstPredicate.equals(secondPredicate));
 
         // different class ids -> returns false
-        StudentHasSameIdPredicate thirdPredicate = new StudentHasSameIdPredicate("CS1101S");
+        StudentHasSameClassIdPredicate thirdPredicate = new StudentHasSameClassIdPredicate("CS1101S");
         assertFalse(firstPredicate.equals(thirdPredicate));
 
         // different types -> returns false
@@ -31,29 +31,29 @@ public class StudentHasSameIdPredicateTest {
     @Test
     public void test_classIdMatches_returnsTrue() {
         // matching class ids
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS323019");
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate("CS323019");
         assertTrue(predicate.test(new PersonBuilder().withClassId("CS323019").build()));
 
         // matching class ids but with different case
-        predicate = new StudentHasSameIdPredicate("cs323019");
+        predicate = new StudentHasSameClassIdPredicate("cs323019");
         assertTrue(predicate.test(new PersonBuilder().withClassId("CS323019").build()));
     }
 
     @Test
     public void test_classIdDoesNotMatch_returnsFalse() {
         // non-matching class ids
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS323019");
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate("CS323019");
         assertFalse(predicate.test(new PersonBuilder().withClassId("CS1101S").build()));
 
         // non-matching with different case
-        predicate = new StudentHasSameIdPredicate("CS323019");
+        predicate = new StudentHasSameClassIdPredicate("CS323019");
         assertFalse(predicate.test(new PersonBuilder().withClassId("cs1101s").build()));
     }
 
     @Test
     public void toStringMethod() {
-        StudentHasSameIdPredicate predicate = new StudentHasSameIdPredicate("CS323019");
-        String expected = StudentHasSameIdPredicate.class.getCanonicalName() + "{classId=cs323019}";
+        StudentHasSameClassIdPredicate predicate = new StudentHasSameClassIdPredicate("CS323019");
+        String expected = StudentHasSameClassIdPredicate.class.getCanonicalName() + "{classId=cs323019}";
         assertEquals(expected, predicate.toString());
     }
 }
