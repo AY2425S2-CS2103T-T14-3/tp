@@ -67,8 +67,11 @@ public class WhoDatParser {
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
-        case FilterCommand.COMMAND_WORD:
-            return new FilterCommandParser().parse(arguments);
+        case FilterCommand.COMMAND_WORD_CLASS:
+            return new FilterCommandParser().parse(arguments + FilterCommandParser.SUFFIX_FILTER_BY_CLASS);
+
+        case FilterCommand.COMMAND_WORD_TAG:
+            return new FilterCommandParser().parse(arguments + FilterCommandParser.SUFFIX_FILTER_BY_TAG);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
