@@ -1,8 +1,11 @@
 package seedu.address.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.address.logic.parser.ParserUtil.parseMultipleStudentIds;
+import static seedu.address.logic.parser.ParserUtil.separateStringByComma;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -193,4 +196,87 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    @Test
+    public void test_splitStringByComma() {
+        String nullInput = null;
+        String[] expectedResult = null;
+        assertEquals(expectedResult, separateStringByComma(nullInput));
+
+        String emptyString = "";
+        expectedResult = new String[]{""};
+        assertArrayEquals(expectedResult, separateStringByComma(emptyString));
+
+        String stringWithNoComma = "hello";
+        expectedResult = new String[]{"hello"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithNoComma));
+
+        String stringWithCommaOnly = "hello,helloAgain";
+        expectedResult = new String[]{"hello", "helloAgain"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithCommaOnly));
+
+        String stringWithCommaAndSpacing = "hello, hello Hello";
+        expectedResult = new String[]{"hello", " hello Hello"};
+        assertArrayEquals(expectedResult, separateStringByComma(stringWithCommaAndSpacing));
+    }
+
+    @Test
+    public void test_parseMultipleStudentIds_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> parseMultipleStudentIds(null));
+    }
+
+    @Test
+    public void test_parseMultipleStudentIds_returnsArrayOfStudentIds() {
+        String correctStudentIdString1 = "A1234567H";
+        StudentId correctStudentId1 = new StudentId(correctStudentIdString1);
+        String correctStudentIdString2 = "A7654321G";
+        StudentId correctStudentId2 = new StudentId(correctStudentIdString2);
+
+        String incorrectStudentIdString1 = "A1256";
+        String incorrectStudentIdString2 = "a1234567H";
+
+        // only one correct studentId, no spacing
+        StudentId[] actualResults = parseMultipleStudentIds(correctStudentIdString1);
+        assertTrue(actualResults.length == 1);
+        assertTrue(correctStudentId1.equals(actualResults[0]));
+
+        // only one correct studentId, with spacing
+        String inputStudentIds = correctStudentIdString1 + " ";
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        assertTrue(actualResults.length == 1);
+        assertTrue(correctStudentId1.equals(actualResults[0]));
+
+        // two correct inputStudentIds, without spacing, with comma
+        inputStudentIds = correctStudentIdString1 + "," + correctStudentIdString2;
+        StudentId[] expectedResults = new StudentId[]{correctStudentId1, correctStudentId2};
+        test_driver(expectedResults, inputStudentIds);
+
+        // two correct inputStudentIds, with spacing, with comma
+        inputStudentIds = correctStudentIdString1 + ", " + correctStudentIdString2;
+        expectedResults = new StudentId[]{correctStudentId1, correctStudentId2};
+        test_driver(expectedResults, inputStudentIds);
+
+        // one correct inputStudentId, one incorrect inputStudentId, without spacing
+        inputStudentIds = correctStudentIdString1 + "," + incorrectStudentIdString1;
+        expectedResults = new StudentId[]{correctStudentId1};
+        test_driver(expectedResults, inputStudentIds);
+
+        // two incorrect inputStudentIds, without spacing
+        inputStudentIds = incorrectStudentIdString1 + "," + incorrectStudentIdString2;
+        expectedResults = new StudentId[]{};
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        assertTrue(expectedResults.length == actualResults.length);
+    }
+
+    private static void test_driver(StudentId[] expectedResults, String inputStudentIds) {
+        int numStudents;
+        StudentId[] actualResults;
+        numStudents = expectedResults.length;
+        actualResults = parseMultipleStudentIds(inputStudentIds);
+        assertTrue(expectedResults.length == actualResults.length);
+        for (int i = 0; i < numStudents; i++) {
+            assertTrue(expectedResults[i].equals(actualResults[i]));
+        }
+    }
+
 }

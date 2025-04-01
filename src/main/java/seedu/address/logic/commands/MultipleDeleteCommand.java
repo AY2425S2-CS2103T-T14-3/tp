@@ -1,5 +1,12 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.StudentId;
@@ -9,34 +16,89 @@ import seedu.address.model.person.StudentId;
  */
 public class MultipleDeleteCommand extends Command {
 
-    // need to add tests as well
-
     public static final String COMMAND_WORD = "m_delete";
 
-    // need to change message
-    public static final String MESSAGE_SUCCESS = "All persons deleted successfully.";
+    public static final String SUCCESSFULLY_DELETED_STUDENTS_PREFIX = "Deleted Students(Student ID):";
+    public static final String MISSING_STUDENTS_PREFIX = "Students not found(Student ID):";
+    public static final String INVALID_STUDENTS_PREFIX = "Invalid Student ID(s):";
 
-    private StudentId[] studentIdsToRemove;
+    private static Logger logger = Logger.getLogger("Foo");
 
-    public MultipleDeleteCommand(StudentId[] studentIdArray) {
-        this.studentIdsToRemove = studentIdArray;
+    private StudentId[] validStudentIdsToRemove;
+    private List<String> invalidStudentIdStrings;
+    private List<String> missingStudentStringsList = new LinkedList<>();
+    private List<String> successfullyDeletedStudentStringsList = new LinkedList<>();
+
+    private DeleteCommand[] deleteCommandsToExecute;
+
+    /**
+     * Creates MultipleDeleteCommandObject.
+     */
+    public MultipleDeleteCommand(StudentId[] studentIdArray, List<String> invalidStudentIdStrings) {
+        this.validStudentIdsToRemove = studentIdArray;
+        this.invalidStudentIdStrings = invalidStudentIdStrings;
+
+        int numStudentIdsToRemove = validStudentIdsToRemove.length;
+        deleteCommandsToExecute = new DeleteCommand[numStudentIdsToRemove];
+        for (int i = 0; i < numStudentIdsToRemove; i++) {
+            StudentId studentIdToRemove = validStudentIdsToRemove[i];
+            deleteCommandsToExecute[i] = new DeleteCommand(studentIdToRemove);
+        }
+    }
+
+    public DeleteCommand[] getDeleteCommandsToExecute() {
+        return deleteCommandsToExecute;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        // need to polish this
-        int numStudentIdsToRemove = studentIdsToRemove.length;
-        DeleteCommand[] deleteCommandsToExecute = new DeleteCommand[numStudentIdsToRemove];
-        for (int i = 0; i < numStudentIdsToRemove; i++) {
-            StudentId studentIdToRemove = studentIdsToRemove[i];
-            deleteCommandsToExecute[i] = new DeleteCommand(studentIdToRemove);
-        }
-
         for (DeleteCommand deleteCommandToExecute : deleteCommandsToExecute) {
-            deleteCommandToExecute.execute(model);
+            handleDeleteCommandExecution(deleteCommandToExecute, model);
         }
 
-        return new CommandResult(MESSAGE_SUCCESS);
+        String successfullyDeletedStudentsString =
+                getCombinedStringFromListOfString(successfullyDeletedStudentStringsList);
+        String missingStudentsString = getCombinedStringFromListOfString(missingStudentStringsList);
+        String invalidStudentString = getCombinedStringFromListOfString(invalidStudentIdStrings);
+
+        String message = SUCCESSFULLY_DELETED_STUDENTS_PREFIX + successfullyDeletedStudentsString + "\n"
+                + MISSING_STUDENTS_PREFIX + missingStudentsString + "\n"
+                + INVALID_STUDENTS_PREFIX + invalidStudentString;
+
+        return new CommandResult(message);
+    }
+
+    public static String getCombinedStringFromListOfString(List<String> stringList) {
+        requireNonNull(stringList);
+        String resultingString = "";
+        int numStrings = stringList.size();
+        for (int i = 0; i < numStrings; i++) {
+            String s = stringList.get(i);
+            if (i == numStrings - 1) {
+                resultingString += s;
+            } else {
+                resultingString += (s + ", ");
+            }
+        }
+        return resultingString;
+    }
+
+    /**
+     * Executes delete command. If the delete command fails, it is handled here as well.
+     */
+    public void handleDeleteCommandExecution(DeleteCommand deleteCommand, Model model) {
+        try {
+            deleteCommand.execute(model);
+            StudentId successfullyDeletedStudent = deleteCommand.getStudentIdToDelete();
+            String successfullyDeletedStudentString = successfullyDeletedStudent.toString();
+            String loggerMessage = "Deleted: " + successfullyDeletedStudentString;
+            logger.log(Level.INFO, loggerMessage);
+            successfullyDeletedStudentStringsList.add(successfullyDeletedStudentString);
+        } catch (CommandException ce) {
+            StudentId missingStudentId = deleteCommand.getStudentIdToDelete();
+            String missingStudentIdString = missingStudentId.toString();
+            missingStudentStringsList.add(missingStudentIdString);
+        }
     }
 
 }
