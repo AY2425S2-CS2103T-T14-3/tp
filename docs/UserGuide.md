@@ -72,11 +72,13 @@ add n/Lin Xinyi i/A0277024H e/E1136951 c/110103
 💡 **How it works:**
 - **Name:** English alphabets only (no special characters or numbers) and we have made it **_case-insensitive_**, and it
 will be automatically formatted to ```Title Case```. ✨
-- **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X). Strict, but it keeps things neat. 🔐
+- **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X).  🔐
 - **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because we're nice like that). 📧
 - **Class:** Simple as how you remember, formatted as _[course code]-[tutorial number]_ (e.g. CS1101-03 for CS1101, Tutorial 03). 😎
 
 🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
+
+❕**Case Sensitivity:** `ClassId`, `StudentId` and `NUSNETId` are **_case-sensitive_**, while `Name` is not. 
 
 ---
 ### ❌ Feature 2: Delete Contact
