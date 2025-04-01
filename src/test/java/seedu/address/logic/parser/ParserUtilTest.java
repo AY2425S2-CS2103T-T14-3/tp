@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.ParserUtil.parseMultipleStudentIds;
 import static seedu.address.logic.parser.ParserUtil.removeNullEntriesFromStudentIdArray;
 import static seedu.address.logic.parser.ParserUtil.separateStringByComma;
-import static seedu.address.logic.parser.ParserUtil.updateStudentIdArray;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 

@@ -17,13 +17,13 @@ import seedu.address.model.person.StudentId;
 public class MultipleDeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "m_delete";
+    public static final String MESSAGE_USAGE = "Check the following:\n"
+            + "1. All student ids are comma-separated. \n"
+            + "2. Student ids follow the format: AxxxxxxxX, where x is a number and X is a capitalised letter.";
 
     private static final String SUCCESSFULLY_DELETED_STUDENTS_PREFIX = "Deleted Students(Student ID): ";
     private static final String MISSING_STUDENTS_PREFIX = "Students not found(Student ID): ";
     private static final String INVALID_STUDENTS_PREFIX = "Invalid Student ID(s): ";
-    public static final String MESSAGE_USAGE = "Check the following:\n"
-            + "1. All student ids are comma-separated. \n"
-            + "2. Student ids follow the format: AxxxxxxxX, where x is a number and X is a capitalised letter.";
 
     private static Logger logger = Logger.getLogger("Foo");
 
