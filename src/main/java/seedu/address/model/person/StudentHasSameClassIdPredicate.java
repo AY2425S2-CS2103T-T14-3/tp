@@ -8,17 +8,17 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code ClassId} matches the given class id.
  */
 public class StudentHasSameClassIdPredicate implements Predicate<Person> {
-    private final String classId;
+    private final ClassId classId;
 
-    public StudentHasSameClassIdPredicate(String classId) {
-        this.classId = classId.toLowerCase();
+    public StudentHasSameClassIdPredicate(ClassId classId) {
+        this.classId = classId;
     }
 
     @Override
     public boolean test(Person person) {
-        String idToTest = person.getClassId().value.toLowerCase();
-        String classIdCopy = classId.toLowerCase();
-        return classIdCopy.equals(idToTest);
+        String currentValue = classId.toString().toLowerCase();
+        String valueToTest = person.getClassId().toString().toLowerCase();
+        return currentValue.equals(valueToTest);
     }
 
     @Override

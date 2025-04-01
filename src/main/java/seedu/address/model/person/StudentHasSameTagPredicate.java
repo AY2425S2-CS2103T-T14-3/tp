@@ -3,22 +3,23 @@ package seedu.address.model.person;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.tag.Tag;
 
 /**
  * Tests that a {@code Person}'s {@code ClassId} matches the given class id.
  */
 public class StudentHasSameTagPredicate implements Predicate<Person> {
-    private final String tag;
+    private final Tag tag;
 
-    public StudentHasSameTagPredicate(String tag) {
-        this.tag = tag.toLowerCase();
+    public StudentHasSameTagPredicate(Tag tag) {
+        this.tag = tag;
     }
 
     @Override
     public boolean test(Person person) {
-        String tagToTest = person.getClassId().value.toLowerCase();
-        String tagCopy = tag.toLowerCase();
-        return tagCopy.equals(tagToTest);
+        String searchTag = tag.toString().toLowerCase();
+        return person.getTags().stream()
+                .anyMatch(t -> t.toString().toLowerCase().equals(searchTag));
     }
 
     @Override
