@@ -17,11 +17,18 @@
 7. [🤔 FAQs](#-faqs)
 8. [📝 Command Summary](#-command-summary)
 9. [📧 Contact Support](#-contact-support)
-
 ## ✨ Introduction
-Welcome to your new contact management system — **WhoDat**. This command-line based application aided with simple graphic 
-interface is designed for teaching assistants like YOU!\
-It will help keep your NUS students’ details organized so you don’t have to dig through Excel sheets at 3 AM. 🚀
+Welcome to **WhoDat**, the **fastest way** for NUS SoC teaching assistants to manage student contacts! 🎓
+Designed for **fast typists**, WhoDat lets you **find students grouped by tags and classes effortlessly** with just a 
+few keystrokes. 
+
+Say goodbye to: \
+❌ slow, cluttered spreadsheets that take too much procrastination to set up\
+—now you can \
+✅ **add and retrieve student details in seconds** 🚀
+
+With a **minimalist graphic interface**, WhoDat ensures that your contact management is **efficient, distraction-free, 
+and perfectly suited for busy student tutors like you**.
 
 ## 👋 Quick Overview
 First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
@@ -67,9 +74,9 @@ add n/Lin Xinyi i/A0277024H e/E1136951 c/110103
 will be automatically formatted to ```Title Case```. ✨
 - **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X). Strict, but it keeps things neat. 🔐
 - **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because we're nice like that). 📧
-- **Class:** Just an integer, formatted as _[course code] + [tutorial number]_ (e.g. 110103 for CS1101, Tutorial 03). 😎
+- **Class:** Simple as how you remember, formatted as _[course code]-[tutorial number]_ (e.g. CS1101-03 for CS1101, Tutorial 03). 😎
 
-🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we’ll stop you right there! No cloning allowed. 🚫
+🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
 ---
 ### ❌ Feature 2: Delete Contact
@@ -86,8 +93,8 @@ delete A0272111H
 ```
 
 🛑 **What to expect:**
-- If the ID exists, it’s **gone forever** (unless you re-add it, of course). 🏃‍♂️💨
-- If the ID **doesn’t exist**, we’ll let you know—because deleting a ghost isn’t possible. 👻
+- If the ID exists, it is now **gone forever** (unless you re-add it, of course). 🏃‍♂️💨
+- If the ID **does not exist**, we will let you know—because deleting a ghost is not possible. 👻
 
 ---
 ### 📜 Feature 3: List Contact
@@ -98,7 +105,7 @@ delete A0272111H
 list
 ```
 
-💡 **Bonus:** If you accidentally type something extra, don’t worry—we’ll still show the list and gently correct you. 🤗
+💡 **Bonus:** If you accidentally type something extra, not to worry—we will still show the list and gently correct you. 🤗
 
 ---
 ### 📝 Feature 4: Update/Edit Contact
@@ -135,8 +142,8 @@ find Jane Doe
 ```
 
 💡 **Cool Features:**
-- Case-insensitive search (We don’t judge your capitalization skills). 🔠
-- Partial matches work—so even if you only remember "Jane," you’re good. 🧠
+- Case-insensitive search (We do not judge your capitalization skills). 🔠
+- Partial matches work—so even if you only remember "Jane," you are good to go. 🧠
 
 ---
 ### 🎯 Feature 6: Filter Contact
@@ -178,7 +185,22 @@ m_delete A0272111H, A1234567G, A0123456F
 
 🛑 **What to expect:**
 - If all the student IDs exist, all of them are **gone forever**.
-- If some of the student IDs **don’t exist**, we’ll delete only those that actually exist.
+- If some of the student IDs **do not exist**, we will delete only those that actually exist.
+
+---
+### 🗑🗑 Feature 8: Clear All Contacts
+**🎯 Purpose:** Wipe out **all** stored contacts in one go. 🚨  
+
+**🔤 Command Format:**
+```
+clear
+```
+
+
+🛑 **What to expect:**
+- This **deletes every contact** in the database—**no undo available**.
+- You will **NOT** be asked for confirmation before proceeding in the current version.
+- If the database is **already empty**, nothing happens.
 
 ---
 
@@ -187,7 +209,8 @@ m_delete A0272111H, A1234567G, A0123456F
 
 🔍 **Duplicate entry?** Each student ID and NUSNET ID must be unique, so check your list first. 📋
 
-🔍 **Forgot the command?** Type nonsense, and we’ll suggest the right one for you (we got your back). 😆
+🔍 **Forgot the command?** Go to "Help" tab on the top left of the window, or simply type `help`, and 
+there you will find everything you need to know. 😆
 
 ---
 ## 🤔 FAQs
@@ -197,20 +220,29 @@ m_delete A0272111H, A1234567G, A0123456F
 ❓ **Q: Can I update any field?**  
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
+❓ **Q: How do I add a tag to an existing student, if I forgot to add tag when keying in the information?**  
+💡 **A:** Use the `edit` function [here](#-feature-4-updateedit-contact), and change the `Tag` field just like any other!
+
+**🖥 Example:**
+```
+edit A0272222H t/NeedHelp
+```
+
 ---
 ## 📝 Command Summary
 
-| Command             | Format, Examples                                                                                             |
-|---------------------|--------------------------------------------------------------------------------------------------------------|
-| **Help**            | `help`                                                                                                       |
-| **Add**             | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
-| **Delete**          | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| Command    | Format, Examples                                                                                             |
+|------------|--------------------------------------------------------------------------------------------------------------|
+| **Help**   | `help`                                                                                                       |
+| **Add**    | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
+| **Delete** | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Edit**   | `edit studentId field/new_value` <br> e.g. `edit A0277024H n/Xinyi`                                          |
 | **Multiple Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
-| **List**            | `list`                                                                                                       |
-| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
-| **Filter**          | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
-| **Clear**           | `clear`                                                                                                      |
-| **Exit**            | `exit`                                                                                                       |
+| **List**   | `list`                                                                                                       |
+| **Find**   | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
+| **Filter** | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
+| **Clear**  | `clear`                                                                                                      |
+| **Exit**   | `exit`                                                                                                       |
 
 ---
 ## 📧 Contact Support
