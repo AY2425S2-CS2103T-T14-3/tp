@@ -200,17 +200,17 @@ filter NeedHelp
 ---
 ## 📝 Command Summary
 
-| Command             | Format, Examples                                                                                             |
-|---------------------|--------------------------------------------------------------------------------------------------------------|
-| **Help**            | `help`                                                                                                       |
-| **Add**             | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
-| **Delete**          | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
-| **Multiple Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
-| **List**            | `list`                                                                                                       |
-| **Find**            | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
-| **Filter**          | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
-| **Clear**           | `clear`                                                                                                      |
-| **Exit**            | `exit`                                                                                                       |
+| Command         | Format, Examples                                                                                             |
+|-----------------|--------------------------------------------------------------------------------------------------------------|
+| **Help**        | `help`                                                                                                       |
+| **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
+| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
+| **List**        | `list`                                                                                                       |
+| **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
+| **Filter**      | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
+| **Clear**       | `clear`                                                                                                      |
+| **Exit**        | `exit`                                                                                                       |
 
 ---
 ## 📧 Contact Support
