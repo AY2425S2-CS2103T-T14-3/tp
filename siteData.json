@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "whodat-developer-guide": "WhoDat Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -120,6 +120,7 @@
         "feature-5-find-contact": "🔎 Feature 5: Find Contact",
         "feature-6-filter-contact": "🎯 Feature 6: Filter Contact",
         "feature-7-mass-delete-contacts": "❌❌ Feature 7: Mass Delete Contacts",
+        "feature-8-clear-all-contacts": "🗑🗑 Feature 8: Clear All Contacts",
         "troubleshooting": "🛠 Troubleshooting",
         "faqs": "🤔 FAQs",
         "command-summary": "📝 Command Summary",
@@ -131,7 +132,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "whodat-level-3": "WhoDat Level-3"
+        "whodat": "WhoDat"
       },
       "headingKeywords": {}
     },
