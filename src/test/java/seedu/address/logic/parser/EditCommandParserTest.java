@@ -8,7 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.EMAIL_ID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_ID_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_STUDENT_ID_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.STUDENT_ID_DESC_AMY;
@@ -68,7 +68,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // invalid student ID
-        assertParseFailure(parser, "X12345" + NAME_DESC_AMY, StudentId.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "X12345" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "A1234 some random string", MESSAGE_INVALID_FORMAT);
@@ -81,7 +81,7 @@ public class EditCommandParserTest {
     public void parse_invalidValue_failure() {
         assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_NAME_DESC,
                 Name.MESSAGE_CONSTRAINTS); // invalid name
-        assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_PHONE_DESC,
+        assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_STUDENT_ID_DESC,
                 StudentId.MESSAGE_CONSTRAINTS); // invalid student ID
         assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_EMAIL_ID_DESC,
                 EmailId.MESSAGE_CONSTRAINTS); // invalid email
@@ -91,7 +91,7 @@ public class EditCommandParserTest {
                 Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid student ID followed by valid email
-        assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_PHONE_DESC + EMAIL_ID_DESC_AMY,
+        assertParseFailure(parser, STUDENT_ID_FIRST_PERSON.value + INVALID_STUDENT_ID_DESC + EMAIL_ID_DESC_AMY,
                 StudentId.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
@@ -114,7 +114,7 @@ public class EditCommandParserTest {
                 + EMAIL_ID_DESC_AMY + CLASS_ID_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_STUDENT_ID_BOB).withEmail(VALID_EMAIL_ID_AMY).withClassId(VALID_CLASS_ID_AMY)
+                .withStudentId(VALID_STUDENT_ID_BOB).withEmail(VALID_EMAIL_ID_AMY).withClassId(VALID_CLASS_ID_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(STUDENT_ID_SECOND_PERSON, descriptor);
 
@@ -125,7 +125,7 @@ public class EditCommandParserTest {
     public void parse_someFieldsSpecified_success() {
         String userInput = STUDENT_ID_FIRST_PERSON.value + STUDENT_ID_DESC_BOB + EMAIL_ID_DESC_AMY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_STUDENT_ID_BOB)
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withStudentId(VALID_STUDENT_ID_BOB)
                 .withEmail(VALID_EMAIL_ID_AMY).build();
         EditCommand expectedCommand = new EditCommand(STUDENT_ID_FIRST_PERSON, descriptor);
 
@@ -142,7 +142,7 @@ public class EditCommandParserTest {
 
         // student ID
         userInput = STUDENT_ID_THIRD_PERSON.value + STUDENT_ID_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_STUDENT_ID_AMY).build();
+        descriptor = new EditPersonDescriptorBuilder().withStudentId(VALID_STUDENT_ID_AMY).build();
         expectedCommand = new EditCommand(STUDENT_ID_THIRD_PERSON, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -171,12 +171,12 @@ public class EditCommandParserTest {
         // AddCommandParserTest#parse_repeatedNonTagValue_failure()
 
         // valid followed by invalid
-        String userInput = STUDENT_ID_FIRST_PERSON.value + INVALID_PHONE_DESC + STUDENT_ID_DESC_BOB;
+        String userInput = STUDENT_ID_FIRST_PERSON.value + INVALID_STUDENT_ID_DESC + STUDENT_ID_DESC_BOB;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STUDENT_ID));
 
         // invalid followed by valid
-        userInput = STUDENT_ID_FIRST_PERSON.value + STUDENT_ID_DESC_BOB + INVALID_PHONE_DESC;
+        userInput = STUDENT_ID_FIRST_PERSON.value + STUDENT_ID_DESC_BOB + INVALID_STUDENT_ID_DESC;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STUDENT_ID));
 
@@ -189,8 +189,8 @@ public class EditCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STUDENT_ID, PREFIX_EMAIL_ID, PREFIX_CLASS_ID));
 
         // multiple invalid values
-        userInput = STUDENT_ID_FIRST_PERSON.value + INVALID_PHONE_DESC + INVALID_ADDRESS_DESC + INVALID_EMAIL_ID_DESC
-                + INVALID_PHONE_DESC + INVALID_ADDRESS_DESC + INVALID_EMAIL_ID_DESC;
+        userInput = STUDENT_ID_FIRST_PERSON.value + INVALID_STUDENT_ID_DESC + INVALID_ADDRESS_DESC
+                + INVALID_EMAIL_ID_DESC + INVALID_STUDENT_ID_DESC + INVALID_ADDRESS_DESC + INVALID_EMAIL_ID_DESC;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_STUDENT_ID, PREFIX_EMAIL_ID, PREFIX_CLASS_ID));

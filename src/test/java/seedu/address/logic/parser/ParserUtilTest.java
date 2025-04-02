@@ -99,7 +99,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parsePhone_validValueWithWhitespace_returnsTrimmedPhone() throws Exception {
+    public void parseStudentId_validValueWithWhitespace_returnsTrimmedStudentId() throws Exception {
         String studentIdWithWhitespace = WHITESPACE + VALID_STUDENT_ID + WHITESPACE;
         StudentId expectedStudentId = new StudentId(VALID_STUDENT_ID);
         assertEquals(expectedStudentId, ParserUtil.parseStudentId(studentIdWithWhitespace));
