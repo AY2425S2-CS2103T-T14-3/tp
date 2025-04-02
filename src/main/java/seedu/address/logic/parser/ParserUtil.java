@@ -129,11 +129,11 @@ public class ParserUtil {
         }
         StudentId[] studentIdArrayWithoutNull = new StudentId[numNonNullEntries];
         int pointer = 0;
-        for (int i = 0; i < numNonNullEntries; i++) {
-            if (arr[pointer] != null) {
-                studentIdArrayWithoutNull[i] = arr[pointer];
+        for (int i = 0; i < arrayLength; i++) {
+            if (arr[i] != null) {
+                studentIdArrayWithoutNull[pointer] = arr[i];
+                pointer++;
             }
-            pointer++;
         }
         return studentIdArrayWithoutNull;
     }
@@ -148,6 +148,7 @@ public class ParserUtil {
                 : "Since the function call originates from the loop inside the function body of "
                 + "parseMultipleStudentIds, where i is a loop parameter, i is always within the array bounds.";
         try {
+            // may throw null pointer exception if studentIdString is null
             arr[i] = parseStudentId(studentIdString);
         } catch (ParseException | NullPointerException exception) {
             arr[i] = null;

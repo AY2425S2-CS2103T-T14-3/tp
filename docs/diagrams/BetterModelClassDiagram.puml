@@ -14,8 +14,8 @@ UniquePersonList -right-> Person
 
 Person -up-> "*" Tag
 
-Person *--> Name
-Person *--> StudentId
-Person *--> EmailId
-Person *--> ClassId
+Person *-right-> "1" Name
+Person *-right-> "1" StudentId
+Person *-right-> "1" EmailId
+Person *-right-> "1" ClassId
 @enduml

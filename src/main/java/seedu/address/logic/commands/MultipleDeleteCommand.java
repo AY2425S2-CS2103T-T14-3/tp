@@ -17,10 +17,13 @@ import seedu.address.model.person.StudentId;
 public class MultipleDeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "m_delete";
+    public static final String MESSAGE_USAGE = "Check the following:\n"
+            + "1. All student ids are comma-separated. \n"
+            + "2. Student ids follow the format: AxxxxxxxX, where x is a number and X is a capitalised letter.";
 
-    public static final String SUCCESSFULLY_DELETED_STUDENTS_PREFIX = "Deleted Students(Student ID):";
-    public static final String MISSING_STUDENTS_PREFIX = "Students not found(Student ID):";
-    public static final String INVALID_STUDENTS_PREFIX = "Invalid Student ID(s):";
+    private static final String SUCCESSFULLY_DELETED_STUDENTS_PREFIX = "Deleted Students(Student ID): ";
+    private static final String MISSING_STUDENTS_PREFIX = "Students not found(Student ID): ";
+    private static final String INVALID_STUDENTS_PREFIX = "Invalid Student ID(s): ";
 
     private static Logger logger = Logger.getLogger("Foo");
 
@@ -64,6 +67,10 @@ public class MultipleDeleteCommand extends Command {
         String message = SUCCESSFULLY_DELETED_STUDENTS_PREFIX + successfullyDeletedStudentsString + "\n"
                 + MISSING_STUDENTS_PREFIX + missingStudentsString + "\n"
                 + INVALID_STUDENTS_PREFIX + invalidStudentString;
+
+        if (!invalidStudentString.isEmpty()) {
+            message += "\n\n" + MESSAGE_USAGE;
+        }
 
         return new CommandResult(message);
     }
