@@ -1,22 +1,22 @@
 # 📖 User Guide
 
 ## 📌 Table of Contents
-1. [✨ Introduction](#-introduction)
-2. [👋 Quick Overview](#-quick-overview)
-3. [🛠 Installation](#-installation)
-4. [🚀 Getting Started](#-getting-started)
-5. [📚 Features](#-features)
-    - [➕ Add Contact](#-feature-1-add-contact)
-    - [❌ Delete Contact](#-feature-2-delete-contact)
-    - [❌❌ Mass Delete Contacts](#-feature-2-delete-contact)
-    - [📜 List Contact](#-feature-3-list-contact)
-    - [📝 Update/Edit Contact](#-feature-4-updateedit-contact)
-    - [🔎 Find Contact](#-feature-5-find-contact)
-    - [🎯 Filter Contact](#-feature-6-filter-contact)
-6. [🛠 Troubleshooting](#-troubleshooting)
-7. [🤔 FAQs](#-faqs)
-8. [📝 Command Summary](#-command-summary)
-9. [📧 Contact Support](#-contact-support)
+1. [✨ Introduction](#introduction)
+2. [👋 Quick Overview](#quick-overview)
+3. [🛠 Installation](#installation)
+4. [🚀 Getting Started](#getting-started)
+5. [📚 Features](#features)
+    - [➕ Add Contact](#feature-1-add-contact)
+    - [❌ Delete Contact](#feature-2-delete-contact)
+    - [❌❌ Mass Delete Contacts](#feature-2-delete-contact)
+    - [📜 List Contact](#feature-3-list-contact)
+    - [📝 Update/Edit Contact](#feature-4-updateedit-contact)
+    - [🔎 Find Contact](#feature-5-find-contact)
+    - [🎯 Filter Contact](#feature-6-filter-contact)
+6. [🛠 Troubleshooting](#troubleshooting)
+7. [🤔 FAQs](#faqs)
+8. [📝 Command Summary](#command-summary)
+9. [📧 Contact Support](#contact-support)
 ## ✨ Introduction
 Welcome to **WhoDat**, the **fastest way** for NUS SoC teaching assistants to manage student contacts! 🎓
 Designed for **fast typists**, WhoDat lets you **find students grouped by tags and classes effortlessly** with just a 
