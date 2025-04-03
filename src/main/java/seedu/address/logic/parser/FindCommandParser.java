@@ -28,13 +28,17 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
+        String[] trimmedArgsSplitted = trimmedArgs.split("\\s+");
         Pattern pattern = Pattern.compile("A\\d{7}[A-Z]", Pattern.CASE_INSENSITIVE);
-        if (pattern.matcher(trimmedArgs).matches()) {
+        if (pattern.matcher(trimmedArgsSplitted[0]).matches()) {
+            if (trimmedArgsSplitted.length > 1) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
             StudentId studentId = new StudentId(trimmedArgs.toUpperCase());
             return new FindCommand(new StudentIdMatchPredicate(studentId));
         } else {
-            String[] nameKeywords = trimmedArgs.split("\\s+");
-            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(trimmedArgsSplitted)));
         }
     }
 }
