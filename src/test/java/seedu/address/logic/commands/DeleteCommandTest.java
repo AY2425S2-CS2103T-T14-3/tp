@@ -47,16 +47,6 @@ public class DeleteCommandTest {
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
-    /*
-    @Test
-    public void execute_invalidStudentIdUnfilteredList_throwsCommandException() {
-        //Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        DeleteCommand deleteCommand = new DeleteCommand(INVALID_STUDENT_ID);
-
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_STUDENTID);
-    }
-
-     */
 
     @Test
     public void execute_validIndexFilteredList_success() {
@@ -79,20 +69,6 @@ public class DeleteCommandTest {
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
-    /*
-    @Test
-    public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of contact list list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getWhoDat().getPersonList().size());
-
-        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
-
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_STUDENTID);
-    }
-     */
 
     @Test
     public void equals() {
