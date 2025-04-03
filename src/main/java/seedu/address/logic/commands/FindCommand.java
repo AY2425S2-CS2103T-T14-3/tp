@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
+import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -8,7 +8,8 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.StudentIdMatchPredicate;
 
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
+
 
 /**
  * Finds and lists all persons in contact list whose name contains any of the argument keywords.
