@@ -19,7 +19,7 @@ public class PersonBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_STUDENT_ID = "A2222222K";
     public static final String DEFAULT_EMAIL = "E1234567";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_CLASS_ID = "cs1101-01";
 
     private Name name;
     private StudentId studentId;
@@ -34,7 +34,7 @@ public class PersonBuilder {
         name = new Name(DEFAULT_NAME);
         studentId = new StudentId(DEFAULT_STUDENT_ID);
         emailId = new EmailId(DEFAULT_EMAIL);
-        classId = new ClassId(DEFAULT_ADDRESS);
+        classId = new ClassId(DEFAULT_CLASS_ID);
         tags = new HashSet<>();
     }
 
@@ -45,7 +45,7 @@ public class PersonBuilder {
         name = personToCopy.getName();
         studentId = personToCopy.getStudentId();
         emailId = personToCopy.getEmail();
-        classId = personToCopy.getAddress();
+        classId = personToCopy.getClassId();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -66,10 +66,10 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Person} that we are building.
+     * Sets the {@code classId} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
-        this.classId = new ClassId(address);
+    public PersonBuilder withClassId(String classId) {
+        this.classId = new ClassId(classId);
         return this;
     }
 

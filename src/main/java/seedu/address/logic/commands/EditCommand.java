@@ -15,7 +15,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -29,41 +28,41 @@ import seedu.address.model.person.StudentId;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing person in the contact list.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+            + "by the student's student ID. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: Student ID "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_STUDENT_ID + "STUDENT ID] "
             + "[" + PREFIX_EMAIL_ID + "EMAIL ID] "
             + "[" + PREFIX_CLASS_ID + "CLASS ID] "
             + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_STUDENT_ID + "91234567 "
-            + PREFIX_EMAIL_ID + "johndoe@example.com";
+            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_STUDENT_ID + "A0277024H "
+            + PREFIX_EMAIL_ID + "E1136951";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the contact list.";
 
-    private final Index index;
+    private final StudentId studentId;
     private final EditPersonDescriptor editPersonDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param studentId of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
-        requireNonNull(index);
+    public EditCommand(StudentId studentId, EditPersonDescriptor editPersonDescriptor) {
+        requireNonNull(studentId);
         requireNonNull(editPersonDescriptor);
 
-        this.index = index;
+        this.studentId = studentId;
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
 
@@ -72,14 +71,14 @@ public class EditCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        Person personToEdit = findPersonByStudentId(lastShownList, studentId.value);
+        if (personToEdit == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_STUDENTID);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!personToEdit.hasSameStudentIdAndEmailId(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
@@ -87,7 +86,20 @@ public class EditCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
-
+    /**
+     * Returns the unique person with matching student ID, or null if not found.
+     * @param people List of Person objects to search
+     * @param targetStudentId The student ID to match
+     * @return The matching Person or null
+     */
+    public static Person findPersonByStudentId(List<Person> people, String targetStudentId) {
+        for (Person person : people) {
+            if (person.getStudentId().toString().equals(targetStudentId)) {
+                return person;
+            }
+        }
+        return null;
+    }
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
@@ -96,9 +108,9 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        StudentId updatedStudentId = editPersonDescriptor.getPhone().orElse(personToEdit.getStudentId());
+        StudentId updatedStudentId = editPersonDescriptor.getStudentId().orElse(personToEdit.getStudentId());
         EmailId updatedEmailId = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        ClassId updatedClassId = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        ClassId updatedClassId = editPersonDescriptor.getClassId().orElse(personToEdit.getClassId());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedStudentId, updatedEmailId, updatedClassId, updatedTags);
@@ -116,14 +128,14 @@ public class EditCommand extends Command {
         }
 
         EditCommand otherEditCommand = (EditCommand) other;
-        return index.equals(otherEditCommand.index)
+        return studentId.equals(otherEditCommand.studentId)
                 && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("index", index)
+                .add("student ID", studentId.value)
                 .add("editPersonDescriptor", editPersonDescriptor)
                 .toString();
     }
@@ -147,9 +159,9 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.studentId);
+            setStudentId(toCopy.studentId);
             setEmail(toCopy.emailId);
-            setAddress(toCopy.classId);
+            setClassId(toCopy.classId);
             setTags(toCopy.tags);
         }
 
@@ -168,11 +180,11 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(StudentId studentId) {
+        public void setStudentId(StudentId studentId) {
             this.studentId = studentId;
         }
 
-        public Optional<StudentId> getPhone() {
+        public Optional<StudentId> getStudentId() {
             return Optional.ofNullable(studentId);
         }
 
@@ -184,13 +196,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(emailId);
         }
 
-        public void setAddress(ClassId classId) {
+        public void setClassId(ClassId classId) {
             this.classId = classId;
         }
 
-        public Optional<ClassId> getAddress() {
+        public Optional<ClassId> getClassId() {
             return Optional.ofNullable(classId);
         }
+
 
         /**
          * Sets {@code tags} to this object's {@code tags}.

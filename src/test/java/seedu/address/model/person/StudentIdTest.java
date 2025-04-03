@@ -14,13 +14,13 @@ public class StudentIdTest {
     }
 
     @Test
-    public void constructor_invalidPhone_throwsIllegalArgumentException() {
-        String invalidPhone = "";
-        assertThrows(IllegalArgumentException.class, () -> new StudentId(invalidPhone));
+    public void constructor_invalidStudentId_throwsIllegalArgumentException() {
+        String invalidStudentId = "";
+        assertThrows(IllegalArgumentException.class, () -> new StudentId(invalidStudentId));
     }
 
     @Test
-    public void isValidStudentId() {
+    public void test_isValidStudentId() {
         // null student id
         assertThrows(NullPointerException.class, () -> StudentId.isValidStudentId(null));
 
@@ -40,10 +40,12 @@ public class StudentIdTest {
         // valid student id
         assertTrue(StudentId.isValidStudentId("A1234567B"));
         assertTrue(StudentId.isValidStudentId("A7654321F"));
+        assertTrue(StudentId.isValidStudentId(" A7654321F"));
+        assertTrue(StudentId.isValidStudentId("A7654321F "));
     }
 
     @Test
-    public void equals() {
+    public void test_equals() {
         StudentId studentId = new StudentId("A1234567B");
 
         // same values -> returns true
@@ -60,5 +62,15 @@ public class StudentIdTest {
 
         // different values -> returns false
         assertFalse(studentId.equals(new StudentId("A1234567C")));
+    }
+
+    @Test
+    public void test_toString() {
+        StudentId studentId = new StudentId("A1234567H");
+        String matchingStudentIdString = "A1234567H";
+        assertTrue(matchingStudentIdString.equals(studentId.toString()));
+
+        String notMatchingStudentIdString1 = "A123456H";
+        assertFalse(notMatchingStudentIdString1.equals(studentId.toString()));
     }
 }

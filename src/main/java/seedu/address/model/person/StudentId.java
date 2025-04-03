@@ -4,13 +4,15 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a student's student id in the address book.
+ * Represents a student's student id in the contact list.
  * Guarantees: immutable; is valid as declared in {@link #isValidStudentId(String)}
  */
 public class StudentId {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "StudentId should follow the format: AxxxxxxxX, where x is a number and X is a capital letter.";
+            "Invalid StudentId format! \n"
+                    + "Student ID should be in the format of AxxxxxxxX, where x are numerical digits "
+                    + "and X is a capitalised alphabet.";
     public static final String VALIDATION_REGEX = "A\\d{7}[A-Z]";
     public final String value;
 
@@ -21,9 +23,9 @@ public class StudentId {
      * @param studentId A valid studentId number.
      */
     public StudentId(String studentId) {
-        studentId.trim();
         requireNonNull(studentId);
-        checkArgument(isValidStudentId(studentId), MESSAGE_CONSTRAINTS);
+        String trimmedStudentId = studentId.trim();
+        checkArgument(isValidStudentId(trimmedStudentId), MESSAGE_CONSTRAINTS);
         value = studentId;
     }
 
@@ -31,7 +33,8 @@ public class StudentId {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidStudentId(String test) {
-        return test.matches(VALIDATION_REGEX);
+        String trimmedTestString = test.trim();
+        return trimmedTestString.matches(VALIDATION_REGEX);
     }
 
     @Override

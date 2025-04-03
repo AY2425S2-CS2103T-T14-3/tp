@@ -1,0 +1,13 @@
+{
+  "persons": [ {
+    "name": "Valid Person",
+    "studentId": "A0277024H",
+    "email": "E1136951",
+    "class": "cs2103-03"
+  }, {
+    "name": "Person With Invalid Phone Field",
+    "studentId": "948asdf2424",
+    "email": "E1136951",
+    "class": "cs2103-03"
+  } ]
+}

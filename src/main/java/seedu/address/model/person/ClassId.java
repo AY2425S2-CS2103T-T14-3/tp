@@ -4,18 +4,18 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a student's class id in the address book.
+ * Represents a student's class id in the contact list.
  * Guarantees: immutable; is valid as declared in {@link #isValidClassId(String)}
  */
 public class ClassId {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "ClassId is maximally 16 characters long ";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "[^\\s].{0,15}";
 
     public final String value;
 

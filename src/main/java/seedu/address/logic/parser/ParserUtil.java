@@ -53,21 +53,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code StudentId}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code phone} is invalid.
-     */
-    public static StudentId parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!StudentId.isValidStudentId(trimmedPhone)) {
-            throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
-        }
-        return new StudentId(trimmedPhone);
-    }
-
-    /**
      * Parses a {@code String classId} into a {@code ClassId}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -101,7 +86,7 @@ public class ParserUtil {
      * Parses a {@code String studentIdString} into an {@code StudentId}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code studentIdString} is invalid.
+     * @throws ParseException if the given {@code studentIdsString} is invalid.
      */
     public static StudentId parseStudentId(String studentIdString) throws ParseException {
         requireNonNull(studentIdString);
@@ -110,6 +95,76 @@ public class ParserUtil {
             throw new ParseException(StudentId.MESSAGE_CONSTRAINTS);
         }
         return new StudentId(trimmedStudentId);
+    }
+
+    /**
+     * Parses a {@code String studentIdsString} into a {@code StudentId[]}.
+     * Leading and trailing whitespaces will be trimmed.
+     * The array returned contains only valid {@code StudentId} objects.
+     */
+    public static StudentId[] parseMultipleStudentIds(String studentIdsString) {
+        requireNonNull(studentIdsString);
+        String[] studentIdStringsArray = separateStringByComma(studentIdsString);
+        int numStudentId = studentIdStringsArray.length;
+        StudentId[] studentIdsArray = new StudentId[numStudentId];
+        for (int i = 0; i < numStudentId; i++) {
+            updateStudentIdArray(studentIdsArray, studentIdStringsArray[i], i);
+        }
+        StudentId[] studentIdsArrayWithoutNulls = removeNullEntriesFromStudentIdArray(studentIdsArray);
+        return studentIdsArrayWithoutNulls;
+    }
+
+    /**
+     * Removes null entries from the {@code StudentId[]}.
+     */
+    public static StudentId[] removeNullEntriesFromStudentIdArray(StudentId[] arr) {
+        requireNonNull(arr);
+        int numNonNullEntries = 0;
+        int arrayLength = arr.length;
+        for (int i = 0; i < arrayLength; i++) {
+            StudentId studentIdEntry = arr[i];
+            if (studentIdEntry != null) {
+                numNonNullEntries++;
+            }
+        }
+        StudentId[] studentIdArrayWithoutNull = new StudentId[numNonNullEntries];
+        int pointer = 0;
+        for (int i = 0; i < arrayLength; i++) {
+            if (arr[i] != null) {
+                studentIdArrayWithoutNull[pointer] = arr[i];
+                pointer++;
+            }
+        }
+        return studentIdArrayWithoutNull;
+    }
+
+    /**
+     * Creates a {@code StudentId} object and adds it into the specified index in the array.
+     * If the student id is not valid, a null is added instead.
+     */
+    public static void updateStudentIdArray(StudentId[] arr, String studentIdString, int i) {
+        int numStudents = arr.length;
+        assert i < numStudents && i >= 0
+                : "Since the function call originates from the loop inside the function body of "
+                + "parseMultipleStudentIds, where i is a loop parameter, i is always within the array bounds.";
+        try {
+            // may throw null pointer exception if studentIdString is null
+            arr[i] = parseStudentId(studentIdString);
+        } catch (ParseException | NullPointerException exception) {
+            arr[i] = null;
+        }
+    }
+
+    /**
+     * Takes a comma-separated string and breaks it up into a {@code String[]}.
+     */
+    public static String[] separateStringByComma(String s) {
+        if (s == null) {
+            return null;
+        }
+
+        String[] stringParts = s.split(",");
+        return stringParts;
     }
 
     /**
