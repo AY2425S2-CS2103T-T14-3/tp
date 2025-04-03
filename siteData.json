@@ -51,8 +51,8 @@
         "storage-component": "Storage component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
-        "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
-        "proposed-data-archiving": "[Proposed] Data archiving",
+        "add-a-student-contact": "Add a student contact",
+        "delete-a-student-contact": "Delete a student contact",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -62,8 +62,16 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
+        "adding-a-person": "Adding a person",
         "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "mass-deleting-people": "Mass deleting people",
+        "list": "List",
+        "editing-a-contact": "Editing a contact",
+        "finding-a-student-contact": "Finding a student contact",
+        "filtering-a-student-contact": "Filtering a student contact",
+        "clearing-the-student-contact-list": "Clearing the student contact list",
+        "saving-data": "Saving data",
+        "exit-application": "Exit Application"
       },
       "headingKeywords": {}
     },
