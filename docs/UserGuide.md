@@ -66,7 +66,7 @@ add n/name i/ID e/NUSNET-ID c/class
 
 **🖥 Example:**
 ```
-add n/Lin Xinyi i/A0277024H e/E1136951 c/110103
+add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03
 ```
 
 💡 **How it works:**
@@ -75,10 +75,11 @@ will be automatically formatted to ```Title Case```. ✨
 - **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X).  🔐
 - **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because we're nice like that). 📧
 - **Class:** Simple as how you remember, formatted as _[course code]-[tutorial number]_ (e.g. CS1101-03 for CS1101, Tutorial 03). 😎
+- **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! 
 
 🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
-❕**Case Sensitivity:** `ClassId`, `StudentId` and `NUSNETId` are **_case-sensitive_**, while `Name` is not. 
+❕**Case Sensitivity:** `ClassId`, `StudentId`, `NUSNETId` and `Tag` are **_case-sensitive_**, only `Name` is not. 
 
 ---
 ### ❌ Feature 2: Delete Contact
@@ -173,18 +174,18 @@ find Jane Doe
 
 **🔤 Command Format:**
 ```
-filter classId
+filter_c classId
 ```
 ```
-filter tag
+filter_t tag
 ```
 
 **🖥 Example:**
 ```
-filter cs1231-05
+filter_c cs1231-05
 ```
 ```
-filter NeedHelp
+filter_t NeedHelp
 ```
 
 💡 **Keep in mind:**
@@ -209,11 +210,12 @@ there you will find everything you need to know. 😆
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
 ❓ **Q: How do I add a tag to an existing student, if I forgot to add tag when keying in the information?**  
-💡 **A:** Use the `edit` function [here](#-feature-4-updateedit-contact), and change the `Tag` field just like any other!
+💡 **A:** Use the `edit` function [here](#feature-4-updateedit-contact), and change the `Tag` field just like any other!
+If you want to add more than one tags, just use more than one `t/tag` fields!
 
 **🖥 Example:**
 ```
-edit A0272222H t/NeedHelp
+edit A0272222H t/NeedHelp t/LateSubmission
 ```
 
 ---
@@ -223,13 +225,13 @@ edit A0272222H t/NeedHelp
 |-----------------|--------------------------------------------------------------------------------------------------------------|
 | **Help**        | `help`                                                                                                       |
 | **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
-| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S` 
-| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`
+| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              
+| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  
 | **List**        | `list`                                                                                                       |
 | **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
-| **Filter**      | `filter classId` or `filter tag` <br> e.g. `filter cs1231-05` or `filter sampletag`                          |
+| **Filter**      | `filter_c classId` or `filter_t tag` <br> e.g. `filter_c cs1231-05` or `filter_t sampletag`                  |
 | **Clear**       | `clear`                                                                                                      |
-| **Exit**        | `exit`
+| **Exit**        | `exit`                                                                                                       
 
 ---
 ## 📧 Contact Support
