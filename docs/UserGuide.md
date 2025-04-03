@@ -94,8 +94,12 @@ delete ID
 ```
 delete A0272111H
 ```
+```
+delete a0272111h
+```
 
 🛑 **What to expect:**
+- Case-insensitive search 
 - If the ID exists, it is now **gone forever** (unless you re-add it, of course). 🏃‍♂️💨
 - If the ID **does not exist**, we will let you know—because deleting a ghost is not possible. 👻
 
@@ -158,15 +162,21 @@ edit A0272222H n/Xinyi
 ```
 find name
 ```
+```
+find StudentId
+```
 
 **🖥 Example:**
 ```
 find Jane Doe
 ```
+```
+find A1234567H
+```
 
 💡 **Cool Features:**
 - Case-insensitive search (We do not judge your capitalization skills). 🔠
-- Partial matches work—so even if you only remember "Jane," you are good to go. 🧠
+- Partial matches work—so even if you only remember "Jane," you are good to go. (but StudentId has to be the exact match)🧠
 
 ---
 ### 🎯 Feature 7: Filter Contact
