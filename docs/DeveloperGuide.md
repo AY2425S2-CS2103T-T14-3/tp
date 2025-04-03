@@ -7,13 +7,29 @@
 # WhoDat Developer Guide
 
 <!-- * Table of Contents -->
+* [WhoDat Developer Guide](#whodat-developer-guide)
+    * [**Acknowledgements**](#acknowledgements)
+    * [**Setting up, getting started**](#setting-up-getting-started)
+    * [**Design**](#design)
+        * [Architecture](#architecture)
+        * [UI component](#ui-component)
+        * [Logic component](#logic-component)
+        * [Model component](#model-component)
+        * [Storage component](#storage-component)
+        * [Common classes](#common-classes)
+    * [**Implementation**](#implementation)
+  * [**Documentation, logging, testing, configuration, dev-ops**](#documentation-logging-testing-configuration-dev-ops)
+  * [**Appendix: Requirements**](#appendix-requirements)
+  * [**Appendix: Instructions for manual testing**](#appendix-instructions-for-manual-testing)
+<!-- * Table of Contents -->
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+* WhoDat is based on the AddressBook-Level3 project created by the SE-EDU initiative
+* It incorporates the following third-party libraries: JavaFX, Jackson, JUnit5.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -158,103 +174,37 @@ Classes used by multiple components are in the `seedu.classId.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+### Add a student contact
 
-#### Proposed Implementation
+`WhoDatParser` creates `AddCommandParser` to parse user input string.
 
-The proposed undo/redo mechanism is facilitated by `VersionedWhoDat`. It extends `WhoDat` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+<puml src="diagrams/AddSequenceDiagram.puml" alt="AddSequenceDiagram" />
 
-* `VersionedWhoDat#commit()` — Saves the current classId book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous classId book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone classId book state from its history.
+`WhoDatParser` receives the student's name, student id, email id, class id and tags from user input.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+Then, `WhoDatParser` ensures that all fields match their respective validation regex. If the input is invalid, `WhoDatParser` throws a ParseException.
+Otherwise, it creates a new instance of `AddCommand`.
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+Upon execution, `AddCommand` checks if a duplicate student contact exists. If there is no duplicate, `AddCommand` will add the student to the contact list.
+ 
+`...` is used to represent a valid user input, as the full input is too long to be included in the diagram. A full example of a valid input is: add n/John i/A1234567X e/E1234567 c/CS210501
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial classId book state, and the `currentStatePointer` pointing to that single classId book state.
+> **_NOTE:_** The sequence diagram shows a simplified execution of the AddCommand.
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+<br></br>
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the classId book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the classId book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted classId book state.
+### Delete a student contact
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+`WhoDatParser` creates `DeleteCommandParser` to parse user input string.
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified classId book state to be saved into the `addressBookStateList`.
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="DeleteSequenceDiagram" />
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+`WhoDatParser` receives the student id from the user's input.
+Then, `WhoDatParser` ensures that the student id matches the validation regex. If the input is invalid, `WhoDatParser` throws a ParseException.
+Otherwise, it creates a new instance of `DeleteCommand`.
 
-<box type="info" seamless>
-
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the classId book state will not be saved into the `addressBookStateList`.
-
-</box>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous classId book state, and restores the classId book to that state.
-
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</box>
-
-The following sequence diagram shows how an undo operation goes through the `Logic` component:
-
-<puml src="diagrams/UndoSequenceDiagram-Logic.puml" alt="UndoSequenceDiagram-Logic" />
-
-<box type="info" seamless>
-
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</box>
-
-Similarly, how an undo operation goes through the `Model` component is shown below:
-
-<puml src="diagrams/UndoSequenceDiagram-Model.puml" alt="UndoSequenceDiagram-Model" />
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the classId book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest classId book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the classId book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all classId book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire classId book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
+Upon execution, `DeleteCommand` deletes the student contact from the list.
+> **_NOTE:_** The sequence diagram shows a simplified execution of the DeleteCommand.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -283,28 +233,29 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Value proposition**: WhoDat is a free desktop application that helps NUS teaching assistants manage student contacts faster than a typical mouse driven app.
 
+---
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                |
-|----------|------------|-----------------------------------------------------|------------------------------------------------|
-| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                    |
-| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts          |
-| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                   |
-| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app   |
-| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app |
-| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester  |
-| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes  |
-| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group  |
-| `* *`    | SoC TA     | filter my student contacts by consultation status   | quickly find students who need a consultation  |
-| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student    |
-| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts       |
-| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts       |
-| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters    |
+| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                        |
+|----------|------------|-----------------------------------------------------|--------------------------------------------------------|
+| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                            |
+| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts                  |
+| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                           |
+| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app           |
+| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app         |
+| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester          |
+| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes          |
+| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group          |
+| `* *`    | SoC TA     | filter my student contacts by tag status            | quickly find specific students with special conditions |
+| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student            |
+| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts               |
+| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts               |
+| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters            |
 
-*{More to be added}*
+---
 
 ### Use cases
 
@@ -334,6 +285,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+<br></br>
+
 **Use case UC02: Delete a student contact**
 
 **MSS**
@@ -356,7 +309,173 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-*{More to be added}*
+<br></br>
+
+**Use case UC03: List all student contacts**
+
+**MSS**
+
+1. User requests to view the list of all student contacts.
+2. System displays the list of student contacts.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. System displays a relevant message.
+
+  Use case ends.
+
+* 2b. User enters an invalid command, such as `/list`.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC04: Find a student contact**
+
+**MSS**
+
+1. User requests to find a student contact by name or student id.
+2. System searches for matching contacts.
+3. System displays the contact(s) that match the search criteria.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No matching contacts are found.
+    * 3a1. System shows a message stating that no contacts were found.
+
+  Use case ends.
+
+* 2b. User enters an empty query `find`.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+* 2c. User enters an invalid student id or name format.
+    * 2c1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC05: Edit a student contact**
+
+**MSS**
+
+1. User requests to edit a student contact using the `edit` command.
+2. System updates the contact's details.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The student id does not exist in the list.
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. The field to be edited is invalid or the value is incorrect.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC06: Filter contacts by class or tag**
+
+**MSS**
+
+1. User requests to filter student contacts based on class id or tag.
+2. System filters the contacts based on the input filter criteria.
+3. System displays the contacts that match the filter.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No matching contacts are found.
+    * 3a1. System shows a relevant message.
+
+  Use case ends.
+
+* 2b. User enters an invalid filter or tag.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC07: Mass delete student contacts**
+
+**MSS**
+
+1. User requests to delete multiple student contacts by specifying multiple student ids.
+2. System deletes the contacts from the list.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. One or more student ids are invalid.
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. No student ids are provided or the command is incorrect.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC08: Clear the contact list**
+
+**MSS**
+
+1. User requests to clear the contact list.
+2. System deletes all contacts from the list.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is already empty.
+    * 2a1. System shows an update message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC09: Exit the application**
+
+**MSS**
+
+1. User requests to exit the application using the `exit` command or by closing the window.
+2. System closes the application.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. User closes the application by clicking the close button on the window.
+    * 2a1. The application exits and the window is closed.
+
+  Use case ends.
+
+* 2b. User types the `exit` command.
+    * 2b1. The application exits and the window is closed.
+
+  Use case ends.
+
+<br></br>
 
 ### Non-Functional Requirements
 
@@ -368,7 +487,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  **Data reliability**: After reopening the application, the loaded data should be **identical** to the previously saved data.
 7.  **Stability**: The application should be able to **recover from errors gracefully** without crashing or losing data.
 
-*{More to be added}*
+<br></br>
 
 ### Glossary
 
@@ -396,16 +515,43 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Run `java -jar whodat.jar` in a terminal. 
+   
+   2. Expected: Shows the GUI with a set of sample student contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   1. Re-launch the app by typing `java -jar whodat.jar` in a terminal.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+<br></br>
+
+### Adding a person
+
+1. Adding a valid contact
+
+   1. Prerequisite: A duplicate contact cannot exist.
+   
+   2. Test case: `add add n/James i/A0277024H e/E1136951 c/110103`<br>
+      Expected: Contact is added with success status message.
+
+2. Adding a duplicate contact
+
+    1. Prerequisite: A duplicate contact exists.
+
+    2. Test case: `add add n/James i/A0277024H e/E1136951 c/110103`<br>
+       Expected: Contact is not added to the list, an error message is shown.
+
+3. Adding contact with invalid fields
+
+    1. Omit a field like class id: `add add n/James i/A0277024H e/E1136951` <br>
+    Expected: An error message showing the correct add format.<br>
+   
+   2. Other fields to omit include name, student id and email id.
+       
+<br></br>
 
 ### Deleting a person
 
@@ -413,21 +559,153 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `delete AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
+      Expected: If student id is valid, then contact is deleted from the list. Details of the deleted contact shown in the status message. 
 
-   1. Test case: `delete 0`<br>
+   3. Test case: `delete A29`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   4. Other incorrect delete commands to try: `delete`, `delete 1`, `/delete`<br>
+      Expected: Similar to test case 2.
 
-1. _{ more test cases …​ }_
+<br></br>
+
+### Mass deleting people
+
+1. Deleting more than one person
+
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+
+    2. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
+       Expected: If student ids are valid, then contacts are deleted from the list. Details of the deleted contacts shown in the status message.
+
+    3. Test case: `m_delete A2910`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+
+    4. Other incorrect delete commands to try: `/m_delete`, `m_delete 1`, `m delete`<br>
+       Expected: Similar to test case 2.
+
+<br></br>
+
+### List
+1. List all student contacts
+
+    1. Prerequisite: Ensure that the list is not empty.
+
+    2. Test case: `list`<br>
+       Expected: The list should display all contacts.
+
+    3. Test case: `/list`<br>
+       Expected: An error message.
+
+<br></br>
+
+### Editing a contact
+
+1. Edit a student contact
+
+    1. Prerequisite: The contact must already be in the list.
+
+    2. Test case: `edit StudentId field/new_value`<br>
+       Example: `edit A0272222H n/Xinyi`
+       Expected: Contact is edited with success status message.
+
+2. Edit a student contact using an invalid input
+
+    1. Prerequisite: Input format is wrong.
+
+    2. Test case: `edit StudentId field/wrong_value`<br>
+       Example: `edit A0272222H e/Xinyi`
+       Expected: Contact is not edited, an error message is shown.
+
+<br></br>
+
+### Finding a student contact
+1. Find using name
+
+    1. Prerequisites: The contact must already exist in the list. Let's use 'Jane' as an example.
+
+    2. Test case: `find Jane`<br>
+    Expected: All contacts with the name 'Jane' (case-insensitive) are displayed.
+
+    3. Test case: `find jane`<br>
+    Expected: All contacts with the name 'Jane' (case-insensitive) are displayed.
+
+2. Find using student id
+
+    1. Prerequisites: The contact must already exist in the list. Let's use 'A1234567B' as an example.
+
+    2. Test case: `find A123456B`<br>
+       Expected: The contact is displayed.
+
+    3. Test case: `find a123456b`<br>
+       Expected: The contact is displayed (find is case-insensitive).
+
+3. Find with an empty input
+
+    1. Test case: `find`<br>
+       Expected: An error message will be shown which explains how to use the find command.
+
+<br></br>
+
+### Filtering a student contact
+1. Filter by class id
+
+    1. Prerequisite: There must be at least one contact with the chosen class id.
+
+    2. Test case: `filter_c class id`<br>
+       Example: `filter_c cs210501`<br>
+       Expected: All contacts with the same class id (case-insensitive) are displayed.
+
+    3. Test case: `filter_c CS210501`<br>
+       Expected: All contacts with the same class id (case-insensitive) are displayed.
+
+2. Find using tag
+
+    1. Prerequisites: There must be at least one contact with the chosen tag.
+
+   2. Test case: `filter_t tag`<br>
+      Example: `filter_t NoSubmission`<br>
+      Expected: All contacts with the same class id (case-insensitive) are displayed.
+
+   3. Test case: `filter_t nosubmission`<br>
+      Expected: All contacts with the same class id (case-insensitive) are displayed.
+
+3. Filter with an empty input
+
+    1. Test case: `filter_c`<br>
+       Expected: An error message will be shown which explains how to use the find command.
+
+<br></br>
+
+### Clearing the student contact list
+1. Clear the contact list
+
+    1. Prerequisite: Ensure that the list is not empty.
+
+    2. Test case: `clear`<br>
+       Expected: A success message stating that WhoDat has been cleared.
+
+<br></br>
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Data is automatically saved when you exit the program
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. Type `list` and ensure that the list is not empty.
 
-1. _{ more test cases …​ }_
+    2. Test case: `exit` and open the WhoDat application again<br>
+       Expected: The list of student contacts previously saved are displayed.
+
+<br></br>
+
+### Exit Application
+1. Exit by clicking the close button at the top right
+
+    1. Test case: Close the window by clicking on the Window's close button.<br>
+       Expected: The window closes. <br></br>
+
+2. Exit via exit command
+
+    1. Test case: Type `exit` to close the window.<br>
+       Expected: The window closes.

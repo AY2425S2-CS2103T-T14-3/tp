@@ -16,11 +16,10 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD_CLASS = "filter_c";
     public static final String COMMAND_WORD_TAG = "filter_t";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD_CLASS + ": Filters and lists the students based on"
-            + "the given class id OR tag (case-insensitive)\n"
-            + "Parameters: classId OR tag\n"
-            + "Example: " + COMMAND_WORD_CLASS + " CS1101S03\n"
-            + "Example: " + COMMAND_WORD_CLASS + " NeedHelp\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD_CLASS + " / " + COMMAND_WORD_TAG
+            + ": Filters the students based on class id OR tag\n"
+            + "Example: " + COMMAND_WORD_CLASS + " CS1101S03 OR "
+            + "Example: " + COMMAND_WORD_TAG + " NeedHelp\n";
 
     private StudentHasSameClassIdPredicate idPredicate = null;
     private StudentHasSameTagPredicate tagPredicate = null;
