@@ -26,7 +26,7 @@ public class DeleteCommandParserTest {
     }
 
     @Test
-    public void parse_validArgs_lowerCase_returnsDeleteCommand() {
+    public void parse_validArgsLowerCase_returnsDeleteCommand() {
         assertParseSuccess(parser, "a1234567h", new DeleteCommand(STUDENT_ID_FIRST_PERSON));
     }
 
