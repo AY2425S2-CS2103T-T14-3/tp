@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.StudentId;
+import seedu.address.model.person.StudentIdMatchPredicate;
 
 public class FindCommandParserTest {
 
@@ -29,6 +31,12 @@ public class FindCommandParserTest {
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n Alice \n \t Bob  \t", expectedFindCommand);
+    }
+
+    @Test
+    public void parse_caseInsensitiveArgs_returnsFindCommand() {
+        FindCommand expectedFindCommand = new FindCommand(new StudentIdMatchPredicate(new StudentId("A1234567Z")));
+        assertParseSuccess(parser, "a1234567z", expectedFindCommand);
     }
 
 }

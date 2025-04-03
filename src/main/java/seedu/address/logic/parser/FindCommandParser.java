@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -27,8 +28,9 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        if (trimmedArgs.matches("A\\d{7}[A-Z]")) {
-            StudentId studentId = new StudentId(trimmedArgs);
+        Pattern pattern = Pattern.compile("A\\d{7}[A-Z]", Pattern.CASE_INSENSITIVE);
+        if (pattern.matcher(trimmedArgs).matches()) {
+            StudentId studentId = new StudentId(trimmedArgs.toUpperCase());
             return new FindCommand(new StudentIdMatchPredicate(studentId));
         } else {
             String[] nameKeywords = trimmedArgs.split("\\s+");
