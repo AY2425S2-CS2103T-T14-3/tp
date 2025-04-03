@@ -8,16 +8,16 @@
 5. [📚 Features](#features)
     - [➕ Add Contact](#feature-1-add-contact)
     - [❌ Delete Contact](#feature-2-delete-contact)
-    - [❌❌ Mass Delete Contacts](#feature-2-delete-contact)
-    - [📜 List Contact](#feature-3-list-contact)
-    - [📝 Update/Edit Contact](#feature-4-updateedit-contact)
-    - [🔎 Find Contact](#feature-5-find-contact)
-    - [🎯 Filter Contact](#feature-6-filter-contact)
+    - [❌❌ Mass Delete Contacts](#feature-3-mass-delete-contacts)
+    - [📜 List Contact](#feature-4-list-contact)
+    - [📝 Update/Edit Contact](#feature-5-updateedit-contact)
+    - [🔎 Find Contact](#feature-6-find-contact)
+    - [🎯 Filter Contact](#feature-7-filter-contact)
 6. [🛠 Troubleshooting](#troubleshooting)
 7. [🤔 FAQs](#faqs)
 8. [📝 Command Summary](#command-summary)
 9. [📧 Contact Support](#contact-support)
-## ✨ Introduction
+## Introduction
 Welcome to **WhoDat**, the **fastest way** for NUS SoC teaching assistants to manage student contacts! 🎓
 Designed for **fast typists**, WhoDat lets you **find students grouped by tags and classes effortlessly** with just a 
 few keystrokes. 
@@ -30,18 +30,18 @@ Say goodbye to: \
 With a **minimalist graphic interface**, WhoDat ensures that your contact management is **efficient, distraction-free, 
 and perfectly suited for busy student tutors like you**.
 
-## 👋 Quick Overview
+## Quick Overview
 First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
 
 * To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
 * If you need a compilation of the available commands, check out our [Command Summary](#-command-summary).
 * Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
 
-## 🛠 Installation
+## Installation
 1. **Download and install** the software like a pro. 💾
 2. **Run the program** and feel the power. ⚡
 
-## 🚀 Getting Started
+## Getting Started
 1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 2. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
 ```shell
@@ -54,9 +54,9 @@ First time using **WhoDat**? Not sure where to start? Fret not, here's a quick o
 4. Your application window will pop up, and you can start managing contacts like a boss. 👨‍💻👩‍💻
 
 ---
-## 📚 Features
+## Features
 
-### ➕ Feature 1: Add Contact
+### Feature 1: Add Contact
 **🎯 Purpose:** Want to save student details without memorizing 100+ names? This feature lets you add a student's name, ID, NUSNET ID, and tutorial class. 📝
 
 **🔤 Command Format:**
@@ -82,7 +82,7 @@ will be automatically formatted to ```Title Case```. ✨
 ❕**Case Sensitivity:** `ClassId`, `StudentId`, `NUSNETId` and `Tag` are **_case-sensitive_**, only `Name` is not. 
 
 ---
-### ❌ Feature 2: Delete Contact
+### Feature 2: Delete Contact
 **🎯 Purpose:** Remove students who dropped out, switched classes, or never actually existed in your list. 🗑
 
 **🔤 Command Format:**
@@ -100,7 +100,7 @@ delete A0272111H
 - If the ID **does not exist**, we will let you know—because deleting a ghost is not possible. 👻
 
 ---
-### ❌❌ Feature 3: Mass Delete Contacts
+### Feature 3: Mass Delete Contacts
 **🎯 Purpose:** Remove multiple students at one go. 🗑
 
 **🔤 Command Format:**
@@ -120,7 +120,7 @@ m_delete A0272111H, A1234567G, A0123456F
 - If the student ids are not comma-separated or are invalid, we will let you know!
 
 ---
-### 📜 Feature 4: List Contact
+### Feature 4: List Contact
 **🎯 Purpose:** Want a bird’s-eye view of all your students? Use this to list all stored contacts. 🦅
 
 **🔤 Command Format:**
@@ -131,7 +131,7 @@ list
 💡 **Bonus:** If you accidentally type something extra, not to worry—we will still show the list and gently correct you. 🤗
 
 ---
-### 📝 Feature 5: Update/Edit Contact
+### Feature 5: Update/Edit Contact
 **🎯 Purpose:** Mistakes are meant to be made. So are typos. No problem—this feature lets you update any information easily. 🔄
 
 **🔤 Command Format:**
@@ -151,7 +151,7 @@ edit A0272222H n/Xinyi
 
 
 ---
-### 🔎 Feature 6: Find Contact
+### Feature 6: Find Contact
 **🎯 Purpose:** Need to find a student’s details fast? Search by name! 🔍
 
 **🔤 Command Format:**
@@ -169,7 +169,7 @@ find Jane Doe
 - Partial matches work—so even if you only remember "Jane," you are good to go. 🧠
 
 ---
-### 🎯 Feature 7: Filter Contact
+### Feature 7: Filter Contact
 **🎯 Purpose:** Want to only see students from a specific tutorial class, or with a specific tag? You can use the filter command!
 
 **🔤 Command Format:**
@@ -193,7 +193,7 @@ filter_t NeedHelp
 
 ---
 
-## 🛠 Troubleshooting
+## Troubleshooting
 🔍 **Invalid input?** Follow the error messages—they exist for a reason! 😜
 
 🔍 **Duplicate entry?** Each student ID and NUSNET ID must be unique, so check your list first. 📋
@@ -202,7 +202,7 @@ filter_t NeedHelp
 there you will find everything you need to know. 😆
 
 ---
-## 🤔 FAQs
+## FAQs
 ❓ **Q: How strict is the input format?**  
 💡 **A:** Very strict! We want to keep data **clean and accurate**—no messy databases here. 🧼
 
@@ -219,7 +219,7 @@ edit A0272222H t/NeedHelp t/LateSubmission
 ```
 
 ---
-## 📝 Command Summary
+## Command Summary
 
 | Command         | Format, Examples                                                                                             |
 |-----------------|--------------------------------------------------------------------------------------------------------------|
@@ -234,5 +234,5 @@ edit A0272222H t/NeedHelp t/LateSubmission
 | **Exit**        | `exit`                                                                                                       
 
 ---
-## 📧 Contact Support
+## Contact Support
 Need help? Have feedback? Found a bug? 🐞 Drop us an email at [E1136951@u.nus.edu](mailto:support@example.com), and we’ll get back to you faster than you can type `add n/John Doe`! 💌
