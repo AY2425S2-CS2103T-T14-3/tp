@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -8,7 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.StudentIdMatchPredicate;
 
-import static java.util.Objects.requireNonNull;
+
 
 
 /**
