@@ -18,7 +18,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         try {
-            StudentId studentId = ParserUtil.parseStudentId(args);
+            StudentId studentId = ParserUtil.parseStudentId(args.toUpperCase());
             return new DeleteCommand(studentId);
         } catch (ParseException pe) {
             throw new ParseException(
