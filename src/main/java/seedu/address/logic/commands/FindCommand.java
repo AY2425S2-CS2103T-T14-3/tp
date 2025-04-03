@@ -8,6 +8,8 @@ import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.StudentIdMatchPredicate;
 
+import java.util.Objects;
+
 /**
  * Finds and lists all persons in contact list whose name contains any of the argument keywords.
  * Keyword matching is case-insensitive.
@@ -71,11 +73,8 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        if (namePredicate == null) {
-            return otherFindCommand.namePredicate == null && otherFindCommand.idPredicate.equals(idPredicate);
-        } else {
-            return otherFindCommand.idPredicate == null && namePredicate.equals(otherFindCommand.namePredicate);
-        }
+        return Objects.equals(namePredicate, otherFindCommand.namePredicate)
+                && Objects.equals(idPredicate, otherFindCommand.idPredicate);
 
     }
 
