@@ -350,6 +350,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+<br></br>
+
 **Use case UC02: Delete a student contact**
 
 **MSS**
@@ -372,7 +374,173 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-*{More to be added}*
+<br></br>
+
+**Use case UC03: List all student contacts**
+
+**MSS**
+
+1. User requests to view the list of all student contacts.
+2. System displays the list of student contacts.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. System displays a relevant message.
+
+  Use case ends.
+
+* 2b. User enters an invalid command, such as `/list`.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC04: Find a student contact**
+
+**MSS**
+
+1. User requests to find a student contact by name or student id.
+2. System searches for matching contacts.
+3. System displays the contact(s) that match the search criteria.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No matching contacts are found.
+    * 3a1. System shows a message stating that no contacts were found.
+
+  Use case ends.
+
+* 2b. User enters an empty query `find`.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+* 2c. User enters an invalid student id or name format.
+    * 2c1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC05: Edit a student contact**
+
+**MSS**
+
+1. User requests to edit a student contact using the `edit` command.
+2. System updates the contact's details.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The student id does not exist in the list.
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. The field to be edited is invalid or the value is incorrect.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC06: Filter contacts by class or tag**
+
+**MSS**
+
+1. User requests to filter student contacts based on class id or tag.
+2. System filters the contacts based on the input filter criteria.
+3. System displays the contacts that match the filter.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No matching contacts are found.
+    * 3a1. System shows a relevant message.
+
+  Use case ends.
+
+* 2b. User enters an invalid filter or tag.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC07: Mass delete student contacts**
+
+**MSS**
+
+1. User requests to delete multiple student contacts by specifying multiple student ids.
+2. System deletes the contacts from the list.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. One or more student ids are invalid.
+    * 2a1. System shows an error message.
+
+  Use case ends.
+
+* 2b. No student ids are provided or the command is incorrect.
+    * 2b1. System shows an error message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC08: Clear the contact list**
+
+**MSS**
+
+1. User requests to clear the contact list.
+2. System deletes all contacts from the list.
+3. System shows a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is already empty.
+    * 2a1. System shows an update message.
+
+  Use case ends.
+
+<br></br>
+
+**Use case UC09: Exit the application**
+
+**MSS**
+
+1. User requests to exit the application using the `exit` command or by closing the window.
+2. System closes the application.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. User closes the application by clicking the close button on the window.
+    * 2a1. The application exits and the window is closed.
+
+  Use case ends.
+
+* 2b. User types the `exit` command.
+    * 2b1. The application exits and the window is closed.
+
+  Use case ends.
+
+<br></br>
 
 ### Non-Functional Requirements
 
@@ -581,7 +749,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisite: Ensure that the list is not empty.
 
     2. Test case: `clear`<br>
-       Expected: A success message stating that HireMe has been cleared.
+       Expected: A success message stating that WhoDat has been cleared.
 
 <br></br>
 
@@ -591,7 +759,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Type `list` and ensure that the list is not empty.
 
-    2. Test case: `exit` and open the HireMe application again<br>
+    2. Test case: `exit` and open the WhoDat application again<br>
        Expected: The list of student contacts previously saved are displayed.
 
 <br></br>
