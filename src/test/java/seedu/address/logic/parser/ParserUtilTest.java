@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.ParserUtil.parseMultipleStudentIds;
+import static seedu.address.logic.parser.ParserUtil.removeDuplicatesFromStudentIdArray;
 import static seedu.address.logic.parser.ParserUtil.removeNullEntriesFromStudentIdArray;
 import static seedu.address.logic.parser.ParserUtil.separateStringByComma;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -243,18 +244,27 @@ public class ParserUtilTest {
 
         // only one correct studentId, with spacing
         String inputStudentIds = correctStudentIdString1 + " ";
-        actualResults = parseMultipleStudentIds(inputStudentIds);
-        assertTrue(actualResults.length == 1);
-        assertTrue(correctStudentId1.equals(actualResults[0]));
-
-        // two correct inputStudentIds, without spacing, with comma
-        inputStudentIds = correctStudentIdString1 + "," + correctStudentIdString2;
-        StudentId[] expectedResults = new StudentId[]{correctStudentId1, correctStudentId2};
+        StudentId[] expectedResults = new StudentId[]{correctStudentId1};
         test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
 
-        // two correct inputStudentIds, with spacing, with comma
+        // two correct, distinct inputStudentIds, without spacing, with comma
+        inputStudentIds = correctStudentIdString1 + "," + correctStudentIdString2;
+        expectedResults = new StudentId[]{correctStudentId1, correctStudentId2};
+        test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
+
+        // two correct, non-distinct inputStudentIds, without spacing, with comma
+        inputStudentIds = correctStudentIdString1 + "," + correctStudentIdString1;
+        expectedResults = new StudentId[]{correctStudentId1};
+        test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
+
+        // two correct, distinct inputStudentIds, with spacing, with comma
         inputStudentIds = correctStudentIdString1 + ", " + correctStudentIdString2;
         expectedResults = new StudentId[]{correctStudentId1, correctStudentId2};
+        test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
+
+        // two correct, non-distinct inputStudentIds, with spacing, with comma
+        inputStudentIds = correctStudentIdString1 + ", " + correctStudentIdString1;
+        expectedResults = new StudentId[]{correctStudentId1};
         test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
 
         // one correct inputStudentId, one incorrect inputStudentId, without spacing
@@ -262,19 +272,21 @@ public class ParserUtilTest {
         expectedResults = new StudentId[]{correctStudentId1};
         test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
 
-        // two incorrect inputStudentIds, without spacing
+        // two incorrect distinct inputStudentIds, without spacing
         inputStudentIds = incorrectStudentIdString1 + "," + incorrectStudentIdString2;
         expectedResults = new StudentId[]{};
-        actualResults = parseMultipleStudentIds(inputStudentIds);
-        assertTrue(expectedResults.length == actualResults.length);
+        test_driver_parseMultipleStudentIds(expectedResults, inputStudentIds);
     }
 
     private static void test_driver_parseMultipleStudentIds(StudentId[] expectedResults, String inputStudentIds) {
-        int numStudents = expectedResults.length;;
         StudentId[] actualResults = parseMultipleStudentIds(inputStudentIds);
-        assertTrue(expectedResults.length == actualResults.length);
-        for (int i = 0; i < numStudents; i++) {
-            assertTrue(expectedResults[i].equals(actualResults[i]));
+        checkEqualityOfStudentIdArrays(actualResults, expectedResults);
+    }
+
+    private static void checkEqualityOfStudentIdArrays(StudentId[] output, StudentId[] expected) {
+        assertTrue(output.length == expected.length);
+        for (int i = 0; i < expected.length; i++) {
+            assertTrue(expected[i].equals(output[i]));
         }
     }
 
@@ -283,21 +295,35 @@ public class ParserUtilTest {
         StudentId studentId1 = new StudentId("A1234567H");
         StudentId studentId2 = new StudentId("A2345678G");
 
+        // empty student id array
         StudentId[] input = new StudentId[]{};
         StudentId[] expected = new StudentId[]{};
         test_driver_removeNullEntriesFromStudentIdArray(input, expected);
 
+        // no null entries in student id array
         input = new StudentId[]{studentId1, studentId2};
         expected = new StudentId[]{studentId1, studentId2};
         test_driver_removeNullEntriesFromStudentIdArray(input, expected);
 
+        // null entries in student id array
         input = new StudentId[]{null, null};
         expected = new StudentId[]{};
         test_driver_removeNullEntriesFromStudentIdArray(input, expected);
 
+        // interleaving null entries and non-null entries
         input = new StudentId[]{null, studentId1, null, studentId2};
         expected = new StudentId[]{studentId1, studentId2};
         test_driver_removeNullEntriesFromStudentIdArray(input, expected);
+
+        // interleaving null entries and non-null entries
+        input = new StudentId[]{null, studentId2, null, null, studentId1};
+        expected = new StudentId[]{studentId2, studentId1};
+        test_driver_removeNullEntriesFromStudentIdArray(input, expected);
+    }
+
+    public static void test_driver_removeNullEntriesFromStudentIdArray(StudentId[] input, StudentId[] expected) {
+        StudentId[] output = removeNullEntriesFromStudentIdArray(input);
+        checkEqualityOfStudentIdArrays(output, expected);
     }
 
     @Test
@@ -306,11 +332,39 @@ public class ParserUtilTest {
         assertThrows(NullPointerException.class, () -> removeNullEntriesFromStudentIdArray(input));
     }
 
-    private static void test_driver_removeNullEntriesFromStudentIdArray(StudentId[] input, StudentId[] expected) {
-        StudentId[] output = removeNullEntriesFromStudentIdArray(input);
-        assertTrue(output.length == expected.length);
-        for (int i = 0; i < expected.length; i++) {
-            assertTrue(expected[i].equals(output[i]));
-        }
+    @Test
+    public void test_removeDuplicatesFromStudentIdArray() {
+        StudentId studentId1 = new StudentId("A1234567H");
+        StudentId studentId2 = new StudentId("A2345678G");
+
+        // empty student id array
+        StudentId[] input1 = new StudentId[]{};
+        StudentId[] expected1 = new StudentId[]{};
+        test_driver_removeDuplicatesFromStudentIdArray(input1, expected1);
+
+        // all distinct
+        StudentId[] input2 = new StudentId[]{studentId1, studentId2};
+        StudentId[] expected2 = new StudentId[]{studentId1, studentId2};
+        test_driver_removeDuplicatesFromStudentIdArray(input2, expected2);
+
+        // all similar
+        StudentId[] input3 = new StudentId[]{studentId2, studentId2};
+        StudentId[] expected3 = new StudentId[]{studentId2};
+        test_driver_removeDuplicatesFromStudentIdArray(input3, expected3);
+
+        // some distinct, some similar
+        StudentId[] input4 = new StudentId[]{studentId1, studentId1, studentId1, studentId2};
+        StudentId[] expected4 = new StudentId[]{studentId1, studentId2};
+        test_driver_removeDuplicatesFromStudentIdArray(input4, expected4);
+
+        // repeats present
+        StudentId[] input5 = new StudentId[]{studentId2, studentId1, studentId1, studentId2};
+        StudentId[] expected5 = new StudentId[]{studentId2, studentId1};
+        test_driver_removeDuplicatesFromStudentIdArray(input5, expected5);
+    }
+
+    public static void test_driver_removeDuplicatesFromStudentIdArray(StudentId[] input, StudentId[] expected) {
+        StudentId[] output = removeDuplicatesFromStudentIdArray(input);
+        checkEqualityOfStudentIdArrays(output, expected);
     }
 }

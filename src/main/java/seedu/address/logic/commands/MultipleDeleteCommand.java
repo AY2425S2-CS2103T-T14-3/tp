@@ -75,6 +75,9 @@ public class MultipleDeleteCommand extends Command {
         return new CommandResult(message);
     }
 
+    /**
+     * Combines the list of strings into one comma-separated string.
+     */
     public static String getCombinedStringFromListOfString(List<String> stringList) {
         requireNonNull(stringList);
         String resultingString = "";
@@ -98,8 +101,10 @@ public class MultipleDeleteCommand extends Command {
             deleteCommand.execute(model);
             StudentId successfullyDeletedStudent = deleteCommand.getStudentIdToDelete();
             String successfullyDeletedStudentString = successfullyDeletedStudent.toString();
+
             String loggerMessage = "Deleted: " + successfullyDeletedStudentString;
             logger.log(Level.INFO, loggerMessage);
+
             successfullyDeletedStudentStringsList.add(successfullyDeletedStudentString);
         } catch (CommandException ce) {
             StudentId missingStudentId = deleteCommand.getStudentIdToDelete();

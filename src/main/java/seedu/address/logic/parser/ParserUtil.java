@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -99,8 +101,7 @@ public class ParserUtil {
 
     /**
      * Parses a {@code String studentIdsString} into a {@code StudentId[]}.
-     * Leading and trailing whitespaces will be trimmed.
-     * The array returned contains only valid {@code StudentId} objects.
+     * The array returned contains only valid,non-null and distinct {@code StudentId} objects.
      */
     public static StudentId[] parseMultipleStudentIds(String studentIdsString) {
         requireNonNull(studentIdsString);
@@ -111,7 +112,38 @@ public class ParserUtil {
             updateStudentIdArray(studentIdsArray, studentIdStringsArray[i], i);
         }
         StudentId[] studentIdsArrayWithoutNulls = removeNullEntriesFromStudentIdArray(studentIdsArray);
-        return studentIdsArrayWithoutNulls;
+        StudentId[] studentIdsArrayWithoutNullsAndDuplicates =
+                removeDuplicatesFromStudentIdArray(studentIdsArrayWithoutNulls);
+        return studentIdsArrayWithoutNullsAndDuplicates;
+    }
+
+    /**
+     * Takes a {@code StudentId[]} without nulls and returns a new copy without duplicates.
+     */
+    public static StudentId[] removeDuplicatesFromStudentIdArray(StudentId[] studentIds) {
+        assert studentIds != null : "The input array cannot be null.";
+        List<Integer> indicesOfDistinctStudentIds = new LinkedList<>();
+        Set<String> distinctStudentIds = new HashSet<>();
+        int numStudentIds = studentIds.length;
+
+        for (int i = 0; i < numStudentIds; i++) {
+            StudentId currStudentId = studentIds[i];
+            assert currStudentId != null : "No null student id entries can be present.";
+            String studentIdString = currStudentId.toString();
+            if (!distinctStudentIds.contains(studentIdString)) {
+                distinctStudentIds.add(studentIdString);
+                indicesOfDistinctStudentIds.add(i);
+            }
+        }
+
+        int numUniqueStudentIds = distinctStudentIds.size();
+        StudentId[] studentIdsWithoutDuplicates = new StudentId[numUniqueStudentIds];
+        for (int i = 0; i < numUniqueStudentIds; i++) {
+            Integer indexOfUniqueStudentId = indicesOfDistinctStudentIds.get(i);
+            StudentId uniqueStudentId = studentIds[indexOfUniqueStudentId];
+            studentIdsWithoutDuplicates[i] = uniqueStudentId;
+        }
+        return studentIdsWithoutDuplicates;
     }
 
     /**
@@ -127,6 +159,7 @@ public class ParserUtil {
                 numNonNullEntries++;
             }
         }
+
         StudentId[] studentIdArrayWithoutNull = new StudentId[numNonNullEntries];
         int pointer = 0;
         for (int i = 0; i < arrayLength; i++) {
