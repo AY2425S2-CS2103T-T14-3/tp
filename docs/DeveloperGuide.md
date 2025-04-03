@@ -322,7 +322,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The student already exists in the list.
+* 2a. The student with the same StudentId or Email already exists in the list.
 
     * 2a1. System shows an error message.
 
