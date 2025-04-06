@@ -118,10 +118,23 @@ m_delete A0272111H, A1234567G, A0123456F
 ```
 
 🛑 **What to expect:**
-- You will **NOT** be asked for confirmation before proceeding in the current version.
-- If the student IDs exist, all of them are **gone for good**.
-- If some of the student IDs **don’t exist**, we will delete only those that actually exist.
-- If the student ids are not comma-separated or are invalid, we will let you know!
+- **No confirmation prompt** — deletions happen instantly in this version.
+- At least one student ID must be supplied. If multiple student IDs are supplied, they must be **comma-separated**.
+- Only **valid and existing** student IDs will be deleted, and they’ll appear under the **Deleted Students section**.
+- All **invalid** student IDs (i.e. incorrect format) will be shown under the **Invalid Student IDs section**.
+- All **valid but non-existent** student IDs will appear under the **Missing Student IDs section**.
+
+🔎 **Duplicate Check:**
+- **Duplicate valid IDs** will be removed before proceeding with mass-delete. The student ID will be displayed only once
+  in the **Missing Student IDs section** or **Deleted Students section**.
+- **Duplicate invalid IDs** are **not** filtered out — they will be listed as provided in the **Invalid Student IDs section**,
+  but will not affect the operation.
+
+💡 What Counts as a **Valid Student ID**?
+- Begin with a capital **A**
+- Follow with **7 digits**
+- End with **any capital letter**
+- E.g. ```A1234567G```
 
 ---
 ### Feature 4: List Contact
