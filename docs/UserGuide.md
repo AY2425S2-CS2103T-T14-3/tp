@@ -224,6 +224,9 @@ filter_t NeedHelp
 🔍 **Forgot the command?** Go to "Help" tab on the top left of the window, or simply type `help`, and 
 there you will find everything you need to know. 😆
 
+🔍 **Unable to access jar file?** Make sure to copy the jar file to your device's Downloads folder, and 
+try following the start guide again! 
+
 ---
 ## FAQs
 ❓ **Q: How strict is the input format?**  
