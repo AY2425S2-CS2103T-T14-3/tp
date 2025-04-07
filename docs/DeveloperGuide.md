@@ -244,9 +244,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | SoC TA     | add a student's contact                             | store their contact details                                                                  |
 | `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts                                                        |
 | `* * *`  | SoC TA     | list all student contacts                           | view all my current students                                                                 |
-| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app                                                 |
-| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app                                               |
-| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester                                                |
+| `* * *`  | SoC TA     | add tags to student contacts                        | include extra remarks about students                                                         |
+| `* * *`  | SoC TA     | save my student contacts locally                    | avoid losing my data when I close the app                                                    |
+| `* * *`  | SoC TA     | load my student contact details from a save file    | access my saved data when I open the app                                                     |
+| `* * *`  | SoC TA     | clear my list of student contacts                   | create a new list for the next semester                                                      |
 | `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes                                                |
 | `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group                                                |
 | `* *`    | SoC TA     | filter my student contacts by tag status            | quickly find specific students with special conditions                                       |
@@ -328,7 +329,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 1b. User enters an invalid command, such as `/list`.
+* 1b. User enters an invalid command.
     * 1b1. System shows an error message.
 
   Use case ends.
@@ -347,7 +348,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. User enters an empty query `find`.
+* 1a. User enters an empty query.
     * 1a1. System shows an error message.
 
   Use case ends.
@@ -368,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to edit a student contact using the `edit` command.
+1. User requests to edit a student contact.
 2. System updates the contact's details.
 3. System shows a success message.
 
@@ -459,7 +460,7 @@ completely invalid.
 
 **MSS**
 
-1. User requests to exit the application using the `exit` command or by closing the window.
+1. User requests to exit the application.
 2. System closes the application.
 
    Use case ends.
