@@ -9,7 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class ClassId {
 
-    public static final String MESSAGE_CONSTRAINTS = "ClassId is maximally 16 characters long ";
+    public static final String MESSAGE_CONSTRAINTS = "ClassId does not accept empty inputs,"
+            + " and is maximally 16 characters long ";
 
     /*
      * The first character of the address must not be a whitespace,
