@@ -163,7 +163,7 @@ edit A0272222H n/Xinyi
 
 🛠 **How to use:**
 - Key in the student ID to locate the student whose info you want to change. 
-- `/n` for name, `/i` for student ID, `/e` for NUSNET ID, `/c` for class.
+- `n/` for name, `i/` for student ID, `e/` for NUSNET ID, `c/` for class.
 - The new value **must** follow the same rules as adding a contact (we’re strict, but fair!). 👨‍⚖️
 
 
