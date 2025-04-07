@@ -39,7 +39,7 @@ First time using **WhoDat**? Not sure where to start? Fret not, here's a quick o
 
 ## Installation
 Download ```whodat.jar``` from our latest github release: \
-https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
+https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.6 🔥
 
 ## Getting Started
 1. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
