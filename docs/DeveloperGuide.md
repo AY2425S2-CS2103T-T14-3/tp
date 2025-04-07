@@ -273,15 +273,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The student with the same StudentId or Email already exists in the list.
+* 1a. The student with the same StudentId or Email already exists in the list.
 
-    * 2a1. System shows an error message.
+    * 1a1. System shows an error message.
 
   Use case ends.
 
-* 2b. The user's input has missing or invalid fields.
+* 1b. The user's input has missing or invalid fields.
 
-    * 2b1. System shows an error message.
+    * 1b1. System shows an error message.
 
       Use case ends.
 
@@ -299,13 +299,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The list is empty.
 
   Use case ends.
 
-* 2b. The student does not exist in the list.
+* 1b. The student does not exist in the list.
 
-    * 3a1. AddressBook shows an error message.
+    * 1b1. AddressBook shows an error message.
 
       Use case ends.
 
@@ -322,13 +322,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
-    * 2a1. System displays a relevant message.
+* 1a. The list is empty.
+    * 1a1. System displays a relevant message.
 
   Use case ends.
 
-* 2b. User enters an invalid command, such as `/list`.
-    * 2b1. System shows an error message.
+* 1b. User enters an invalid command, such as `/list`.
+    * 1b1. System shows an error message.
 
   Use case ends.
 
@@ -346,18 +346,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
+* 1a. User enters an empty query `find`.
+    * 1a1. System shows an error message.
+
+  Use case ends.
+
+* 1b. User enters an invalid student id or name format.
+    * 1b1. System shows an error message.
+
+  Use case ends.
+
 * 2a. No matching contacts are found.
-    * 3a1. System shows a message stating that no contacts were found.
-
-  Use case ends.
-
-* 2b. User enters an empty query `find`.
-    * 2b1. System shows an error message.
-
-  Use case ends.
-
-* 2c. User enters an invalid student id or name format.
-    * 2c1. System shows an error message.
+    * 2a1. System shows a message stating that no contacts were found.
 
   Use case ends.
 
@@ -375,13 +375,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The student id does not exist in the list.
-    * 2a1. System shows an error message.
+* 1a. The student id does not exist in the list.
+    * 1a1. System shows an error message.
 
   Use case ends.
 
-* 2b. The field to be edited is invalid or the value is incorrect.
-    * 2b1. System shows an error message.
+* 1b. The field to be edited is invalid or the value is incorrect.
+    * 1b1. System shows an error message.
 
   Use case ends.
 
@@ -399,13 +399,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. No matching contacts are found.
-    * 3a1. System shows a relevant message.
+* 1a. User enters an invalid filter or tag.
+    * 1a1. System shows an error message.
 
   Use case ends.
 
-* 2b. User enters an invalid filter or tag.
-    * 2b1. System shows an error message.
+* 2a. No matching contacts are found.
+    * 2a1. System shows a relevant message.
 
   Use case ends.
 
@@ -423,13 +423,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. One or more student ids are invalid.
-    * 2a1. System shows an error message.
+* 1a. One or more student ids are invalid.
+    * 1a1. System shows an error message.
 
   Use case ends.
 
-* 2b. No student ids are provided or the command is incorrect.
-    * 2b1. System shows an error message.
+* 1b. No student ids are provided or the command is incorrect.
+    * 1b1. System shows an error message.
 
   Use case ends.
 
@@ -447,8 +447,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is already empty.
-    * 2a1. System shows an update message.
+* 1a. The list is already empty.
+    * 1a1. System shows an update message.
 
   Use case ends.
 
@@ -462,18 +462,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. System closes the application.
 
    Use case ends.
-
-**Extensions**
-
-* 2a. User closes the application by clicking the close button on the window.
-    * 2a1. The application exits and the window is closed.
-
-  Use case ends.
-
-* 2b. User types the `exit` command.
-    * 2b1. The application exits and the window is closed.
-
-  Use case ends.
 
 <br></br>
 
