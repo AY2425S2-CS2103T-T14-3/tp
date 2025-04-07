@@ -83,7 +83,7 @@ CS1101, Tutorial 03). However, go ahead if you would like to customize class fie
 - **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! Each tag 
 must be **less than 16 characters** long.
 
-🔎 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
+🔎 **Duplicate Check:** If a student with the same student ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
 ❕**Case Sensitivity:** `ClassId`, `StudentId`, `NUSNETId` and `Tag` are **_case-sensitive_**, only `Name` is not. 
 
@@ -159,7 +159,7 @@ list
 
 **🔤 Command Format:**
 ```
-edit StudentID field/new_value
+edit StudentID prefix/new_value
 ```
 
 **🖥 Example:**
@@ -171,7 +171,6 @@ edit A0272222H n/Xinyi
 - Key in the **case-sensitive** student ID to locate the student whose info you want to change. 
 - `n/` for name, `i/` for student ID, `e/` for NUSNET ID, `c/` for class.
 - The new value **must** follow the same rules as adding a contact. 👨‍⚖️
-
 
 ---
 ### Feature 6: Find Contact
@@ -298,7 +297,7 @@ edit A0272222H t/NeedHelp t/LateSubmission
 | **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
 | **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
 | **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
-| **Edit**        | `edit StudentID field/new_value` <br> e.g. `edit A0272222H n/Xinyi`                                          |
+| **Edit**        | `edit StudentID prefix/new_value` <br> e.g. `edit A0272222H n/Xinyi`                                         |
 | **List**        | `list`                                                                                                       |
 | **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
 | **Filter**      | `filter_c classId` or `filter_t tag` <br> e.g. `filter_c cs1231-05` or `filter_t sampletag`                  |

@@ -17,7 +17,7 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD_TAG = "filter_t";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD_CLASS + " / " + COMMAND_WORD_TAG
-            + ": Filters the students based on class id OR tag\n"
+            + ": Filters the students based on class id OR tag (tag only accepts an alphanumeric input)\n"
             + "Example: " + COMMAND_WORD_CLASS + " CS1101S03 OR "
             + "Example: " + COMMAND_WORD_TAG + " NeedHelp\n";
 
