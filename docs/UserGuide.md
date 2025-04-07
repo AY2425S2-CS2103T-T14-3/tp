@@ -38,20 +38,19 @@ First time using **WhoDat**? Not sure where to start? Fret not, here's a quick o
 * Is there a pressing question on your mind? The [FAQ](#faqs) might have what you are looking for.
 
 ## Installation
-1. **Download and install** the software like a pro. 💾
-2. **Run the program** and feel the power. ⚡
+Download ```whodat.jar``` from our latest github release: \
+https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 
 ## Getting Started
-1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
-2. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
+1. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
 ```shell
     cd ~/Downloads
 ```
-3. Start running the application by copy-pasting in the following command: 
+2. Start running the application by copy-pasting in the following command: 
 ```shell
     java -jar whodat.jar
 ```
-4. Your application window will pop up, and you can start managing contacts like a boss. 👨‍💻👩‍💻
+3. Your application window will pop up, and you can start managing contacts like a boss. 👨‍💻👩‍💻
 
 ---
 ## Features
