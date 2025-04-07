@@ -9,8 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Tag {
 
-    public static final String MESSAGE_CONSTRAINTS = "Tag names should be alphanumeric with NO SPACE. ";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String MESSAGE_CONSTRAINTS = "Tag names should be alphanumeric with NO SPACE, "
+            + "and 1 to 16 characters long. ";
+    public static final String VALIDATION_REGEX = "^\\p{Alnum}{1,16}$";
 
     public final String tagName;
 
