@@ -534,14 +534,14 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisite: A duplicate contact cannot exist.
    
-   2. Test case: `add add n/James i/A0277024H e/E1136951 c/110103`<br>
+   2. Test case: `add n/James i/A0277024H e/E1136951 c/110103`<br>
       Expected: Contact is added with success status message.
 
 2. Adding a duplicate contact
 
     1. Prerequisite: A duplicate contact exists.
 
-    2. Test case: `add add n/James i/A0277024H e/E1136951 c/110103`<br>
+    2. Test case: `add n/James i/A0277024H e/E1136951 c/110103`<br>
        Expected: Contact is not added to the list, an error message is shown.
 
 3. Adding contact with invalid fields
