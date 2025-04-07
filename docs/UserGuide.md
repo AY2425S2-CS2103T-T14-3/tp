@@ -33,9 +33,9 @@ and perfectly suited for busy student tutors like you**.
 ## Quick Overview
 First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
 
-* To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
-* If you need a compilation of the available commands, check out our [Command Summary](#-command-summary).
-* Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
+* To start installing and running the app, refer to the [Getting Started](#getting-started) section.
+* If you need a compilation of the available commands, check out our [Command Summary](#command-summary).
+* Is there a pressing question on your mind? The [FAQ](#faqs) might have what you are looking for.
 
 ## Installation
 1. **Download and install** the software like a pro. 💾
@@ -220,7 +220,7 @@ there you will find everything you need to know. 😆
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
 ❓ **Q: How do I add a tag to an existing student, if I forgot to add tag when keying in the information?**  
-💡 **A:** Use the `edit` function [here](#feature-4-updateedit-contact), and change the `Tag` field just like any other!
+💡 **A:** Use the `edit` function [here](#feature-5-updateedit-contact), and change the `Tag` field just like any other!
 If you want to add more than one tags, just use more than one `t/tag` fields!
 
 **🖥 Example:**
@@ -235,13 +235,13 @@ edit A0272222H t/NeedHelp t/LateSubmission
 |-----------------|--------------------------------------------------------------------------------------------------------------|
 | **Help**        | `help`                                                                                                       |
 | **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
-| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              
-| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  
+| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
 | **List**        | `list`                                                                                                       |
 | **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
 | **Filter**      | `filter_c classId` or `filter_t tag` <br> e.g. `filter_c cs1231-05` or `filter_t sampletag`                  |
 | **Clear**       | `clear`                                                                                                      |
-| **Exit**        | `exit`                                                                                                       
+| **Exit**        | `exit`                                                                                                       |
 
 ---
 ## Contact Support
