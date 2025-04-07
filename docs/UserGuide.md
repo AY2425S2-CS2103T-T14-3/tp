@@ -58,14 +58,15 @@ https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 ### Feature 1: Add Contact
 **🎯 Purpose:** Want to save student details without memorizing 100+ names? This feature lets you add a student's name, ID, NUSNET ID, and tutorial class. 📝
 
-**🔤 Command Format:**
+**🔤 Command Format:** \
+Note: Bracketed fields "[ ]" are optional. 
 ```
-add n/name i/ID e/NUSNET-ID c/class
+add n/name i/ID e/NUSNET-ID c/class [t/tag1] [t/tag2]
 ```
 
 **🖥 Example:**
 ```
-add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03
+add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03 t/NeedHelp
 ```
 
 💡 **How it works:**
