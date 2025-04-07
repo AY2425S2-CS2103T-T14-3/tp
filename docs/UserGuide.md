@@ -13,6 +13,9 @@
     - [📝 Update/Edit Contact](#feature-5-updateedit-contact)
     - [🔎 Find Contact](#feature-6-find-contact)
     - [🎯 Filter Contact](#feature-7-filter-contact)
+    - [❓Help](#feature-8-help)
+    - [🧹Clear](#feature-9-clear)
+    - [🔚Exit](#feature-10-exit)
 6. [🛠 Troubleshooting](#troubleshooting)
 7. [🤔 FAQs](#faqs)
 8. [📝 Command Summary](#command-summary)
@@ -73,9 +76,12 @@ add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03 t/NeedHelp
 - **Name:** English alphabets only (no special characters or numbers) and we have made it **_case-insensitive_**, and it
 will be automatically formatted to ```Title Case```. ✨
 - **Student ID:** Starts and ends with a letter, with seven numbers in between (e.g., A1234567X).  🔐
-- **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because we're nice like that). 📧
-- **Class:** Simple as how you remember, formatted as _[course code]-[tutorial number]_ (e.g. CS1101-03 for CS1101, Tutorial 03). 😎
-- **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! 
+- **NUSNET ID:** Always starts with ‘E’ followed by seven digits. Your email will be generated automatically (because 
+we are nice like that). 📧
+- **Class:** Simple as how you remember, you may format it as _[course code]-[tutorial number]_ (e.g. CS1101-03 for 
+CS1101, Tutorial 03). However, go ahead if you would like to customize class field format however you want! 😎
+- **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! Each tag 
+must be **less than 16 characters** long.
 
 🔎 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
@@ -162,9 +168,9 @@ edit A0272222H n/Xinyi
 ```
 
 🛠 **How to use:**
-- Key in the student ID to locate the student whose info you want to change. 
-- `/n` for name, `/i` for student ID, `/e` for NUSNET ID, `/c` for class.
-- The new value **must** follow the same rules as adding a contact (we’re strict, but fair!). 👨‍⚖️
+- Key in the **case-sensitive** student ID to locate the student whose info you want to change. 
+- `n/` for name, `i/` for student ID, `e/` for NUSNET ID, `c/` for class.
+- The new value **must** follow the same rules as adding a contact. 👨‍⚖️
 
 
 ---
@@ -189,7 +195,8 @@ find A1234567H
 
 💡 **Cool Features:**
 - Case-insensitive search (We do not judge your capitalization skills). 🔠
-- Partial matches work—so even if you only remember "Jane," you are good to go. (but StudentId has to be the exact match)🧠
+- Partial matches work as far as a whole word is matched—so even if you only remember "Jane," you are good to go. 
+But beware! StudentId has to be the exact match🧠
 
 ---
 ### Feature 7: Filter Contact
@@ -213,6 +220,44 @@ filter_t NeedHelp
 
 💡 **Keep in mind:**
 - You can filter by class id or student tag, but not both! 🚦
+- Both searches are **case-insensitive** for your convenience.
+
+---
+### Feature 8: Help
+**🎯 Purpose:** Want to learn about how to use different commands, type `help` and help will be right there!
+
+**🔤 Command Format:**
+```
+help
+```
+
+
+💡 **How it Works:**
+- A website link will pop up in a window, just copy the link and paste it to your browser!
+
+---
+### Feature 9: clear
+**🎯 Purpose:** New semester? Clear your data to make space for the new students!
+
+**🔤 Command Format:**
+```
+clear
+```
+
+💡 **Keep in mind:**
+- No confirmation window will pop up, and no redo is possible. So you have to make up your mind before hitting enter!
+
+---
+### Feature 10: Exit
+**🎯 Purpose:** End of the day, close the application and take a break!
+
+**🔤 Command Format:**
+```
+exit
+```
+
+💡 **Keep in mind:**
+- All data will be saved upon exiting, and you can always come back to it!      
 
 ---
 
