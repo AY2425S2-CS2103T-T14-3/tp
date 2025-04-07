@@ -239,21 +239,22 @@ Upon execution, `DeleteCommand` deletes the student contact from the list.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                        |
-|----------|------------|-----------------------------------------------------|--------------------------------------------------------|
-| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                            |
-| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts                  |
-| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                           |
-| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app           |
-| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app         |
-| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester          |
-| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes          |
-| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group          |
-| `* *`    | SoC TA     | filter my student contacts by tag status            | quickly find specific students with special conditions |
-| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student            |
-| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts               |
-| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts               |
-| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters            |
+| Priority | As a/an …​ | I want to …​                                        | So that I can…​                                                                              |
+|----------|------------|-----------------------------------------------------|----------------------------------------------------------------------------------------------|
+| `* * *`  | SoC TA     | add a student's contact                             | store their contact details                                                                  |
+| `* * *`  | SoC TA     | delete a student's contact                          | remove outdated or incorrect contacts                                                        |
+| `* * *`  | SoC TA     | list all student contacts                           | view all my current students                                                                 |
+| `* * *`  | SoC TA     | save my student contacts locally                    | I will not lose my data when I close the app                                                 |
+| `* * *`  | SoC TA     | load my student contact details from a save file    | I can access my saved data when I open the app                                               |
+| `* * *`  | SoC TA     | clear my list of student contacts                   | I can create a new list for the next semester                                                |
+| `* *`    | SoC TA     | edit my students' contact details                   | update their information if there are changes                                                |
+| `* *`    | SoC TA     | filter my student contacts by tutorial group        | quickly find students from any tutorial group                                                |
+| `* *`    | SoC TA     | filter my student contacts by tag status            | quickly find specific students with special conditions                                       |
+| `* *`    | SoC TA     | mark/unmark a student for requesting a consultation | track the consultation needs of the student                                                  |
+| `* *`    | SoC TA     | search for a student by name                        | quickly locate specific student contacts                                                     |
+| `* *`    | SoC TA     | search for a student by NUS ID                      | quickly locate specific student contacts                                                     |
+| `* *`    | SoC TA     | delete multiple students at one go                  | de-clutter the contact list of outdated or incorrect contacts in as few commands as possible |
+| `*`      | SoC TA     | archive old student contacts                        | contact ex-students from previous semesters                                                  |
 
 ---
 
@@ -417,21 +418,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to delete multiple student contacts by specifying multiple student ids.
 2. System deletes the contacts from the list.
-3. System shows a success message.
+3. System displays completion message where the student ids of the students who were deleted successfully, not found or 
+completely invalid.
 
    Use case ends.
 
 **Extensions**
 
-* 2a. One or more student ids are invalid.
-    * 2a1. System shows an error message.
-
-  Use case ends.
-
-* 2b. No student ids are provided or the command is incorrect.
-    * 2b1. System shows an error message.
-
-  Use case ends.
+* 1a. No student ids are supplied.
+    * 1a1. System shows an error message.
+  Use case ends. 
+  
+* 3a. Invalid student ids were supplied in step 1.
+    * 3a1. System appends a message to the completion message informing the user why some of the student ids were invalid.
 
 <br></br>
 
@@ -576,14 +575,26 @@ testers are expected to do more *exploratory* testing.
 
     1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-    2. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
-       Expected: If student ids are valid, then contacts are deleted from the list. Details of the deleted contacts shown in the status message.
+    2. Test case: `m_delete `
+       Expected: An error message detailing that at least one student id should be supplied.
 
-    3. Test case: `m_delete A2910`<br>
+    3. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
+       Expected: If student ids are valid and existent, then the student ids are deleted from the list. If the student ids are 
+       valid but non-existent or are invalid, they are not removed from the list. Student ids of the successfully deleted 
+       students, missing students and invalid students are displayed.
+   
+    4. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter, and both student ids are the same.<br>
+       Expected: If both the student ids are valid, the duplicate is removed and deletion happens only once. The message 
+       displayed is similar to test case 3 but the duplicate, valid student id is displayed only once.
+   
+    5. Test case: `m_delete AxxxxxxxX AxxxxxxxX`, where x are numerical digits and X is a capitalised letter, and no comma-separation.<br>
+       Expected: No deletion happens and the input student ids are displayed as invalid student ids.
+
+    6. Test case: `m_delete A2910`<br>
        Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-    4. Other incorrect delete commands to try: `/m_delete`, `m_delete 1`, `m delete`<br>
-       Expected: Similar to test case 2.
+    7. Other incorrect delete commands to try: `/m_delete`, `m delete`<br>
+       Expected: An error message warning about invalid command being used.
 
 <br></br>
 

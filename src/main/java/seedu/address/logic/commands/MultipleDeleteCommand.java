@@ -69,7 +69,7 @@ public class MultipleDeleteCommand extends Command {
                 + INVALID_STUDENTS_PREFIX + invalidStudentString;
 
         if (!invalidStudentString.isEmpty()) {
-            message += "\n\n" + MESSAGE_USAGE;
+            message += "\n" + MESSAGE_USAGE;
         }
 
         return new CommandResult(message);
