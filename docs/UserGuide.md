@@ -77,7 +77,7 @@ will be automatically formatted to ```Title Case```. ✨
 - **Class:** Simple as how you remember, formatted as _[course code]-[tutorial number]_ (e.g. CS1101-03 for CS1101, Tutorial 03). 😎
 - **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! 
 
-🛑 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
+🔎 **Duplicate Check:** If a student with the same ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
 ❕**Case Sensitivity:** `ClassId`, `StudentId`, `NUSNETId` and `Tag` are **_case-sensitive_**, only `Name` is not. 
 
