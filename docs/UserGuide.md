@@ -250,6 +250,7 @@ edit A0272222H t/NeedHelp t/LateSubmission
 | **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
 | **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
 | **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
+| **Edit**        | `edit StudentID field/new_value` <br> e.g. `edit A0272222H n/Xinyi`                                          |
 | **List**        | `list`                                                                                                       |
 | **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
 | **Filter**      | `filter_c classId` or `filter_t tag` <br> e.g. `filter_c cs1231-05` or `filter_t sampletag`                  |
