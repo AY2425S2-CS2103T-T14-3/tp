@@ -33,25 +33,24 @@ and perfectly suited for busy student tutors like you**.
 ## Quick Overview
 First time using **WhoDat**? Not sure where to start? Fret not, here's a quick overview of **WhoDat**.
 
-* To start installing and running the app, refer to the [Getting Started](#-getting-started) section.
-* If you need a compilation of the available commands, check out our [Command Summary](#-command-summary).
-* Is there a pressing question on your mind? The [FAQ](#-faqs) might have what you are looking for.
+* To start installing and running the app, refer to the [Getting Started](#getting-started) section.
+* If you need a compilation of the available commands, check out our [Command Summary](#command-summary).
+* Is there a pressing question on your mind? The [FAQ](#faqs) might have what you are looking for.
 
 ## Installation
-1. **Download and install** the software like a pro. 💾
-2. **Run the program** and feel the power. ⚡
+Download ```whodat.jar``` from our latest github release: \
+https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
 
 ## Getting Started
-1. Download ```whodat.jar``` from our github release: https://github.com/AY2425S2-CS2103T-T14-3/tp/releases/tag/v1.4 🔥
-2. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
+1. Open up Terminal (if you're using Mac OS) and command shell if you're using Windows. Navigate to the folder where the jar file is using the following instruction: 
 ```shell
     cd ~/Downloads
 ```
-3. Start running the application by copy-pasting in the following command: 
+2. Start running the application by copy-pasting in the following command: 
 ```shell
     java -jar whodat.jar
 ```
-4. Your application window will pop up, and you can start managing contacts like a boss. 👨‍💻👩‍💻
+3. Your application window will pop up, and you can start managing contacts like a boss. 👨‍💻👩‍💻
 
 ---
 ## Features
@@ -59,14 +58,15 @@ First time using **WhoDat**? Not sure where to start? Fret not, here's a quick o
 ### Feature 1: Add Contact
 **🎯 Purpose:** Want to save student details without memorizing 100+ names? This feature lets you add a student's name, ID, NUSNET ID, and tutorial class. 📝
 
-**🔤 Command Format:**
+**🔤 Command Format:** \
+Note: Bracketed fields "[ ]" are optional. 
 ```
-add n/name i/ID e/NUSNET-ID c/class
+add n/name i/ID e/NUSNET-ID c/class [t/tag1] [t/tag2]
 ```
 
 **🖥 Example:**
 ```
-add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03
+add n/Lin Xinyi i/A0277024H e/E1136951 c/CS1101-03 t/NeedHelp
 ```
 
 💡 **How it works:**
@@ -233,7 +233,7 @@ there you will find everything you need to know. 😆
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
 ❓ **Q: How do I add a tag to an existing student, if I forgot to add tag when keying in the information?**  
-💡 **A:** Use the `edit` function [here](#feature-4-updateedit-contact), and change the `Tag` field just like any other!
+💡 **A:** Use the `edit` function [here](#feature-5-updateedit-contact), and change the `Tag` field just like any other!
 If you want to add more than one tags, just use more than one `t/tag` fields!
 
 **🖥 Example:**
@@ -248,13 +248,13 @@ edit A0272222H t/NeedHelp t/LateSubmission
 |-----------------|--------------------------------------------------------------------------------------------------------------|
 | **Help**        | `help`                                                                                                       |
 | **Add**         | `add n/name i/studentId e/emailid c/classId` <br> e.g. `add n/Joshua Lai i/A1234567S e/E1234567 c/cs1231-05` |
-| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              
-| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  
+| **Delete**      | `delete studentId` <br> e.g. `delete A1234567S`                                                              |
+| **Mass Delete** | `m_delete studentId1, studentId2` <br> e.g. `m_delete A1234567S, A0123456B`                                  |
 | **List**        | `list`                                                                                                       |
 | **Find**        | `find name` or `find studentId` <br> e.g. `find Alex` or `find A1234567S`                                    |
 | **Filter**      | `filter_c classId` or `filter_t tag` <br> e.g. `filter_c cs1231-05` or `filter_t sampletag`                  |
 | **Clear**       | `clear`                                                                                                      |
-| **Exit**        | `exit`                                                                                                       
+| **Exit**        | `exit`                                                                                                       |
 
 ---
 ## Contact Support
