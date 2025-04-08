@@ -40,7 +40,6 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "whodat-developer-guide": "WhoDat Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -130,7 +129,7 @@
         "feature-6-find-contact": "Feature 6: Find Contact",
         "feature-7-filter-contact": "Feature 7: Filter Contact",
         "feature-8-help": "Feature 8: Help",
-        "feature-9-clear": "Feature 9: clear",
+        "feature-9-clear": "Feature 9: Clear",
         "feature-10-exit": "Feature 10: Exit",
         "troubleshooting": "Troubleshooting",
         "faqs": "FAQs",
