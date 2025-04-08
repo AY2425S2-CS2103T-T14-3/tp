@@ -736,3 +736,4 @@ see what's wrong with the studentId and modify easily, instead of typing the ent
 8. Though our classID currently allows different format to cater to different schools, we have received opinions that
 we should standardise it through validation regex. Thus, a possible improvement is to validate the classId format by
 making sure that it follows the standard format: [ClassCode]-[TutorialCode], e.g. `CS1101-01`.
+
