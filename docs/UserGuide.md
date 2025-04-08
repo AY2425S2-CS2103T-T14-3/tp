@@ -81,7 +81,7 @@ we are nice like that). 📧
 - **Class:** Simple as how you remember, you may format it as _[course code]-[tutorial number]_ (e.g. CS1101-03 for 
 CS1101, Tutorial 03). However, go ahead if you would like to customize class field format however you want! 😎
 - **Tag:** Optional tag(s) to attach remarks about a student, e.g. NeedHelp. You may add more than one tags! Each tag 
-must be **less than 16 characters** long.
+must be **less than 16 characters** long and contains **NO SPACE**.
 
 🔎 **Duplicate Check:** If a student with the same student ID or NUSNET ID exists, we will stop you right there! No cloning allowed. 🚫
 
@@ -193,7 +193,7 @@ find A1234567H
 ```
 
 💡 **Cool Features:**
-- Case-insensitive search (We do not judge your capitalization skills). 🔠
+- Case-insensitive name search (We do not judge your capitalization skills). 🔠
 - Partial matches work as far as a whole word is matched—so even if you only remember "Jane," you are good to go. 
 But beware! StudentId has to be the exact match🧠
 
@@ -218,12 +218,12 @@ filter_t NeedHelp
 ```
 
 💡 **Keep in mind:**
-- You can filter by class id or student tag, but not both! 🚦
+- You can filter by classId or Tag, but not both! 🚦
 - Both searches are **case-insensitive** for your convenience.
 
 ---
 ### Feature 8: Help
-**🎯 Purpose:** Want to learn about how to use different commands, type `help` and help will be right there!
+**🎯 Purpose:** Want to learn about how to use different commands? Type `help` and help will be right there!
 
 **🔤 Command Format:**
 ```

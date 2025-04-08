@@ -31,10 +31,10 @@ public class SampleDataUtil {
                     getTagSet("NoSubmission")),
             new Person(new Name("David Li"), new StudentId("A4567890E"), new EmailId("E5234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("PendingConsultation")),
+                    getTagSet("Consultation")),
             new Person(new Name("Irfan Ibrahim"), new StudentId("A5678901F"), new EmailId("E6234567"),
                     new ClassId("CS5446-01"),
-                    getTagSet("PendingResponse")),
+                    getTagSet("ToRespond")),
             new Person(new Name("Roy Balakrishnan"), new StudentId("A6789012G"), new EmailId("E7234567"),
                     new ClassId("CS5446-01"),
                     getTagSet("LateSubmission"))
