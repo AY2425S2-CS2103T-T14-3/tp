@@ -22,7 +22,7 @@ You can reach us at the emailId `seer[at]comp.nus.edu.sg`
 * Role: Project Member
 * Responsibility: Deliverables and Deadlines
 
-### Jane Doe
+### Li Simeng
 
 <img src="images/simenggg.png" width="200px">
 
@@ -36,7 +36,7 @@ You can reach us at the emailId `seer[at]comp.nus.edu.sg`
 
 <img src="images/tasmiah0508.png" width="200px">
 
-[[github](http://github.com/tasmiah0508)] 
+[[github](http://github.com/tasmiah0508)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
@@ -52,7 +52,7 @@ You can reach us at the emailId `seer[at]comp.nus.edu.sg`
 * Role: Documentation
 * Responsibilities: Quality of project documents
 
-### James Doe
+### Wang Haitao
 
 <img src="images/haitao2003.png" width="200px">
 
