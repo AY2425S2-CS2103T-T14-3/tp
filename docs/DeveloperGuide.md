@@ -6,7 +6,40 @@
 # WhoDat Developer Guide
 
 <!-- * Table of Contents -->
-<page-nav-print />
+* [WhoDat Developer Guide](#whodat-developer-guide)
+    * [**Acknowledgements**](#acknowledgements)
+    * [**Setting up, getting started**](#setting-up-getting-started)
+    * [**Design**](#design)
+        * [Architecture](#architecture)
+        * [UI component](#ui-component)
+        * [Logic component](#logic-component)
+        * [Model component](#model-component)
+        * [Storage component](#storage-component)
+        * [Common classes](#common-classes)
+    * [**Implementation**](#implementation)
+        * [Add a student contact](#add-a-student-contact)
+        * [Delete a student contact](#delete-a-student-contact)
+    * [**Documentation, logging, testing, configuration, dev-ops**](#documentation-logging-testing-configuration-dev-ops)
+    * [**Appendix: Requirements**](#appendix-requirements)
+        * [Product scope](#product-scope)
+        * [User stories](#user-stories)
+        * [Use cases](#use-cases)
+        * [Non-functional requirements](#non-functional-requirements)
+        * [Glossary](#glossary)
+    * [**Appendix: Instructions for manual testing**](#appendix-instructions-for-manual-testing)
+        * [Launch and shutdown](#launch-and-shutdown)
+        * [Adding a person](#adding-a-person)
+        * [Deleting a person](#deleting-a-person)
+        * [Mass deleting people](#mass-deleting-people)
+        * [List](#list)
+        * [Editing a contact](#editing-a-contact)
+        * [Finding a student contact](#finding-a-student-contact)
+        * [Filtering a student contact](#filtering-a-student-contact)
+        * [Clearing the student contact](#clearing-the-student-contact-list)
+        * [Saving the data](#saving-data)
+        * [Exit application](#exit-application)
+    * * [Appendix: Planned Enhancements](#appendix-planned-enhancements)
+<!-- * Table of Contents -->
 
 --------------------------------------------------------------------------------------------------------------------
 
