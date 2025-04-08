@@ -3,6 +3,12 @@
   title: "Developer Guide"
   pageNav: 3
 ---
+# WhoDat Developer Guide
+
+<!-- * Table of Contents -->
+<page-nav-print />
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
