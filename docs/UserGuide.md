@@ -10,7 +10,7 @@
     - [❌ Delete Contact](#feature-2-delete-contact)
     - [❌❌ Mass Delete Contacts](#feature-3-mass-delete-contacts)
     - [📜 List Contact](#feature-4-list-contact)
-    - [📝 Update/Edit Contact](#feature-5-updateedit-contact)
+    - [📝 Edit Contact](#feature-5-edit-contact)
     - [🔎 Find Contact](#feature-6-find-contact)
     - [🎯 Filter Contact](#feature-7-filter-contact)
     - [❓Help](#feature-8-help)
@@ -154,7 +154,7 @@ list
 💡 **Bonus:** If you accidentally type something extra, not to worry—we will still show the list and gently correct you. 🤗
 
 ---
-### Feature 5: Update/Edit Contact
+### Feature 5: Edit Contact
 **🎯 Purpose:** Mistakes are meant to be made. So are typos. No problem—this feature lets you update any information easily. 🔄
 
 **🔤 Command Format:**
@@ -280,7 +280,7 @@ try following the start guide again!
 💡 **A:** Yes! Just use the correct update command, and remember to key in the student ID first, and you’re good to go. 🔄
 
 ❓ **Q: How do I add a tag to an existing student, if I forgot to add tag when keying in the information?**  
-💡 **A:** Use the `edit` function [here](#feature-5-updateedit-contact), and change the `Tag` field just like any other!
+💡 **A:** Use the `edit` function [here](#feature-5-edit-contact), and change the `Tag` field just like any other!
 If you want to add more than one tags, just use more than one `t/tag` fields!
 
 **🖥 Example:**
