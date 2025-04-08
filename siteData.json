@@ -8,10 +8,10 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "lin-xinyi": "Lin Xinyi",
-        "jane-doe": "Jane Doe",
+        "li-simeng": "Li Simeng",
         "tasmia-haque": "Tasmia Haque",
         "joshua-lai": "Joshua Lai",
-        "james-doe": "James Doe"
+        "wang-haitao": "Wang Haitao"
       },
       "headingKeywords": {}
     },
@@ -71,7 +71,8 @@
         "filtering-a-student-contact": "Filtering a student contact",
         "clearing-the-student-contact-list": "Clearing the student contact list",
         "saving-data": "Saving data",
-        "exit-application": "Exit Application"
+        "exit-application": "Exit Application",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },
@@ -128,6 +129,9 @@
         "feature-5-update-edit-contact": "Feature 5: Update/Edit Contact",
         "feature-6-find-contact": "Feature 6: Find Contact",
         "feature-7-filter-contact": "Feature 7: Filter Contact",
+        "feature-8-help": "Feature 8: Help",
+        "feature-9-clear": "Feature 9: clear",
+        "feature-10-exit": "Feature 10: Exit",
         "troubleshooting": "Troubleshooting",
         "faqs": "FAQs",
         "command-summary": "Command Summary",
