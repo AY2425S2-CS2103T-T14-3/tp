@@ -235,7 +235,7 @@ help
 - A website link will pop up in a window, just copy the link and paste it to your browser!
 
 ---
-### Feature 9: clear
+### Feature 9: Clear
 **🎯 Purpose:** New semester? Clear your data to make space for the new students!
 
 **🔤 Command Format:**
