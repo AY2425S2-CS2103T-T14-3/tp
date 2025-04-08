@@ -38,7 +38,7 @@
         * [Clearing the student contact](#clearing-the-student-contact-list)
         * [Saving the data](#saving-data)
         * [Exit application](#exit-application)
-    * * [Appendix: Planned Enhancements](#appendix-planned-enhancements)
+    * [Appendix: Planned Enhancements](#appendix-planned-enhancements)
 <!-- * Table of Contents -->
 
 --------------------------------------------------------------------------------------------------------------------
