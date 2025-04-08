@@ -711,3 +711,28 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: Type `exit` to close the window.<br>
        Expected: The window closes.
+
+## **Appendix: Planned Enhancements**
+
+Team size: 5
+
+1. Prevent `edit` from modifying a contact such that it has a duplicate `studentId` or `emailId`. Currently, this feature
+flaw of `edit` might introduce duplicates into the database, which violate the assumption that no duplicate is allowed in
+the database. This is known to lead other bugs in other features when duplicates are present, such as 
+`m_delete` and `delete`, which would only delete the first duplicate `studentID` found. 
+2. Improve `find` command such that it works for partial names such as "ja" in "Jane". Currently, `find` can tolerate 
+incomplete names as far as the name input is a complete word. Partial name input can lead to undetected results. 
+3. Add `undo` command to help user recover from the previous step. This way, users can easily go back from accidentally 
+changing the database. 
+4. Add confirmation pop-up window before the execution of `clear` command, which currently results in an irreversible 
+loss of data. 
+5. Make Tags more easily changeable by adding `edit_t` and `delete_t` commands. Currently, editing and deleting tags are 
+achievable through the current `edit` command, by inputting the new tags which will completely override the old ones.
+However, Tags should be made to be able to be modified or deleted individually by aforementioned commands to provide 
+greater convenience to the user. 
+6. In the **Implementation** section of DG, add more sequence diagrams for features other than just `add` and `delete`.
+7. Delete command: Keep the wrong studentId on input text field if the input studentId is invalid, so that the user can 
+see what's wrong with the studentId and modify easily, instead of typing the entire studentId again. 
+8. Though our classID currently allows different format to cater to different schools, we have received opinions that 
+we should standardise it through validation regex. Thus, a possible improvement is to validate the classId format by 
+making sure that it follows the standard format: [ClassCode]-[TutorialCode], e.g. `CS1101-01`.
