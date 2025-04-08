@@ -186,7 +186,7 @@ Then, `WhoDatParser` ensures that all fields match their respective validation r
 Otherwise, it creates a new instance of `AddCommand`.
 
 Upon execution, `AddCommand` checks if a duplicate student contact exists. If there is no duplicate, `AddCommand` will add the student to the contact list.
- 
+
 `...` is used to represent a valid user input, as the full input is too long to be included in the diagram. A full example of a valid input is: add n/John i/A1234567X e/E1234567 c/CS210501
 
 > **_NOTE:_** The sequence diagram shows a simplified execution of the AddCommand.
@@ -419,7 +419,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to delete multiple student contacts by specifying multiple student ids.
 2. System deletes the contacts from the list.
-3. System displays completion message where the student ids of the students who were deleted successfully, not found or 
+3. System displays completion message where the student ids of the students who were deleted successfully, not found or
 completely invalid.
 
    Use case ends.
@@ -429,8 +429,8 @@ completely invalid.
 
 * 1a. No student ids are supplied.
     * 1a1. System shows an error message.
-  Use case ends. 
-  
+  Use case ends.
+
 * 3a. Invalid student ids were supplied in step 1.
     * 3a1. System appends a message to the completion message informing the user why some of the student ids were invalid.
 
@@ -505,9 +505,9 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Run `java -jar whodat.jar` in a terminal. 
-   
-   2. Expected: Shows the GUI with a set of sample student contacts. The window size may not be optimum.
+   2. Run `java -jar whodat.jar` in a terminal.
+
+   3. Expected: Shows the GUI with a set of sample student contacts. The window size may not be optimum.
 
 2. Saving window preferences
 
@@ -523,7 +523,7 @@ testers are expected to do more *exploratory* testing.
 1. Adding a valid contact
 
    1. Prerequisite: A duplicate contact cannot exist.
-   
+
    2. Test case: `add n/James i/A0277024H e/E1136951 c/110103`<br>
       Expected: Contact is added with success status message.
 
@@ -538,9 +538,9 @@ testers are expected to do more *exploratory* testing.
 
     1. Omit a field like class id: `add add n/James i/A0277024H e/E1136951` <br>
     Expected: An error message showing the correct add format.<br>
-   
+
    2. Other fields to omit include name, student id and email id.
-       
+
 <br></br>
 
 ### Deleting a person
@@ -550,7 +550,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
    2. Test case: `delete AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
-      Expected: If student id is valid, then contact is deleted from the list. Details of the deleted contact shown in the status message. 
+      Expected: If student id is valid, then contact is deleted from the list. Details of the deleted contact shown in the status message.
 
    3. Test case: `delete A29`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
@@ -570,14 +570,14 @@ testers are expected to do more *exploratory* testing.
        Expected: An error message detailing that at least one student id should be supplied.
 
     3. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter<br>
-       Expected: If student ids are valid and existent, then the student ids are deleted from the list. If the student ids are 
-       valid but non-existent or are invalid, they are not removed from the list. Student ids of the successfully deleted 
+       Expected: If student ids are valid and existent, then the student ids are deleted from the list. If the student ids are
+       valid but non-existent or are invalid, they are not removed from the list. Student ids of the successfully deleted
        students, missing students and invalid students are displayed.
-   
+
     4. Test case: `m_delete AxxxxxxxX, AxxxxxxxX`, where x are numerical digits and X is a capitalised letter, and both student ids are the same.<br>
-       Expected: If both the student ids are valid, the duplicate is removed and deletion happens only once. The message 
+       Expected: If both the student ids are valid, the duplicate is removed and deletion happens only once. The message
        displayed is similar to test case 3 but the duplicate, valid student id is displayed only once.
-   
+
     5. Test case: `m_delete AxxxxxxxX AxxxxxxxX`, where x are numerical digits and X is a capitalised letter, and no comma-separation.<br>
        Expected: No deletion happens and the input student ids are displayed as invalid student ids.
 
@@ -718,21 +718,21 @@ Team size: 5
 
 1. Prevent `edit` from modifying a contact such that it has a duplicate `studentId` or `emailId`. Currently, this feature
 flaw of `edit` might introduce duplicates into the database, which violate the assumption that no duplicate is allowed in
-the database. This is known to lead other bugs in other features when duplicates are present, such as 
-`m_delete` and `delete`, which would only delete the first duplicate `studentID` found. 
-2. Improve `find` command such that it works for partial names such as "ja" in "Jane". Currently, `find` can tolerate 
-incomplete names as far as the name input is a complete word. Partial name input can lead to undetected results. 
-3. Add `undo` command to help user recover from the previous step. This way, users can easily go back from accidentally 
-changing the database. 
-4. Add confirmation pop-up window before the execution of `clear` command, which currently results in an irreversible 
-loss of data. 
-5. Make Tags more easily changeable by adding `edit_t` and `delete_t` commands. Currently, editing and deleting tags are 
+the database. This is known to lead other bugs in other features when duplicates are present, such as
+`m_delete` and `delete`, which would only delete the first duplicate `studentID` found.
+2. Improve `find` command such that it works for partial names such as "ja" in "Jane". Currently, `find` can tolerate
+incomplete names as far as the name input is a complete word. Partial name input can lead to undetected results.
+3. Add `undo` command to help user recover from the previous step. This way, users can easily go back from accidentally
+changing the database.
+4. Add confirmation pop-up window before the execution of `clear` command, which currently results in an irreversible
+loss of data.
+5. Make Tags more easily changeable by adding `edit_t` and `delete_t` commands. Currently, editing and deleting tags are
 achievable through the current `edit` command, by inputting the new tags which will completely override the old ones.
-However, Tags should be made to be able to be modified or deleted individually by aforementioned commands to provide 
-greater convenience to the user. 
+However, Tags should be made to be able to be modified or deleted individually by aforementioned commands to provide
+greater convenience to the user.
 6. In the **Implementation** section of DG, add more sequence diagrams for features other than just `add` and `delete`.
-7. Delete command: Keep the wrong studentId on input text field if the input studentId is invalid, so that the user can 
-see what's wrong with the studentId and modify easily, instead of typing the entire studentId again. 
-8. Though our classID currently allows different format to cater to different schools, we have received opinions that 
-we should standardise it through validation regex. Thus, a possible improvement is to validate the classId format by 
+7. Delete command: Keep the wrong studentId on input text field if the input studentId is invalid, so that the user can
+see what's wrong with the studentId and modify easily, instead of typing the entire studentId again.
+8. Though our classID currently allows different format to cater to different schools, we have received opinions that
+we should standardise it through validation regex. Thus, a possible improvement is to validate the classId format by
 making sure that it follows the standard format: [ClassCode]-[TutorialCode], e.g. `CS1101-01`.
